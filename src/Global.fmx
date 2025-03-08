@@ -1,0 +1,59 @@
+object FGlobal: TFGlobal
+  Left = 0
+  Top = 0
+  Caption = 'Vision Globale'
+  ClientHeight = 776
+  ClientWidth = 1115
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Layout1: TLayout
+    Position.X = 8.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 1105.000000000000000000
+    Size.Height = 761.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object ToolBar1: TToolBar
+      Align = Bottom
+      Position.Y = 728.000000000000000000
+      Size.Width = 1105.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object btDet: TButton
+        Position.X = 376.000000000000000000
+        Size.Width = 89.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'D'#233'tail S'#233'lection'
+        TextSettings.Trimming = None
+      end
+      object btQuit: TButton
+        Position.X = 880.000000000000000000
+        Position.Y = 8.000000000000000000
+        Size.Width = 81.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = 'Quitter'
+        TextSettings.Trimming = None
+        OnClick = btQuitClick
+      end
+    end
+    object StringGrid1: TStringGrid
+      CanFocus = True
+      ClipChildren = True
+      Position.X = 8.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 1081.000000000000000000
+      Size.Height = 705.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Viewport.Width = 1081.000000000000000000
+      Viewport.Height = 705.000000000000000000
+    end
+  end
+end

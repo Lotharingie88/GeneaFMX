@@ -1,0 +1,104 @@
+object GeneaPrinc: TGeneaPrinc
+  Left = 0
+  Top = 0
+  Caption = 'GeneaFMX'
+  ClientHeight = 778
+  ClientWidth = 1116
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Layout1: TLayout
+    Position.X = 8.000000000000000000
+    Position.Y = 4.000000000000000000
+    Size.Width = 1100.000000000000000000
+    Size.Height = 766.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object MenuBar1: TMenuBar
+      Size.Width = 1100.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object menFich: TMenuItem
+        Text = 'Fichier'
+        object menOuv: TMenuItem
+          Locked = True
+          Text = 'Ouvrir'
+        end
+        object menPrint: TMenuItem
+          Locked = True
+          Text = 'Imprimer...'
+        end
+        object MenSais: TMenuItem
+          Locked = True
+          Text = 'Saisie'
+          OnClick = MenSaisClick
+        end
+        object menQuit: TMenuItem
+          Locked = True
+          Text = 'Quitter'
+          OnClick = menQuitClick
+        end
+      end
+      object menEdit: TMenuItem
+        Text = 'Edition'
+        object menCons: TMenuItem
+          Locked = True
+          Text = 'Consultation'
+        end
+        object menMaj: TMenuItem
+          Locked = True
+          Text = 'Mettre '#224' jour...'
+          OnClick = menMajClick
+        end
+      end
+      object menGlob: TMenuItem
+        Text = 'Vision globale...'
+        OnClick = menGlobClick
+      end
+      object menArbr: TMenuItem
+        Text = 'Arbre'
+        OnClick = menArbrClick
+      end
+      object menFen: TMenuItem
+        Text = 'Fen'#234'tre'
+      end
+    end
+    object StatusBar1: TStatusBar
+      Position.Y = 725.000000000000000000
+      ShowSizeGrip = True
+      Size.Width = 1100.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+    end
+    object ToolBar1: TToolBar
+      Align = Bottom
+      Position.Y = 668.000000000000000000
+      Size.Width = 1100.000000000000000000
+      Size.Height = 57.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      object Button1: TButton
+        Position.X = 8.000000000000000000
+        Size.Width = 105.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = 'Button1'
+        TextSettings.Trimming = None
+      end
+      object btQuit: TButton
+        Position.X = 560.000000000000000000
+        Size.Width = 129.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Text = 'Quitter'
+        TextSettings.Trimming = None
+        OnClick = btQuitClick
+      end
+    end
+  end
+end
