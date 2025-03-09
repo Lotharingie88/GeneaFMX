@@ -8,7 +8,9 @@ uses
   Saisie in 'Saisie.pas' {FSaisie},
   Arbre in 'Arbre.pas' {FArbre},
   Global in 'Global.pas' {FGlobal},
-  Maj in 'Maj.pas' {FMaj};
+  Maj in 'Maj.pas' {FMaj},
+  Consult in 'Consult.pas' {FCons},
+  Choix2 in 'Choix2.pas' {FChoix};
 
 {$R *.res}
 
@@ -20,5 +22,7 @@ begin
   Application.CreateForm(TFArbre, FArbre);
   Application.CreateForm(TFGlobal, FGlobal);
   Application.CreateForm(TFMaj, FMaj);
+  Application.CreateForm(TFCons, FCons);
+  Application.CreateForm(TFChoix, FChoix);
   Application.Run;
 end.

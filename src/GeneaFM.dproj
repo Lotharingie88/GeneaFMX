@@ -323,6 +323,14 @@
             <Form>FMaj</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="Consult.pas">
+            <Form>FCons</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="Choix2.pas">
+            <Form>FChoix</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

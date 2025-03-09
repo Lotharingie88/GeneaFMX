@@ -1,0 +1,139 @@
+object FChoix: TFChoix
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 578
+  ClientWidth = 806
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Layout1: TLayout
+    Position.X = 8.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 793.000000000000000000
+    Size.Height = 569.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object ToolBar1: TToolBar
+      Align = Bottom
+      Position.Y = 528.000000000000000000
+      Size.Width = 793.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object btQuit: TButton
+        Position.X = 688.000000000000000000
+        Size.Width = 97.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Quit'
+        TextSettings.Trimming = None
+        OnClick = btQuitClick
+      end
+      object btNew: TButton
+        Position.X = 512.000000000000000000
+        Size.Width = 89.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = 'Nouveau'
+        TextSettings.Trimming = None
+      end
+    end
+    object btValid: TButton
+      Position.X = 600.000000000000000000
+      Position.Y = 528.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'OK'
+      TextSettings.Trimming = None
+    end
+    object rdChoix: TRadioButton
+      Position.X = 520.000000000000000000
+      Position.Y = 456.000000000000000000
+      Size.Width = 49.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'rdChoix'
+    end
+    object cbDebArbre: TComboBox
+      Position.X = 280.000000000000000000
+      Position.Y = 440.000000000000000000
+      Size.Width = 81.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+    end
+    object edNiv: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 4
+      Position.X = 456.000000000000000000
+      Position.Y = 423.000000000000000000
+      Size.Width = 113.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object sgChoix: TStringGrid
+      CanFocus = True
+      ClipChildren = True
+      Position.X = 8.000000000000000000
+      Position.Y = 55.000000000000000000
+      Size.Width = 777.000000000000000000
+      Size.Height = 353.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      Viewport.Width = 773.000000000000000000
+      Viewport.Height = 328.000000000000000000
+    end
+    object lbChoix: TLabel
+      Position.X = 8.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = '0'
+      TabOrder = 6
+    end
+    object lbMsg: TLabel
+      Position.X = 8.000000000000000000
+      Position.Y = 488.000000000000000000
+      Size.Width = 777.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      Text = '0'
+      TabOrder = 7
+    end
+    object Label1: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 432.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Label1'
+      TabOrder = 8
+    end
+    object Label4: TLabel
+      Position.X = 128.000000000000000000
+      Position.Y = 432.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Label4'
+      TabOrder = 9
+    end
+    object lbNiv: TLabel
+      Position.X = 400.000000000000000000
+      Position.Y = 423.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'lbNiv'
+      TabOrder = 10
+    end
+  end
+end

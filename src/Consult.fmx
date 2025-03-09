@@ -1,7 +1,7 @@
-object FMaj: TFMaj
+object FCons: TFCons
   Left = 0
   Top = 0
-  Caption = 'Mise '#224' Jour'
+  Caption = 'Consultation'
   ClientHeight = 749
   ClientWidth = 1079
   FormFactor.Width = 320
@@ -23,37 +23,16 @@ object FMaj: TFMaj
       Size.Height = 57.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
-      object btRec: TButton
-        Position.X = 16.000000000000000000
-        Position.Y = 8.000000000000000000
-        Size.Width = 113.000000000000000000
-        Size.Height = 41.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 0
-        Text = 'Enregistrer'
-        TextSettings.Trimming = None
-        OnClick = btRecClick
-      end
       object btQuit: TButton
         Position.X = 904.000000000000000000
         Position.Y = 8.000000000000000000
         Size.Width = 137.000000000000000000
         Size.Height = 41.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 1
+        TabOrder = 0
         Text = 'Quitter'
         TextSettings.Trimming = None
         OnClick = btQuitClick
-      end
-      object btSupp: TButton
-        Position.X = 176.000000000000000000
-        Position.Y = 16.000000000000000000
-        Size.Width = 129.000000000000000000
-        Size.Height = 33.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 3
-        Text = 'Supprimer la fiche'
-        TextSettings.Trimming = None
       end
     end
     object Label1: TLabel
@@ -210,6 +189,7 @@ object FMaj: TFMaj
       TabOrder = 30
     end
     object lbMaj: TLabel
+      Enabled = False
       StyledSettings = [FontColor]
       Position.X = 584.000000000000000000
       Position.Y = 632.000000000000000000
@@ -244,8 +224,8 @@ object FMaj: TFMaj
     end
     object memMaj: TMemo
       Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
-      CharCase = ecUpperCase
       DataDetectorTypes = []
+      Enabled = False
       Position.X = 16.000000000000000000
       Position.Y = 472.000000000000000000
       Size.Width = 521.000000000000000000
@@ -265,6 +245,7 @@ object FMaj: TFMaj
       OnChange = cbNomChange
     end
     object cbDNaiss: TComboBox
+      Enabled = False
       Position.X = 521.000000000000000000
       Position.Y = 143.000000000000000000
       Size.Width = 185.000000000000000000
@@ -273,6 +254,7 @@ object FMaj: TFMaj
       TabOrder = 35
     end
     object cbPNaiss: TComboBox
+      Enabled = False
       Position.X = 736.000000000000000000
       Position.Y = 142.000000000000000000
       Size.Width = 177.000000000000000000
@@ -281,6 +263,7 @@ object FMaj: TFMaj
       TabOrder = 36
     end
     object cbDDec: TComboBox
+      Enabled = False
       Position.X = 521.000000000000000000
       Position.Y = 176.000000000000000000
       Size.Width = 185.000000000000000000
@@ -289,6 +272,7 @@ object FMaj: TFMaj
       TabOrder = 37
     end
     object cbPDec: TComboBox
+      Enabled = False
       Position.X = 736.000000000000000000
       Position.Y = 175.000000000000000000
       Size.Width = 177.000000000000000000
@@ -301,6 +285,7 @@ object FMaj: TFMaj
       TabOrder = 39
       Position.X = 105.000000000000000000
       Position.Y = 172.000000000000000000
+      Enabled = False
       Size.Width = 128.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
@@ -311,6 +296,7 @@ object FMaj: TFMaj
       TabOrder = 40
       Position.X = 304.000000000000000000
       Position.Y = 143.000000000000000000
+      Enabled = False
       Size.Width = 201.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
@@ -321,6 +307,7 @@ object FMaj: TFMaj
       TabOrder = 41
       Position.X = 272.000000000000000000
       Position.Y = 238.000000000000000000
+      Enabled = False
       Size.Width = 129.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
@@ -331,6 +318,7 @@ object FMaj: TFMaj
       TabOrder = 42
       Position.X = 272.000000000000000000
       Position.Y = 303.000000000000000000
+      Enabled = False
       Size.Width = 129.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
@@ -341,6 +329,7 @@ object FMaj: TFMaj
       TabOrder = 43
       Position.X = 272.000000000000000000
       Position.Y = 336.000000000000000000
+      Enabled = False
       Size.Width = 129.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
@@ -351,6 +340,7 @@ object FMaj: TFMaj
       TabOrder = 44
       Position.X = 272.000000000000000000
       Position.Y = 375.000000000000000000
+      Enabled = False
       Size.Width = 129.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
@@ -361,6 +351,7 @@ object FMaj: TFMaj
       TabOrder = 45
       Position.X = 656.000000000000000000
       Position.Y = 432.000000000000000000
+      Enabled = False
       Size.Width = 169.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
@@ -380,6 +371,7 @@ object FMaj: TFMaj
       TabOrder = 16
       Position.X = 304.000000000000000000
       Position.Y = 176.000000000000000000
+      Enabled = False
       Size.Width = 201.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
@@ -390,6 +382,7 @@ object FMaj: TFMaj
       TabOrder = 15
       Position.X = 105.000000000000000000
       Position.Y = 205.000000000000000000
+      Enabled = False
       Size.Width = 128.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
@@ -400,6 +393,7 @@ object FMaj: TFMaj
       TabOrder = 14
       Position.X = 105.000000000000000000
       Position.Y = 238.000000000000000000
+      Enabled = False
       Size.Width = 129.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
@@ -410,6 +404,7 @@ object FMaj: TFMaj
       TabOrder = 13
       Position.X = 104.000000000000000000
       Position.Y = 47.000000000000000000
+      Enabled = False
       Size.Width = 129.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
@@ -420,6 +415,7 @@ object FMaj: TFMaj
       TabOrder = 12
       Position.X = 105.000000000000000000
       Position.Y = 270.000000000000000000
+      Enabled = False
       Size.Width = 128.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
@@ -430,6 +426,7 @@ object FMaj: TFMaj
       TabOrder = 11
       Position.X = 105.000000000000000000
       Position.Y = 113.000000000000000000
+      Enabled = False
       Size.Width = 129.000000000000000000
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
@@ -440,6 +437,7 @@ object FMaj: TFMaj
       TabOrder = 10
       Position.X = 105.000000000000000000
       Position.Y = 80.000000000000000000
+      Enabled = False
       Size.Width = 129.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
@@ -459,6 +457,7 @@ object FMaj: TFMaj
       TabOrder = 8
       Position.X = 105.000000000000000000
       Position.Y = 303.000000000000000000
+      Enabled = False
       Size.Width = 128.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
@@ -469,6 +468,7 @@ object FMaj: TFMaj
       TabOrder = 7
       Position.X = 105.000000000000000000
       Position.Y = 336.000000000000000000
+      Enabled = False
       Size.Width = 128.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
@@ -479,6 +479,7 @@ object FMaj: TFMaj
       TabOrder = 6
       Position.X = 104.000000000000000000
       Position.Y = 376.000000000000000000
+      Enabled = False
       Size.Width = 129.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
@@ -495,6 +496,7 @@ object FMaj: TFMaj
       TabOrder = 4
       Position.X = 104.000000000000000000
       Position.Y = 143.000000000000000000
+      Enabled = False
       Size.Width = 129.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
@@ -506,6 +508,7 @@ object FMaj: TFMaj
       Size.Width = 49.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
+      Text = 'lbNMaj'
       TabOrder = 47
     end
     object lbEpMaj: TLabel
@@ -514,6 +517,7 @@ object FMaj: TFMaj
       Size.Width = 49.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
+      Text = 'lbEpMaj'
       TabOrder = 48
     end
     object LbEp2Maj: TLabel
@@ -522,6 +526,7 @@ object FMaj: TFMaj
       Size.Width = 65.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
+      Text = 'LbEp2Maj'
       TabOrder = 49
     end
     object lbPMaj: TLabel
@@ -530,6 +535,7 @@ object FMaj: TFMaj
       Size.Width = 49.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
+      Text = 'lbPMaj'
       TabOrder = 50
     end
     object lbMMaj: TLabel
@@ -538,6 +544,7 @@ object FMaj: TFMaj
       Size.Width = 41.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
+      Text = 'lbMMaj'
       TabOrder = 51
     end
   end

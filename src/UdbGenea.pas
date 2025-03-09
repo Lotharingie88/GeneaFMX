@@ -25,6 +25,8 @@ type
     FDQuerGlob: TFDQuery;
     FDQuerArbr: TFDQuery;
     FDQuerMajPlus: TFDQuery;
+    FDQuerSais2: TFDQuery;
+    FDQuerChoix: TFDQuery;
   private
     { Déclarations privées }
   public

@@ -46,6 +46,7 @@ object GeneaPrinc: TGeneaPrinc
         object menCons: TMenuItem
           Locked = True
           Text = 'Consultation'
+          OnClick = menConsClick
         end
         object menMaj: TMenuItem
           Locked = True

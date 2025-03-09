@@ -32,6 +32,7 @@ type
     procedure menMajClick(Sender: TObject);
     procedure menGlobClick(Sender: TObject);
     procedure menArbrClick(Sender: TObject);
+    procedure menConsClick(Sender: TObject);
   private
     { Déclarations privées }
   public
@@ -45,7 +46,7 @@ implementation
 
 {$R *.fmx}
  uses
-  Saisie,Maj,Global,Arbre;
+  Saisie,Maj,Global,Arbre,Consult;
 procedure TGeneaPrinc.btQuitClick(Sender: TObject);
 begin
   close();
@@ -54,6 +55,11 @@ end;
 procedure TGeneaPrinc.menArbrClick(Sender: TObject);
 begin
   farbre.show;
+end;
+
+procedure TGeneaPrinc.menConsClick(Sender: TObject);
+begin
+  fcons.Show;
 end;
 
 procedure TGeneaPrinc.menGlobClick(Sender: TObject);
