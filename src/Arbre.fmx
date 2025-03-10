@@ -31,6 +31,7 @@ object FArbre: TFArbre
         TabOrder = 0
         Text = 'Cr'#233'er un arbre'
         TextSettings.Trimming = None
+        OnClick = btCreateClick
       end
       object btQuit: TButton
         Position.X = 896.000000000000000000
@@ -43,6 +44,15 @@ object FArbre: TFArbre
         TextSettings.Trimming = None
         OnClick = btQuitClick
       end
+    end
+    object edInd0: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 1
+      Position.X = 8.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 81.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
     end
   end
 end

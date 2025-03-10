@@ -7,6 +7,7 @@ object FGlobal: TFGlobal
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnShow = FormShow
   DesignerMasterStyle = 0
   object Layout1: TLayout
     Position.X = 8.000000000000000000
@@ -43,17 +44,47 @@ object FGlobal: TFGlobal
         OnClick = btQuitClick
       end
     end
-    object StringGrid1: TStringGrid
+    object dbgGenea2: TGrid
       CanFocus = True
       ClipChildren = True
       Position.X = 8.000000000000000000
       Position.Y = 8.000000000000000000
-      Size.Width = 1081.000000000000000000
-      Size.Height = 705.000000000000000000
+      Size.Width = 1089.000000000000000000
+      Size.Height = 681.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
-      Viewport.Width = 1081.000000000000000000
-      Viewport.Height = 705.000000000000000000
+      Options = [Editing, ColumnMove, ColLines, RowLines, RowSelect, Tabs, Header, HeaderClick, AutoDisplacement]
+      Viewport.Width = 1085.000000000000000000
+      Viewport.Height = 656.000000000000000000
     end
+  end
+  object NavigatorBindSourceDB1: TBindNavigator
+    Position.X = 16.000000000000000000
+    Position.Y = 696.000000000000000000
+    Size.Width = 225.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    DataSource = BindSourceDB1
+    VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
+    xRadius = 4.000000000000000000
+    yRadius = 4.000000000000000000
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      DataSource = BindSourceDB1
+      GridControl = dbgGenea2
+      Columns = <>
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = DataModule1.FDQuerGlob
+    ScopeMappings = <>
+    Left = 544
+    Top = 376
   end
 end

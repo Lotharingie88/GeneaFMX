@@ -53,8 +53,8 @@ object FChoix: TFChoix
       TextSettings.Trimming = None
     end
     object rdChoix: TRadioButton
-      Position.X = 520.000000000000000000
-      Position.Y = 456.000000000000000000
+      Position.X = 319.000000000000000000
+      Position.Y = 448.000000000000000000
       Size.Width = 49.000000000000000000
       Size.Height = 17.000000000000000000
       Size.PlatformDefault = False
@@ -62,7 +62,7 @@ object FChoix: TFChoix
       Text = 'rdChoix'
     end
     object cbDebArbre: TComboBox
-      Position.X = 280.000000000000000000
+      Position.X = 184.000000000000000000
       Position.Y = 440.000000000000000000
       Size.Width = 81.000000000000000000
       Size.Height = 25.000000000000000000
@@ -72,8 +72,8 @@ object FChoix: TFChoix
     object edNiv: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       TabOrder = 4
-      Position.X = 456.000000000000000000
-      Position.Y = 423.000000000000000000
+      Position.X = 376.000000000000000000
+      Position.Y = 8.000000000000000000
       Size.Width = 113.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
@@ -82,7 +82,7 @@ object FChoix: TFChoix
       CanFocus = True
       ClipChildren = True
       Position.X = 8.000000000000000000
-      Position.Y = 55.000000000000000000
+      Position.Y = 49.000000000000000000
       Size.Width = 777.000000000000000000
       Size.Height = 353.000000000000000000
       Size.PlatformDefault = False
@@ -127,13 +127,30 @@ object FChoix: TFChoix
       TabOrder = 9
     end
     object lbNiv: TLabel
-      Position.X = 400.000000000000000000
-      Position.Y = 423.000000000000000000
+      Position.X = 271.000000000000000000
+      Position.Y = 8.000000000000000000
       Size.Width = 97.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'lbNiv'
       TabOrder = 10
     end
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 716
+    Top = 429
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      DataSource = BindSourceDB1
+      GridControl = sgChoix
+      Columns = <>
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = DataModule1.FDQuerChoix
+    ScopeMappings = <>
+    Left = 616
+    Top = 432
   end
 end
