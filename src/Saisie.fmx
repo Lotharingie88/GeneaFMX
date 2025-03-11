@@ -500,5 +500,41 @@ object FSaisie: TFSaisie
       Size.PlatformDefault = False
       CharCase = ecUpperCase
     end
+    object lbEpo: TLabel
+      Position.X = 600.000000000000000000
+      Position.Y = 248.000000000000000000
+      Size.Width = 25.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = '0'
+      TabOrder = 48
+    end
+    object lbPer: TLabel
+      Position.X = 592.000000000000000000
+      Position.Y = 368.000000000000000000
+      Size.Width = 33.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = '0'
+      TabOrder = 49
+    end
+    object lbMer: TLabel
+      Position.X = 592.000000000000000000
+      Position.Y = 408.000000000000000000
+      Size.Width = 33.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = '0'
+      TabOrder = 50
+    end
+    object lbEpo2: TLabel
+      Position.X = 592.000000000000000000
+      Position.Y = 320.000000000000000000
+      Size.Width = 33.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = '0'
+      TabOrder = 51
+    end
   end
 end

@@ -27,6 +27,7 @@ type
     FDQuerMajPlus: TFDQuery;
     FDQuerSaisPlus: TFDQuery;
     FDQuerChoix: TFDQuery;
+    FDQuerArbrPlus: TFDQuery;
   private
     { Déclarations privées }
   public

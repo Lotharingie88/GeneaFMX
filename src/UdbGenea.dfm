@@ -47,42 +47,47 @@ object DataModule1: TDataModule1
     Connection = FDConnecSqLite
     SQL.Strings = (
       'select idperson,nom,prenom from personnes  order by nom,prenom')
-    Left = 400
+    Left = 408
     Top = 136
   end
   object FDQuerMaj: TFDQuery
     Connection = FDConnecSqLite
-    Left = 512
-    Top = 136
+    Left = 408
+    Top = 256
   end
   object FDQuerSais: TFDQuery
     Connection = FDConnecSqLite
-    Left = 400
-    Top = 192
+    Left = 408
+    Top = 200
   end
   object FDQuerGlob: TFDQuery
     Connection = FDConnecSqLite
-    Left = 504
-    Top = 192
+    Left = 408
+    Top = 384
   end
   object FDQuerArbr: TFDQuery
-    Connection = FDConnecSqLite
-    Left = 400
-    Top = 256
-  end
-  object FDQuerMajPlus: TFDQuery
-    Connection = FDConnecSqLite
-    Left = 488
-    Top = 256
-  end
-  object FDQuerSais2: TFDQuery
     Connection = FDConnecSqLite
     Left = 408
     Top = 320
   end
+  object FDQuerMajPlus: TFDQuery
+    Connection = FDConnecSqLite
+    Left = 528
+    Top = 256
+  end
+  object FDQuerSaisPlus: TFDQuery
+    Connection = FDConnecSqLite
+    Left = 528
+    Top = 200
+  end
   object FDQuerChoix: TFDQuery
     Connection = FDConnecSqLite
-    Left = 512
-    Top = 320
+    Left = 528
+    Top = 136
+  end
+  object FDQuerArbrPlus: TFDQuery
+    Connection = FDConnecSqLite
+    Left = 520
+    Top = 328
   end
 end

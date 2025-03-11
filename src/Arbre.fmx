@@ -53,6 +53,17 @@ object FArbre: TFArbre
       Size.Width = 81.000000000000000000
       Size.Height = 17.000000000000000000
       Size.PlatformDefault = False
+      OnChange = edInd0Change
+    end
+    object sbArbre: TScrollBox
+      Position.X = 16.000000000000000000
+      Position.Y = 40.000000000000000000
+      Size.Width = 1009.000000000000000000
+      Size.Height = 497.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Viewport.Width = 1009.000000000000000000
+      Viewport.Height = 497.000000000000000000
     end
   end
 end
