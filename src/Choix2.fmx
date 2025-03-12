@@ -72,6 +72,7 @@ object FChoix: TFChoix
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 3
+      OnChange = cbDebArbreChange
     end
     object edNiv: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -91,8 +92,8 @@ object FChoix: TFChoix
       Size.Height = 304.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 5
-      Viewport.Width = 629.000000000000000000
-      Viewport.Height = 279.000000000000000000
+      Viewport.Width = 633.000000000000000000
+      Viewport.Height = 304.000000000000000000
     end
     object lbChoix: TLabel
       Position.X = 8.000000000000000000

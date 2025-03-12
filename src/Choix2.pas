@@ -33,6 +33,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure btNewClick(Sender: TObject);
     procedure btValidClick(Sender: TObject);
+    procedure cbDebArbreChange(Sender: TObject);
   private
     { Déclarations privées }
   public
@@ -48,8 +49,8 @@ implementation
   uses
    arbre,saisie,maj;
  var
-  j:integer;
-  IndPers,idNom:string;
+  IndPers,j:integer;
+  idNom:string;
 procedure TFChoix.btNewClick(Sender: TObject);
 begin
   if lbChoix.Text='Saisie' then
@@ -243,12 +244,20 @@ begin
      else
      if lbChoix.text='Arbre' then
      begin
-             Individu := cbDebArbre.Text;
-             //idNom := cbDebArbre.Items.Objects[cbDebArbre.ItemIndex];
+             Individu := cbDebArbre.selected.Text;
 
-	           Farbre.edInd0.Text:= idnom;
+	           //Farbre.edInd0.Text:= indpers.ToString;
              Fchoix.Close;
      end;
+end;
+
+procedure TFChoix.cbDebArbreChange(Sender: TObject);
+begin
+    //Individu := cbDebArbre.selected.Text;
+     //IndPers := Integer(cbDebArbre.Items.Objects[cbDebArbre.ItemIndex]);
+//
+	//Farbre.edInd0.Text:= IndPers.ToString;
+          //Farbre.edN0.Text:= Individu;
 end;
 
 procedure TFChoix.FormActivate(Sender: TObject);
@@ -356,11 +365,14 @@ begin
 //        datamodule1.fdQuerChoix.Active:=True;
         //cbDebArbre.selected.Text:='';
         cbDebArbre.Items.Clear();
-        cbDebArbre.ItemIndex := 0;
+
         cbDebArbre.Items.Add('');
+        cbDebArbre.ItemIndex := 0;
         datamodule1.fdQuerChoix.first;
       	while not datamodule1.fdQuerChoix.Eof do
           begin
+              cbDebArbre.Items.Add(datamodule1.fdQuerChoix.FieldByName('nom').AsString + ' ' + datamodule1.fdQuerChoix.FieldByName('prenom').AsString + ' -'+datamodule1.fdQuerChoix.FieldByName('idperson').AsString);
+              cbDebArbre.ItemIndex := datamodule1.fdQuerChoix.FieldByName('idPerson').AsInteger;
 //               IndPers := datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
 //               individu :=  datamodule1.fdQuerChoix.FieldByName('nom').AsString + ' ' + datamodule1.fdQuerChoix.FieldByName('prenom').AsString + ' -'+datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
 //               //fchoix.cbDebArbre.AddItem(individu,TObject(StrtoInt(IndPers)));

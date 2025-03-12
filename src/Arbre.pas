@@ -57,10 +57,10 @@ begin
 
      Fchoix.Caption:='Arbre';
      Fchoix.lbchoix.Text:='Arbre';
-     fchoix.Layout1.Height:=249;
-     fchoix.Layout1.Width:=499;
-     fchoix.height:=250;
-     fchoix.Width:=500;
+     //fchoix.Layout1.Height:=249;
+     //fchoix.Layout1.Width:=499;
+     //fchoix.height:=250;
+     //fchoix.Width:=500;
 //      datamodule1.fdQuerChoix.Active:=False;
 //      datamodule1.fdQuerChoix.SQL.clear;
 //      datamodule1.fdQuerChoix.SQL.Text:= 'SELECT idperson,nom,prenom,datnaiss FROM personnes order by nom,prenom';
