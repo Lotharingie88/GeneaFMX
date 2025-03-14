@@ -24,16 +24,17 @@ type
     lbChoix: TLabel;
     lbMsg: TLabel;
     lbSelect: TLabel;
-    Label4: TLabel;
+    lbArbr: TLabel;
     lbNiv: TLabel;
     BindingsList1: TBindingsList;
     BindSourceDB1: TBindSourceDB;
     LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
+    lbNom: TLabel;
+    lbPren: TLabel;
     procedure btQuitClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btNewClick(Sender: TObject);
     procedure btValidClick(Sender: TObject);
-    procedure cbDebArbreChange(Sender: TObject);
   private
     { Déclarations privées }
   public
@@ -50,7 +51,7 @@ implementation
    arbre,saisie,maj;
  var
   IndPers,j:integer;
-  idNom:string;
+  idNom,Person,nom,prenom:string;
 procedure TFChoix.btNewClick(Sender: TObject);
 begin
   if lbChoix.Text='Saisie' then
@@ -244,20 +245,19 @@ begin
      else
      if lbChoix.text='Arbre' then
      begin
-             Individu := cbDebArbre.selected.Text;
 
-	           //Farbre.edInd0.Text:= indpers.ToString;
+              Person := cbDebArbre.Selected.Text;
+
+              datamodule1.fdQuerChoixPlus.close;
+              datamodule1.fdQuerChoixPlus.SQL.clear;
+              datamodule1.fdQuerChoixPlus.SQL.add( 'SELECT idperson,nom,prenom '
+                +' FROM personnes where (nom||" "||prenom||" -"||idperson) = :indiv') ;
+
+              datamodule1.fdQuerChoixPlus.ParamByName('indiv').AsString := Person;
+              datamodule1.fdQuerChoixPlus.Open;
+              Farbre.edInd0.Text:= datamodule1.fdQuerChoixPlus.FieldByName('idperson').AsString;
              Fchoix.Close;
      end;
-end;
-
-procedure TFChoix.cbDebArbreChange(Sender: TObject);
-begin
-    //Individu := cbDebArbre.selected.Text;
-     //IndPers := Integer(cbDebArbre.Items.Objects[cbDebArbre.ItemIndex]);
-//
-	//Farbre.edInd0.Text:= IndPers.ToString;
-          //Farbre.edN0.Text:= Individu;
 end;
 
 procedure TFChoix.FormActivate(Sender: TObject);
@@ -281,6 +281,25 @@ begin
         else
        if Fchoix.Caption = 'Homonymie pour le Père' then
            begin
+                datamodule1.fdQuerChoix.close;
+                datamodule1.fdQuerChoix.SQL.clear;
+                datamodule1.fdQuerChoix.SQL.add( 'SELECT idperson,nom,prenom,if(datnaiss="0000/00/00", "",datnaiss) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom');
+                datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
+                datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.text;
+                datamodule1.fdQuerChoix.Open;
+                datamodule1.fdQuerChoix.first;
+                j:=0;
+                while not datamodule1.fdQuerChoix.Eof do
+                begin
+          //
+          //                     //IndPers := Fchoix.ReqChoix.FieldByName('idperson').AsString;
+                  Fchoix.sgChoix.cells[0,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
+                  Fchoix.sgChoix.cells[1,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
+                  Fchoix.sgChoix.cells[2,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
+                  Fchoix.sgChoix.cells[3,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
+                  j:=j+1;
+                  datamodule1.fdQuerChoix.Next;
+                end;
          		Fsaisie.lbPer.text :=  idNom;
             Fchoix.Close;
             //lbSelect.Caption:=idnom;
@@ -301,7 +320,7 @@ begin
           end;
       datamodule1.fdQuerChoix.close;
       datamodule1.fdQuerChoix.SQL.clear;
-      datamodule1.fdQuerChoix.SQL.add( 'SELECT idperson,nom,prenom,if(datnaiss="0000/00/00", "",DATE_FORMAT(datnaiss,"%d/%m/%Y")) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom');
+      datamodule1.fdQuerChoix.SQL.add( 'SELECT idperson,nom,prenom,if(datnaiss="0000/00/00", "",datnaiss) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom');
       datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fsaisie.EdNMer.Text);
       datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fsaisie.EdPMer.Text);
       datamodule1.fdQuerChoix.Open;
@@ -362,8 +381,7 @@ begin
         datamodule1.fdQuerChoix.SQL.clear;
         datamodule1.fdQuerChoix.SQL.Text:= 'SELECT idperson,nom,prenom,datnaiss FROM personnes order by nom,prenom';
         datamodule1.fdQuerChoix.Open;
-//        datamodule1.fdQuerChoix.Active:=True;
-        //cbDebArbre.selected.Text:='';
+
         cbDebArbre.Items.Clear();
 
         cbDebArbre.Items.Add('');
@@ -373,13 +391,11 @@ begin
           begin
               cbDebArbre.Items.Add(datamodule1.fdQuerChoix.FieldByName('nom').AsString + ' ' + datamodule1.fdQuerChoix.FieldByName('prenom').AsString + ' -'+datamodule1.fdQuerChoix.FieldByName('idperson').AsString);
               cbDebArbre.ItemIndex := datamodule1.fdQuerChoix.FieldByName('idPerson').AsInteger;
-//               IndPers := datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-//               individu :=  datamodule1.fdQuerChoix.FieldByName('nom').AsString + ' ' + datamodule1.fdQuerChoix.FieldByName('prenom').AsString + ' -'+datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-//               //fchoix.cbDebArbre.AddItem(individu,TObject(StrtoInt(IndPers)));
+
                datamodule1.fdQuerChoix.Next;
        	  end;
         	cbDebArbre.selected.Text:='';
-
+          datamodule1.fdQuerChoix.close;
     end;
 end;
 

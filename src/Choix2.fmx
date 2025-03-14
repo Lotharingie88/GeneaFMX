@@ -72,7 +72,6 @@ object FChoix: TFChoix
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 3
-      OnChange = cbDebArbreChange
     end
     object edNiv: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -92,8 +91,8 @@ object FChoix: TFChoix
       Size.Height = 304.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 5
-      Viewport.Width = 633.000000000000000000
-      Viewport.Height = 304.000000000000000000
+      Viewport.Width = 629.000000000000000000
+      Viewport.Height = 279.000000000000000000
     end
     object lbChoix: TLabel
       Position.X = 8.000000000000000000
@@ -103,6 +102,15 @@ object FChoix: TFChoix
       Size.PlatformDefault = False
       Text = '0'
       TabOrder = 6
+      object lbNom: TLabel
+        Position.X = 488.000000000000000000
+        Position.Y = 8.000000000000000000
+        Size.Width = 129.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        Visible = False
+        TabOrder = 4
+      end
     end
     object lbMsg: TLabel
       Position.X = 8.000000000000000000
@@ -122,13 +130,13 @@ object FChoix: TFChoix
       Text = '0'
       TabOrder = 8
     end
-    object Label4: TLabel
-      Position.X = 86.000000000000000000
+    object lbArbr: TLabel
+      Position.X = 31.000000000000000000
       Position.Y = 53.000000000000000000
-      Size.Width = 66.000000000000000000
-      Size.Height = 33.000000000000000000
+      Size.Width = 105.000000000000000000
+      Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
-      Text = 'Label4'
+      Text = 'D'#233'but de l'#39'arbre :'
       TabOrder = 9
     end
     object lbNiv: TLabel
@@ -139,6 +147,15 @@ object FChoix: TFChoix
       Size.PlatformDefault = False
       Text = 'Nombre de Niveaux :'
       TabOrder = 10
+    end
+    object lbPren: TLabel
+      Position.X = 496.000000000000000000
+      Position.Y = 64.000000000000000000
+      Size.Width = 129.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      TabOrder = 11
     end
   end
   object BindingsList1: TBindingsList

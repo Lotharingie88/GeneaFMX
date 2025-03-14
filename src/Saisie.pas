@@ -124,22 +124,22 @@ begin
      Dmar2:=EdD2Maria.Text;
      PEpo2:=EdP2Epo.Text;
      NEpo2:=EdN2Epo.Text;
-//     if CbDeptNaiss.text<>'' then
-//            IdDnaiss:=CbDeptNaiss.ItemIndex
-//            else
-//            IdDnaiss:=0;
-//     if CbDeptdec.text<>'' then
-//            IdDdec:=CbDeptdec.ItemIndex
-//            else
-//            IdDdec:=0;
-//     if CbPays.text<>'' then
-//            IdNnaiss:=CbPays.ItemIndex
-//            else
-//            IdNnaiss:=0;
-//     if CbPDec.text<>'' then
-//            IdNdec:=CbPDec.ItemIndex
-//            else
-//             IdNdec:=0;
+     if CbDNaiss.text<>'' then
+            IdDnaiss:=CbDNaiss.ItemIndex
+            else
+            IdDnaiss:=0;
+     if CbDdec.text<>'' then
+            IdDdec:=CbDdec.ItemIndex
+            else
+            IdDdec:=0;
+     if CbPNaiss.text<>'' then
+            IdNnaiss:=CbPNaiss.ItemIndex
+            else
+            IdNnaiss:=0;
+     if CbPDec.text<>'' then
+            IdNdec:=CbPDec.ItemIndex
+           else
+            IdNdec:=0;
              IdEpo:=0;
              idInd:=0;
              idEpo2:=0;
@@ -196,7 +196,7 @@ begin
 //                 Fchoix.edNiv.Visible:=False;
 //                 Fchoix.height:=250;
 //                 Fchoix.Width:=500;
-//                 Fchoix.ShowModal;
+                 Fchoix.ShowModal;
                  //MessageDlg ('il y a déjà des individus avec cette identité',mtInformation,[mbOK],0);
 
          			//Exit;
@@ -240,6 +240,8 @@ begin
                              Fchoix.btValid.Visible:=True;
                              Fchoix.btNew.visible:=True;
                              Fchoix.btQuit.Visible:=False;
+                             Fchoix.lbNom.Text:=edNPer.Text ;
+                             Fchoix.lbPren.Text:=edPPer.text ;
                              Fchoix.LbMsg.Text :='il y a déjà des individus avec cette identité';
 //                             datamodule1.fdQuerChoix.close;
 //                             datamodule1.fdQuerChoix.SQL.clear;
@@ -265,10 +267,11 @@ begin
 //                               Fchoix.sgChoix.Columns[3].Width:=80;
 //                               Fchoix.sgChoix.Visible:=True;
                                //Fchoix.ReqChoix.Active:=False;
+                               Fchoix.lbArbr.Visible:=False;
                                Fchoix.lbNiv.Visible:=False;
                                Fchoix.edNiv.Visible:=False;
-                               fchoix.height:=250;
-                               fchoix.Width:=500;
+                               fchoix.height:=610;
+                               fchoix.Width:=695;
                                Fchoix.ShowModal;
                end;
          end;
@@ -280,7 +283,7 @@ begin
          begin
            datamodule1.fdQuerSais.close;
            datamodule1.fdQuerSais.SQL.Clear;
-           datamodule1.fdQuerSais.SQL.add ('SELECT count(*) as NbMer,idperson,nom,prenom,if(datnaiss="0000/00/00", "",DATE_FORMAT(datnaiss,"%d/%m/%Y")) as Naissance FROM personnes where nom= :NomMer and prenom= :PrenomMer');
+           datamodule1.fdQuerSais.SQL.add ('SELECT count(*) as NbMer,idperson,nom,prenom,if(datnaiss="0000/00/00", "",datnaiss) as Naissance FROM personnes where nom= :NomMer and prenom= :PrenomMer');
            datamodule1.fdQuerSais.ParamByName('NomMer').AsString :=UpperCase(NomMer);
            datamodule1.fdQuerSais.ParamByName('PrenomMer').AsString :=UpperCase(PrenomMer);
            datamodule1.fdQuerSais.Open;
@@ -346,20 +349,20 @@ begin
      end;
      //.... et l epoux s il y a lieu !
      try
-//      if (EdEpN.Text <>'') then
-//         begin
-//           datamodule1.fdQuerSais.close;
-//
-//           datamodule1.fdQuerSais.SQL.Clear;
-//           datamodule1.fdQuerSais.SQL.add('SELECT count(*) as NbEp,idperson,nom,prenom,if(datnaiss="0000/00/00", "",DATE_FORMAT(datnaiss,"%d/%m/%Y")) as Naissance FROM personnes where nom= :NomEp and prenom= :PrenomEp');
-//           datamodule1.fdQuerSais.ParamByName('NomEp').AsString :=UpperCase(NomEp);
-//           datamodule1.fdQuerSais.ParamByName('PrenomEp').AsString :=UpperCase(PrenomEp);
-//
-//           datamodule1.fdQuerSais.Open;
-//           nbEp :=datamodule1.fdQuerSais.FieldByName('NbEp').AsInteger;
-//
-//         if (nbEp=0) then
-//         		begin
+      if (EdNEpou.Text <>'') then
+        begin
+           datamodule1.fdQuerSais.close;
+
+           datamodule1.fdQuerSais.SQL.Clear;
+           datamodule1.fdQuerSais.SQL.add('SELECT count(*) as NbEp,idperson,nom,prenom,if(datnaiss="0000/00/00", "",datnaiss) as Naissance FROM personnes where nom= :NomEp and prenom= :PrenomEp');
+           datamodule1.fdQuerSais.ParamByName('NomEp').AsString :=UpperCase(NomEp);
+           datamodule1.fdQuerSais.ParamByName('PrenomEp').AsString :=UpperCase(PrenomEp);
+
+           datamodule1.fdQuerSais.Open;
+           nbEp :=datamodule1.fdQuerSais.FieldByName('NbEp').AsInteger;
+
+         if (nbEp=0) then
+         		begin
 //
 //                       ReqSupp.SQL.Clear;
 //                       ReqSupp.SQL.Text := 'INSERT INTO personnes (nom, prenom,datmaj) '+
@@ -371,10 +374,10 @@ begin
 //                       ReqSupp.ExecSQL;
 //
 //
-//         		end
-//               else
-//               if (nbEp>0) then
-//               begin
+         		end
+               else
+               if (nbEp>0) then
+               begin
 //                             Fchoix.Caption:='Homonymie pour l Epoux(se)';
 //                             Fchoix.lbChoix.caption:='Saisie';
 //                             Fchoix.RdChoix.Visible := False;
@@ -416,15 +419,15 @@ begin
 //                                  fchoix.height:=250;
 //                              	  fchoix.Width:=500;
 //                                  Fchoix.ShowModal;
-//               end;
-//         end;
+               end;
+         end;
       except
 
       end;
       //et l epoux2 s'il y a eu second mariage
      try
-//      if (EdEp2N.Text <>'') then
-//         begin
+      if (EdN2Epo.Text <>'') then
+         begin
 //           datamodule1.fdQuerSais.close;
 //
 //           datamodule1.fdQuerSais.SQL.Clear;
@@ -435,8 +438,8 @@ begin
 //           datamodule1.fdQuerSais.Open;
 //           NbEp2 :=datamodule1.fdQuerSais.FieldByName('NbEp2').AsInteger;
 //
-//         if (NbEp2=0) then
-//         		begin
+         if (NbEp2=0) then
+         		begin
 //
 //                       ReqSupp.SQL.Clear;
 //                       ReqSupp.SQL.Text := 'INSERT INTO personnes (nom, prenom,datmaj) '+
@@ -448,10 +451,10 @@ begin
 //                       ReqSupp.ExecSQL;
 //
 //
-//         		end
-//               else
-//               if (NbEp2>0) then
-//               begin
+         		end
+               else
+               if (NbEp2>0) then
+               begin
 //                             Fchoix.Caption:='Homonymie pour l Epoux(se)2';
 //                             Fchoix.lbChoix.caption:='Saisie';
 //                             Fchoix.RdChoix.Visible := False;
@@ -493,8 +496,8 @@ begin
 //                               	   fchoix.height:=250;
 //                              	   fchoix.Width:=500;
 //                               	   Fchoix.ShowModal;
-//               end;
-//         end;
+               end;
+         end;
       except
      end;
 
@@ -502,8 +505,8 @@ begin
     // on démarre l implementation dans la base de donnée
 //     try
      	try
-//              if (EdEpN.Text <>'') and ((lbEpo.Caption='-1') or (lbEpo.Caption='0')) then
-//                 begin
+              if (EdNEpou.Text <>'') and ((lbEpo.text='-1') or (lbEpo.text='0')) then
+                 begin
 //                   ReqSupp.close;
 //
 //                   ReqSupp.SQL.Clear;
@@ -515,18 +518,18 @@ begin
 //                   IdEpo :=ReqSupp.FieldByName('idperson').AsInteger;
 //
 //
-//                 end
-//               else
-//                 if (lbEpo.Caption<>'0') and (lbEpo.Caption<>'-1') then
-//                   begin
-//                      IdEpo := StrToInt(lbEpo.Caption) ;
-//                   end
-//                   else
-//                   begin
-//                      IdEpo :=0;
-//                   end;
-//          	if (EdEp2N.Text <>'') and ((lbEpo2.Caption='-1') or (lbEpo2.Caption='0')) then
-//                 begin
+                 end
+               else
+                 if (lbEpo.text<>'0') and (lbEpo.text<>'-1') then
+                   begin
+                      IdEpo := StrToInt(lbEpo.text) ;
+                   end
+                   else
+                   begin
+                      IdEpo :=0;
+                   end;
+          	if (EdN2Epo.Text <>'') and ((lbEpo2.text='-1') or (lbEpo2.text='0')) then
+                 begin
 //                   ReqSupp.close;
 //
 //                   ReqSupp.SQL.Clear;
@@ -538,18 +541,18 @@ begin
 //                   IdEpo2 :=ReqSupp.FieldByName('idperson').AsInteger;
 //
 //
-//                 end
-//               else
-//               	if (lbEpo2.Caption<>'0') and (lbEpo2.Caption<>'-1') then
-//                     begin
-//                        IdEpo2 := StrToInt(lbEpo.Caption) ;
-//                     end
-//                     else
-//                     begin
-//                        IdEpo2 :=0;
-//                     end;
-//              if (EdPer.Text <>'') and ((lbPer.Caption='-1') or (lbPer.Caption='0')) then
-//                 begin
+                 end
+               else
+               	if (lbEpo2.text<>'0') and (lbEpo2.text<>'-1') then
+                     begin
+                        IdEpo2 := StrToInt(lbEpo.text) ;
+                     end
+                     else
+                     begin
+                        IdEpo2 :=0;
+                     end;
+              if (EdNPer.Text <>'') and ((lbPer.text='-1') or (lbPer.text='0')) then
+                 begin
 //                   ReqSupp.close;
 //
 //                   ReqSupp.SQL.Clear;
@@ -560,18 +563,18 @@ begin
 //                   ReqSupp.Open;
 //                   IdPer :=ReqSupp.FieldByName('idperson').AsInteger;
 //
-//                 end
-//                  else
-//               if (lbPer.Caption<>'0') and (lbPer.Caption<>'-1') then
-//                 begin
-//                  IdPer := StrToInt(lbPer.Caption) ;
-//                 end
-//               else
-//                 begin
-//                 	IdPer :=0;
-//                 end;
-//               if (EdMerNom.Text <>'') and ((lbMer.Caption='-1') or (lbMer.Caption='0')) then
-//                 begin
+                 end
+                  else
+               if (lbPer.text<>'0') and (lbPer.text<>'-1') then
+                 begin
+                  IdPer := StrToInt(lbPer.text) ;
+                 end
+               else
+                 begin
+                 	IdPer :=0;
+                 end;
+               if (EdNMer.Text <>'') and ((lbMer.text='-1') or (lbMer.text='0')) then
+                 begin
 //                   ReqSupp.close;
 //
 //                   ReqSupp.SQL.Clear;
@@ -582,18 +585,18 @@ begin
 //                   ReqSupp.Open;
 //                   IdMer :=ReqSupp.FieldByName('idperson').AsInteger;
 //
-//                 end
-//                 else
-//               if (lbMer.Caption<>'0') and (lbMer.Caption<>'-1') then
-//                 begin
-//                  IdMer := StrToInt(lbMer.Caption) ;
-//                 end
-//               else
-//                 begin
-//                 	IdMer :=0;
-//                 end;
-//             if (lbInd.caption='0') or (lbInd.caption='-1') then
-//              begin
+                 end
+                 else
+               if (lbMer.text<>'0') and (lbMer.text<>'-1') then
+                 begin
+                  IdMer := StrToInt(lbMer.text) ;
+                 end
+               else
+                 begin
+                 	IdMer :=0;
+                 end;
+             if (lbInd.text='0') or (lbInd.text='-1') then
+              begin
 //             	with OutRequet do
 //               	begin
 //
@@ -636,19 +639,19 @@ begin
 //               	end;
 //
 //
-//               end
-//               else
-//               begin
-//
-//
-//               end;
+               end
+               else
+               begin
+
+
+               end;
       except
 
       end;
 
      	 try
-//         		if (IdEpo <> 0) then
-//                 begin
+         		if (IdEpo <> 0) then
+                 begin
 //                   //ShowMessage ('Epoux :'+ IdEpo.ToString);
 //                   //MessageDlg ('1',mtInformation,[mbOK],0);
 //                   ReqSupp.close;
@@ -710,7 +713,7 @@ begin
 //
 //
 //
-//                       	end;
+                       	end;
 //
         except
         end;

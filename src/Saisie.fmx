@@ -22,14 +22,14 @@ object FSaisie: TFSaisie
       Size.Width = 1176.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 1
+      TabOrder = 23
       object btRec: TButton
         Position.X = 128.000000000000000000
         Position.Y = 8.000000000000000000
         Size.Width = 80.000000000000000000
         Size.Height = 46.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 1
+        TabOrder = 23
         Text = 'Enregistrer'
         TextSettings.Trimming = None
         OnClick = btRecClick
@@ -40,7 +40,7 @@ object FSaisie: TFSaisie
         Size.Width = 97.000000000000000000
         Size.Height = 41.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 2
+        TabOrder = 24
         Text = 'Quitter'
         TextSettings.Trimming = None
         OnClick = btQuitClick
@@ -53,7 +53,7 @@ object FSaisie: TFSaisie
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'Nom *:'
-      TabOrder = 2
+      TabOrder = 24
     end
     object Label2: TLabel
       Position.X = 80.000000000000000000
@@ -62,7 +62,7 @@ object FSaisie: TFSaisie
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'Pr'#233'nom *:'
-      TabOrder = 18
+      TabOrder = 25
     end
     object Label3: TLabel
       Position.X = 80.000000000000000000
@@ -71,7 +71,7 @@ object FSaisie: TFSaisie
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'Pr'#233'nom 2 :'
-      TabOrder = 21
+      TabOrder = 26
     end
     object Label4: TLabel
       Position.X = 80.000000000000000000
@@ -80,7 +80,7 @@ object FSaisie: TFSaisie
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'Pr'#233'nom 3:'
-      TabOrder = 22
+      TabOrder = 27
     end
     object Label5: TLabel
       Position.X = 384.000000000000000000
@@ -89,7 +89,7 @@ object FSaisie: TFSaisie
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'Lieu :'
-      TabOrder = 23
+      TabOrder = 28
     end
     object Label6: TLabel
       Position.X = 656.000000000000000000
@@ -98,7 +98,7 @@ object FSaisie: TFSaisie
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'D'#233'partement :'
-      TabOrder = 24
+      TabOrder = 29
     end
     object Label7: TLabel
       Position.X = 928.000000000000000000
@@ -107,7 +107,7 @@ object FSaisie: TFSaisie
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'Pays :'
-      TabOrder = 25
+      TabOrder = 30
     end
     object Label8: TLabel
       Position.X = 80.000000000000000000
@@ -116,7 +116,7 @@ object FSaisie: TFSaisie
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'Date de d'#233'c'#232's :'
-      TabOrder = 26
+      TabOrder = 31
     end
     object Label9: TLabel
       Position.X = 384.000000000000000000
@@ -125,7 +125,7 @@ object FSaisie: TFSaisie
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'Lieu :'
-      TabOrder = 27
+      TabOrder = 32
     end
     object Label10: TLabel
       Position.X = 656.000000000000000000
@@ -134,7 +134,7 @@ object FSaisie: TFSaisie
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'D'#233'partement :'
-      TabOrder = 28
+      TabOrder = 33
     end
     object Label11: TLabel
       Position.X = 928.000000000000000000
@@ -143,7 +143,7 @@ object FSaisie: TFSaisie
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'Pays :'
-      TabOrder = 29
+      TabOrder = 34
     end
     object Label12: TLabel
       Position.X = 80.000000000000000000
@@ -152,7 +152,7 @@ object FSaisie: TFSaisie
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'Date de mariage :'
-      TabOrder = 30
+      TabOrder = 35
     end
     object Label13: TLabel
       Position.X = 80.000000000000000000
@@ -161,7 +161,7 @@ object FSaisie: TFSaisie
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'Epoux (se) :'
-      TabOrder = 31
+      TabOrder = 36
     end
     object Label14: TLabel
       Position.X = 80.000000000000000000
@@ -170,7 +170,7 @@ object FSaisie: TFSaisie
       Size.Height = 33.000000000000000000
       Size.PlatformDefault = False
       Text = 'Date 2nd mariage :'
-      TabOrder = 32
+      TabOrder = 37
     end
     object Label15: TLabel
       Position.X = 80.000000000000000000
@@ -179,7 +179,7 @@ object FSaisie: TFSaisie
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = '2nd '#233'poux (se) :'
-      TabOrder = 33
+      TabOrder = 38
     end
     object Label16: TLabel
       Position.X = 80.000000000000000000
@@ -188,7 +188,7 @@ object FSaisie: TFSaisie
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'P'#232're :'
-      TabOrder = 34
+      TabOrder = 39
     end
     object Label17: TLabel
       Position.X = 80.000000000000000000
@@ -197,7 +197,7 @@ object FSaisie: TFSaisie
       Size.Height = 17.000000000000000000
       Size.PlatformDefault = False
       Text = 'M'#232're :'
-      TabOrder = 35
+      TabOrder = 40
     end
     object Label18: TLabel
       Position.X = 200.000000000000000000
@@ -206,7 +206,7 @@ object FSaisie: TFSaisie
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'Nom'
-      TabOrder = 36
+      TabOrder = 41
     end
     object Label19: TLabel
       Position.X = 408.000000000000000000
@@ -215,7 +215,7 @@ object FSaisie: TFSaisie
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'Pr'#233'nom'
-      TabOrder = 37
+      TabOrder = 42
     end
     object Label20: TLabel
       StyledSettings = [Family, FontColor]
@@ -227,17 +227,17 @@ object FSaisie: TFSaisie
       TextSettings.Font.Size = 14.000000000000000000
       TextSettings.Font.StyleExt = {00070000000000000004000000}
       Text = 'Les champs avec * sont des champs obligatoires !'
-      TabOrder = 38
+      TabOrder = 43
     end
     object Memo: TMemo
       Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
       DataDetectorTypes = []
-      Position.X = 648.000000000000000000
-      Position.Y = 408.000000000000000000
+      Position.X = 655.000000000000000000
+      Position.Y = 401.000000000000000000
       Size.Width = 513.000000000000000000
       Size.Height = 289.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 39
+      TabOrder = 22
       Viewport.Width = 513.000000000000000000
       Viewport.Height = 289.000000000000000000
     end
@@ -248,7 +248,7 @@ object FSaisie: TFSaisie
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'M'#233'mo :'
-      TabOrder = 40
+      TabOrder = 44
     end
     object lbInd: TLabel
       Position.X = 408.000000000000000000
@@ -257,11 +257,11 @@ object FSaisie: TFSaisie
       Size.Height = 17.000000000000000000
       Size.PlatformDefault = False
       Text = '0'
-      TabOrder = 41
+      TabOrder = 45
     end
     object edPEpou: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
-      TabOrder = 42
+      TabOrder = 14
       Position.X = 432.000000000000000000
       Position.Y = 247.000000000000000000
       Size.Width = 153.000000000000000000
@@ -271,7 +271,7 @@ object FSaisie: TFSaisie
     end
     object edP2Epo: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
-      TabOrder = 43
+      TabOrder = 17
       Position.X = 432.000000000000000000
       Position.Y = 321.000000000000000000
       Size.Width = 153.000000000000000000
@@ -281,7 +281,7 @@ object FSaisie: TFSaisie
     end
     object edNMer: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
-      TabOrder = 44
+      TabOrder = 20
       Position.X = 199.000000000000000000
       Position.Y = 408.000000000000000000
       Size.Width = 185.000000000000000000
@@ -291,7 +291,7 @@ object FSaisie: TFSaisie
     end
     object edPMer: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
-      TabOrder = 45
+      TabOrder = 21
       Position.X = 432.000000000000000000
       Position.Y = 409.000000000000000000
       Size.Width = 153.000000000000000000
@@ -330,7 +330,7 @@ object FSaisie: TFSaisie
     end
     object edDMaria: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
-      TabOrder = 20
+      TabOrder = 12
       Position.X = 199.000000000000000000
       Position.Y = 215.000000000000000000
       Size.Width = 177.000000000000000000
@@ -340,7 +340,7 @@ object FSaisie: TFSaisie
     end
     object edNom: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
-      TabOrder = 19
+      TabOrder = 0
       Position.X = 200.000000000000000000
       Position.Y = 13.000000000000000000
       Size.Width = 177.000000000000000000
@@ -350,7 +350,7 @@ object FSaisie: TFSaisie
     end
     object edPPer: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
-      TabOrder = 0
+      TabOrder = 19
       Position.X = 432.000000000000000000
       Position.Y = 368.000000000000000000
       Size.Width = 153.000000000000000000
@@ -364,7 +364,7 @@ object FSaisie: TFSaisie
       Size.Width = 137.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 17
+      TabOrder = 11
     end
     object cbDDec: TComboBox
       Position.X = 743.000000000000000000
@@ -372,11 +372,11 @@ object FSaisie: TFSaisie
       Size.Width = 137.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 16
+      TabOrder = 10
     end
     object edNEpou: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
-      TabOrder = 15
+      TabOrder = 13
       Position.X = 200.000000000000000000
       Position.Y = 248.000000000000000000
       Size.Width = 177.000000000000000000
@@ -386,7 +386,7 @@ object FSaisie: TFSaisie
     end
     object edD2Maria: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
-      TabOrder = 14
+      TabOrder = 15
       Position.X = 200.000000000000000000
       Position.Y = 281.000000000000000000
       Size.Width = 177.000000000000000000
@@ -396,7 +396,7 @@ object FSaisie: TFSaisie
     end
     object edN2Epo: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
-      TabOrder = 13
+      TabOrder = 16
       Position.X = 200.000000000000000000
       Position.Y = 321.000000000000000000
       Size.Width = 185.000000000000000000
@@ -406,7 +406,7 @@ object FSaisie: TFSaisie
     end
     object edNPer: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
-      TabOrder = 12
+      TabOrder = 18
       Position.X = 200.000000000000000000
       Position.Y = 366.000000000000000000
       Size.Width = 185.000000000000000000
@@ -416,7 +416,7 @@ object FSaisie: TFSaisie
     end
     object edPren: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
-      TabOrder = 11
+      TabOrder = 1
       Position.X = 200.000000000000000000
       Position.Y = 47.000000000000000000
       Size.Width = 177.000000000000000000
@@ -426,7 +426,7 @@ object FSaisie: TFSaisie
     end
     object edPren2: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
-      TabOrder = 10
+      TabOrder = 2
       Position.X = 199.000000000000000000
       Position.Y = 81.000000000000000000
       Size.Width = 177.000000000000000000
@@ -436,7 +436,7 @@ object FSaisie: TFSaisie
     end
     object edDNaiss: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
-      TabOrder = 8
+      TabOrder = 4
       Position.X = 199.000000000000000000
       Position.Y = 150.000000000000000000
       Size.Width = 177.000000000000000000
@@ -446,7 +446,7 @@ object FSaisie: TFSaisie
     end
     object edPren3: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
-      TabOrder = 9
+      TabOrder = 3
       Position.X = 199.000000000000000000
       Position.Y = 114.000000000000000000
       Size.Width = 177.000000000000000000
@@ -456,7 +456,7 @@ object FSaisie: TFSaisie
     end
     object edLNaiss: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
-      TabOrder = 7
+      TabOrder = 5
       Position.X = 432.000000000000000000
       Position.Y = 150.000000000000000000
       Size.Width = 185.000000000000000000
@@ -478,11 +478,11 @@ object FSaisie: TFSaisie
       Size.Width = 137.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 5
+      TabOrder = 7
     end
     object edDDEC: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
-      TabOrder = 4
+      TabOrder = 8
       Position.X = 199.000000000000000000
       Position.Y = 183.000000000000000000
       Size.Width = 177.000000000000000000
@@ -492,7 +492,7 @@ object FSaisie: TFSaisie
     end
     object edLDec: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
-      TabOrder = 3
+      TabOrder = 9
       Position.X = 432.000000000000000000
       Position.Y = 183.000000000000000000
       Size.Width = 185.000000000000000000

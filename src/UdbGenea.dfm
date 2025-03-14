@@ -90,4 +90,9 @@ object DataModule1: TDataModule1
     Left = 520
     Top = 328
   end
+  object FDQuerChoixPlus: TFDQuery
+    Connection = FDConnecSqLite
+    Left = 520
+    Top = 384
+  end
 end
