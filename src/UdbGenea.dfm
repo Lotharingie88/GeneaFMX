@@ -62,8 +62,8 @@ object DataModule1: TDataModule1
   end
   object FDQuerGlob: TFDQuery
     Connection = FDConnecSqLite
-    Left = 408
-    Top = 384
+    Left = 528
+    Top = 136
   end
   object FDQuerArbr: TFDQuery
     Connection = FDConnecSqLite
@@ -82,8 +82,8 @@ object DataModule1: TDataModule1
   end
   object FDQuerChoix: TFDQuery
     Connection = FDConnecSqLite
-    Left = 528
-    Top = 136
+    Left = 400
+    Top = 384
   end
   object FDQuerArbrPlus: TFDQuery
     Connection = FDConnecSqLite

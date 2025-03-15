@@ -8,6 +8,7 @@ object FChoix: TFChoix
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnActivate = FormActivate
+  OnShow = FormShow
   DesignerMasterStyle = 0
   object Layout1: TLayout
     Position.X = 8.000000000000000000
@@ -24,8 +25,7 @@ object FChoix: TFChoix
       Size.PlatformDefault = False
       TabOrder = 0
       object btQuit: TButton
-        Position.X = 464.000000000000000000
-        Position.Y = 1.000000000000000000
+        Position.X = 448.000000000000000000
         Size.Width = 97.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
@@ -35,26 +35,25 @@ object FChoix: TFChoix
         OnClick = btQuitClick
       end
       object btNew: TButton
-        Position.X = 296.000000000000000000
+        Position.X = 271.000000000000000000
         Size.Width = 89.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 1
+        TabOrder = 2
         Text = 'Nouveau'
         TextSettings.Trimming = None
         OnClick = btNewClick
       end
-    end
-    object btValid: TButton
-      Position.X = 384.000000000000000000
-      Position.Y = 529.000000000000000000
-      Size.Width = 89.000000000000000000
-      Size.Height = 33.000000000000000000
-      Size.PlatformDefault = False
-      TabOrder = 1
-      Text = 'OK'
-      TextSettings.Trimming = None
-      OnClick = btValidClick
+      object btValid: TButton
+        Position.X = 360.000000000000000000
+        Size.Width = 89.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = 'OK'
+        TextSettings.Trimming = None
+        OnClick = btValidClick
+      end
     end
     object rdChoix: TRadioButton
       Position.X = 240.000000000000000000
@@ -62,7 +61,7 @@ object FChoix: TFChoix
       Size.Width = 49.000000000000000000
       Size.Height = 17.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 2
+      TabOrder = 1
       Text = 'rdChoix'
     end
     object cbDebArbre: TComboBox
@@ -71,7 +70,7 @@ object FChoix: TFChoix
       Size.Width = 209.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 3
+      TabOrder = 2
     end
     object edNiv: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -102,15 +101,6 @@ object FChoix: TFChoix
       Size.PlatformDefault = False
       Text = '0'
       TabOrder = 6
-      object lbNom: TLabel
-        Position.X = 488.000000000000000000
-        Position.Y = 8.000000000000000000
-        Size.Width = 129.000000000000000000
-        Size.Height = 33.000000000000000000
-        Size.PlatformDefault = False
-        Visible = False
-        TabOrder = 4
-      end
     end
     object lbMsg: TLabel
       Position.X = 8.000000000000000000
@@ -154,8 +144,15 @@ object FChoix: TFChoix
       Size.Width = 129.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
-      Visible = False
       TabOrder = 11
+    end
+    object lbNom: TLabel
+      Position.X = 496.000000000000000000
+      Position.Y = 23.000000000000000000
+      Size.Width = 129.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
     end
   end
   object BindingsList1: TBindingsList
@@ -163,11 +160,6 @@ object FChoix: TFChoix
     OutputConverters = <>
     Left = 580
     Top = 461
-    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
-      DataSource = BindSourceDB1
-      GridControl = sgChoix
-      Columns = <>
-    end
   end
   object BindSourceDB1: TBindSourceDB
     DataSet = DataModule1.FDQuerChoix

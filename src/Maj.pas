@@ -657,7 +657,7 @@ begin
 end;
 
 procedure TFMaj.cbNomChange(Sender: TObject);
-  var
+var
   		i,idIndi,IndPers: Integer;
 begin
   for i := 0 to Componentcount-1 do
@@ -666,15 +666,11 @@ begin
                      begin
                        TEdit(Components[i]).Text:='';
                      end;
-                if (Components[i] is TComboBox and (TComboBox(Components[i]).Name <> 'CbNom')) then
-                     begin
-                       TComboBox(Components[i]).itemindex:=0;
-                     end;
-                    if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMMaj') or (TLabel(Components[i]).Name = 'lbPMaj') or (TLabel(Components[i]).Name = 'lbEpMaj'))) then
-                     begin
-                       TLabel(Components[i]).Text:='';
-                     end;
-                     if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbEp2Maj')or (TLabel(Components[i]).Name = 'lbNMaj'))) then
+//                 if (Components[i] is TComboBox and (TComboBox(Components[i]).Name <> 'CbNom')) then
+//                     begin
+//                       TComboBox(Components[i]).itemindex:=0;
+//                     end;
+                    if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMMaj') or (TLabel(Components[i]).Name = 'lbPMaj') or (TLabel(Components[i]).Name =  'lbEpMaj') or (TLabel(Components[i]).Name =  'lbEp2Maj') )) then
                      begin
                        TLabel(Components[i]).Text:='';
                      end;
@@ -742,7 +738,8 @@ begin
                  		  edPEpo.Text := datamodule1.fdQuerMajPlus.FieldByName('prenom').AsString;
                       lbEpMaj.Text:= datamodule1.fdQuerMajPlus.FieldByName('idperson').AsString;
                     end;
-                    datamodule1.fdQuerMajPlus.Close;
+//
+//                    datamodule1.fdQuerMajPlus.Close;
                     datamodule1.fdQuerMajPlus.SQL.Clear;
                   	datamodule1.fdQuerMajPlus.SQL.Add( 'SELECT idperson,nom,prenom FROM personnes where idperson='+ (datamodule1.fdQuerMaj.FieldByName('idepoubis').AsString ) ) ;
                     datamodule1.fdQuerMajPlus.Open;
@@ -788,6 +785,137 @@ begin
              end;
     end;
 end;
+//  var
+//  		i,idIndi,IndPers: Integer;
+//begin
+//  for i := 0 to Componentcount-1 do
+//          	begin
+//            		if Components[i] is TEdit  then
+//                     begin
+//                       TEdit(Components[i]).Text:='';
+//                     end;
+//                if (Components[i] is TComboBox and (TComboBox(Components[i]).Name <> 'CbNom')) then
+//                     begin
+//                       TComboBox(Components[i]).itemindex:=0;
+//                     end;
+//                    if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMMaj') or (TLabel(Components[i]).Name = 'lbPMaj') or (TLabel(Components[i]).Name = 'lbEpMaj'))) then
+//                     begin
+//                       TLabel(Components[i]).Text:='';
+//                     end;
+//                     if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbEp2Maj')or (TLabel(Components[i]).Name = 'lbNMaj'))) then
+//                     begin
+//                       TLabel(Components[i]).Text:='';
+//                     end;
+//               end;
+//  Individu := CbNom.Text;
+//
+//  if cbnom.ItemIndex<>0 then
+//    begin
+//      datamodule1.fdQuerMaj.close;
+//      datamodule1.fdQuerMaj.SQL.Clear;
+//               datamodule1.fdQuerMaj.SQL.text := 'SELECT idperson,nom,prenom,if(datnaiss="0000-00-00", "NC",datnaiss) as Naissance,if(datdec="0000-00-00", "NC",datdec) as Deces,idper,'
+//                               +'idmer,if(datmaria="0000-00-00", "NC",datmaria) as Mariage,idepou,'
+//                               +'if(datmarbis="0000-00-00", "NC",datmarbis) as Mariage2,idepoubis,lieunaiss,lieudec,idnatnaiss,idnatdec,'
+//                               +'iddeptnaiss,iddeptdec,prenom2,prenom3,memo,datmaj'
+//                               +' FROM personnes as a  where (nom||" "||prenom||" -"||idperson) = :indiv' ;
+//               datamodule1.fdQuerMaj.ParamByName('indiv').AsString := Individu;
+//     datamodule1.fdQuerMaj.open;
+//
+//     if (datamodule1.fdQuerMaj.RecordCount =1) then
+//           	begin
+//                  IndPers := datamodule1.fdQuerMaj.FieldByName('idperson').AsInteger;
+//                  lbNMaj.Text :=  datamodule1.fdQuerMaj.FieldByName('idperson').AsString;
+//                 	EdNaiss.Text :=  datamodule1.fdQuerMaj.FieldByName('Naissance').AsString;
+//                  EdDec.Text := datamodule1.fdQuerMaj.FieldByName('Deces').AsString;
+//                  EdMaria.Text := datamodule1.fdQuerMaj.FieldByName('Mariage').AsString;
+//                  Ed2Maria.Text :=  datamodule1.fdQuerMaj.FieldByName('Mariage2').AsString;
+//                  EdLDec.Text := datamodule1.fdQuerMaj.FieldByName('lieudec').AsString;
+//                  EdLNaiss.Text := datamodule1.fdQuerMaj.FieldByName('lieunaiss').AsString;
+//                  edPren.Text := datamodule1.fdQuerMaj.FieldByName('prenom').AsString;
+//                  edPren2.Text := datamodule1.fdQuerMaj.FieldByName('prenom2').AsString;
+//                  edPren3.Text := datamodule1.fdQuerMaj.FieldByName('prenom3').AsString;
+//                  MemMaj.Text:=  datamodule1.fdQuerMaj.FieldByName('memo').AsString;
+//                  if (DateTimeToStr(datamodule1.fdQuerMaj.FieldByName('datmaj').AsDateTime)<>'31/12/1899') then
+//                  		lbMaj.Text:= 'Mise à jour le : ' +  DateTimeToStr(datamodule1.fdQuerMaj.FieldByName('datmaj').AsDateTime)
+//                  else
+//                  		lbMaj.Text:= 'Mise à jour le : 00/00/0000 ' ;
+//                    datamodule1.fdQuerMajPlus.Close;
+//                  	datamodule1.fdQuerMajPlus.SQL.Clear;
+//                  	datamodule1.fdQuerMajPlus.SQL.Add( 'SELECT idperson,nom,prenom FROM personnes where idperson='+ (datamodule1.fdQuerMaj.FieldByName('idmer').AsString ) ) ;
+//                    datamodule1.fdQuerMajPlus.Open;
+//                    if (datamodule1.fdQuerMajPlus.RecordCount =1) then
+//                      begin
+//                 		    EdNMer.Text := datamodule1.fdQuerMajPlus.FieldByName('nom').AsString;
+//                     		EdPmer.Text := datamodule1.fdQuerMajPlus.FieldByName('prenom').AsString;
+//                        lbMMaj.Text:= datamodule1.fdQuerMajPlus.FieldByName('idperson').AsString;
+//                    end;
+//
+//                    datamodule1.fdQuerMajPlus.Close;
+//                 	  datamodule1.fdQuerMajPlus.SQL.Clear;
+//                  	datamodule1.fdQuerMajPlus.SQL.Add( 'SELECT idperson,nom,prenom FROM personnes where idperson='+ (datamodule1.fdQuerMaj.FieldByName('idper').AsString ) ) ;
+//                    datamodule1.fdQuerMajPlus.Open;
+//                  if (datamodule1.fdQuerMajPlus.RecordCount =1) then
+//                    begin
+//                 		  edNPer.Text := datamodule1.fdQuerMajPlus.FieldByName('nom').AsString;
+//                 		  edPPer.Text := datamodule1.fdQuerMajPlus.FieldByName('prenom').AsString;
+//                      lbPMaj.text:= datamodule1.fdQuerMajPlus.FieldByName('idperson').AsString;
+//                    end;
+//                   datamodule1.fdQuerMajPlus.Close;
+//                 	 datamodule1.fdQuerMajPlus.SQL.Clear;
+//                  	datamodule1.fdQuerMajPlus.SQL.Add( 'SELECT idperson,nom,prenom FROM personnes where idperson='+ (datamodule1.fdQuerMaj.FieldByName('idepou').AsString ) ) ;
+//                    datamodule1.fdQuerMajPlus.Open;
+//                  if (datamodule1.fdQuerMajPlus.RecordCount =1) then
+//                    begin
+//                 		  edNEpo.Text := datamodule1.fdQuerMajPlus.FieldByName('nom').AsString;
+//                 		  edPEpo.Text := datamodule1.fdQuerMajPlus.FieldByName('prenom').AsString;
+//                      lbEpMaj.Text:= datamodule1.fdQuerMajPlus.FieldByName('idperson').AsString;
+//                    end;
+//                    datamodule1.fdQuerMajPlus.Close;
+//                    datamodule1.fdQuerMajPlus.SQL.Clear;
+//                  	datamodule1.fdQuerMajPlus.SQL.Add( 'SELECT idperson,nom,prenom FROM personnes where idperson='+ (datamodule1.fdQuerMaj.FieldByName('idepoubis').AsString ) ) ;
+//                    datamodule1.fdQuerMajPlus.Open;
+//                  if (datamodule1.fdQuerMajPlus.RecordCount =1) then
+//                    begin
+//                 		edN2Epo.Text := datamodule1.fdQuerMajPlus.FieldByName('nom').AsString;
+//                 		edP2Epo.Text := datamodule1.fdQuerMajPlus.FieldByName('prenom').AsString;
+//                    lbEp2Maj.Text:= datamodule1.fdQuerMajPlus.FieldByName('idperson').AsString;
+//                    end;
+//                    datamodule1.fdQuerMajPlus.Close;
+//                 	  datamodule1.fdQuerMajPlus.SQL.Clear;
+//                  	datamodule1.fdQuerMajPlus.SQL.Add( 'SELECT iddept,dept FROM departement where iddept='+ (datamodule1.fdQuerMaj.FieldByName('iddeptdec').AsString ) ) ;
+//                    datamodule1.fdQuerMajPlus.Open;
+//                  if (datamodule1.fdQuerMajPlus.RecordCount =1) then
+//                         //CbDDec.ItemIndex :=datamodule1.fdQuerMajPlus.FieldByName('iddept').AsInteger;
+//                         CbDDec.selected.Text:=datamodule1.fdQuerMajPlus.FieldByName('dept').AsString;
+//                    datamodule1.fdQuerMajPlus.Close;
+//                 	  datamodule1.fdQuerMajPlus.SQL.Clear;
+//                  	datamodule1.fdQuerMajPlus.SQL.Add( 'SELECT iddept,dept FROM departement where iddept='+ (datamodule1.fdQuerMaj.FieldByName('iddeptnaiss').AsString ) ) ;
+//                    datamodule1.fdQuerMajPlus.Open;
+//                  if (datamodule1.fdQuerMajPlus.RecordCount =1) then
+//                         //CbDNaiss.ItemIndex :=datamodule1.fdQuerMajPlus.FieldByName('iddept').AsInteger;
+//                 		     CbDNaiss.selected.Text:=datamodule1.fdQuerMajPlus.FieldByName('dept').AsString;
+//                         datamodule1.fdQuerMajPlus.Close;
+//                         datamodule1.fdQuerMajPlus.SQL.Clear;
+//                         datamodule1.fdQuerMajPlus.SQL.Add( 'SELECT idnation,nom FROM pays where idnation='+ (datamodule1.fdQuerMaj.FieldByName('idnatnaiss').AsString ) ) ;
+//                         datamodule1.fdQuerMajPlus.Open;
+//                  if (datamodule1.fdQuerMajPlus.RecordCount =1) then
+//                         //CbPNaiss.ItemIndex :=datamodule1.fdQuerMajPlus.FieldByName('idnation').AsInteger;
+//                 		     CbPNaiss.Selected.Text:=datamodule1.fdQuerMajPlus.FieldByName('nom').AsString;
+//                    	   datamodule1.fdQuerMajPlus.Close;
+//                 		     datamodule1.fdQuerMajPlus.SQL.Clear;
+//                  		   datamodule1.fdQuerMajPlus.SQL.Add( 'SELECT idnation,nom FROM pays where idnation='+ (datamodule1.fdQuerMaj.FieldByName('idnatdec').AsString ) ) ;
+//                         datamodule1.fdQuerMajPlus.Open;
+//                  if (datamodule1.fdQuerMajPlus.RecordCount =1) then
+//                         //CbPDec.ItemIndex :=datamodule1.fdQuerMajPlus.FieldByName('idnation').AsInteger;
+//                         CbPDec.Selected.Text:=datamodule1.fdQuerMajPlus.FieldByName('nom').AsString;
+//                  datamodule1.fdQuerMajPlus.SQL.Clear;
+//                  datamodule1.fdQuerMajPlus.SQL.Add( 'SELECT count(*) as nbe FROM personnes where idper=:idind or idmer=:idind ' ) ;
+//                  datamodule1.fdQuerMajPlus.ParamByName('idind').AsInteger := IndPers;
+//                  datamodule1.fdQuerMajPlus.Open;
+//                  EdEnf.Text :=datamodule1.fdQuerMajPlus.FieldByName('nbe').AsString;
+//             end;
+//    end;
+//end;
 
 procedure TFMaj.FormActivate(Sender: TObject);
  var

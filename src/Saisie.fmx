@@ -238,8 +238,8 @@ object FSaisie: TFSaisie
       Size.Height = 289.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 22
-      Viewport.Width = 513.000000000000000000
-      Viewport.Height = 289.000000000000000000
+      Viewport.Width = 509.000000000000000000
+      Viewport.Height = 285.000000000000000000
     end
     object Label21: TLabel
       Position.X = 648.000000000000000000
@@ -397,8 +397,8 @@ object FSaisie: TFSaisie
     object edN2Epo: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       TabOrder = 16
-      Position.X = 200.000000000000000000
-      Position.Y = 321.000000000000000000
+      Position.X = 193.000000000000000000
+      Position.Y = 314.000000000000000000
       Size.Width = 185.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
