@@ -252,8 +252,8 @@ object FMaj: TFMaj
       Size.Height = 201.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 33
-      Viewport.Width = 517.000000000000000000
-      Viewport.Height = 197.000000000000000000
+      Viewport.Width = 521.000000000000000000
+      Viewport.Height = 201.000000000000000000
     end
     object cbNom: TComboBox
       Position.X = 104.000000000000000000

@@ -68,6 +68,7 @@ type
     lbPer: TLabel;
     lbMer: TLabel;
     lbEpo2: TLabel;
+    lbMaj: TLabel;
     procedure btQuitClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btRecClick(Sender: TObject);
@@ -161,6 +162,8 @@ begin
        	begin
                Fchoix.Caption:='Homonymie de la Personne';
                Fchoix.lbChoix.text:='Saisie';
+               Fchoix.lbNom.Text:=edNom.Text ;
+               Fchoix.lbPren.Text:=edPren.text ;
            	   Fchoix.RdChoix.Visible := False;
                Fchoix.cbDebArbre.Visible := false;
                Fchoix.lbSelect.Visible := False;
@@ -168,38 +171,6 @@ begin
                Fchoix.btNew.visible:=True;
                Fchoix.btQuit.Visible:=False;
                Fchoix.LbMsg.Text :='il y a déjà des individus avec cette identité';
-// 			         datamodule1.fdQuerChoix.close;
-//               datamodule1.fdQuerChoix.SQL.clear;
-//               datamodule1.fdQuerChoix.SQL.add( 'SELECT idperson,nom,prenom,if(datnaiss="0000/00/00", "NC",DATE_FORMAT(datnaiss,"%d/%m/%Y")) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom');
-//               datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fsaisie.EdNom.Text);
-//               datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fsaisie.EdPren.Text);
-//               datamodule1.fdQuerChoix.Open;
-//               datamodule1.fdQuerChoix.first;
-//                 j:=0;
-//      		while not datamodule1.fdQuerChoix.Eof do
-//          		begin
-////                      //IndPers := Fchoix.ReqChoix.FieldByName('idperson').AsString;
-//                      Fchoix.sgChoix.cells[0,j]:=datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-//                      Fchoix.sgChoix.cells[1,j]:=datamodule1.fdQuerChoix.FieldByName('nom').AsString;
-//                      Fchoix.sgChoix.cells[2,j]:=datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
-//                      Fchoix.sgChoix.cells[3,j]:=datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
-//                      j:=j+1;
-//                      datamodule1.fdQuerChoix.Next;
-//        			end;
-//                 Fchoix.sgChoix.Columns[0].Width:=40;
-//                 Fchoix.sgChoix.Columns[1].Width:=120;
-//                 Fchoix.sgChoix.Columns[2].Width:=120;
-//                 Fchoix.sgChoix.Columns[3].Width:=80;
-//                 Fchoix.sgChoix.Visible:=True;
-                //Fchoix.ReqChoix.Active:=False;
-//                 Fchoix.lbNiv.Visible:=False;
-//                 Fchoix.edNiv.Visible:=False;
-//                 Fchoix.height:=250;
-//                 Fchoix.Width:=500;
-                 Fchoix.ShowModal;
-                 //MessageDlg ('il y a déjà des individus avec cette identité',mtInformation,[mbOK],0);
-
-         			//Exit;
         end;
      except
 
@@ -475,7 +446,7 @@ begin
 
 
     // on démarre l implementation dans la base de donnée
-//     try
+     try
      	try
               if (EdNEpou.Text <>'') and ((lbEpo.text='-1') or (lbEpo.text='0')) then
                  begin
@@ -554,7 +525,7 @@ begin
 
                    datamodule1.fdQuerSais.Open;
                    IdMer :=datamodule1.fdQuerSais.FieldByName('idperson').AsInteger;
-
+                   datamodule1.fdQuerSais.close;
                  end
                  else
                if (lbMer.text<>'0') and (lbMer.text<>'-1') then
@@ -690,11 +661,11 @@ begin
 
 
 
-//     finally
-       ShowMessage ('Données insèrée dans la base');
+     finally
+       ShowMessage ('Données insèrées dans la base');
 
 
-//     end;
+     end;
       for i := 0 to Componentcount-1 do
          	begin
             		if Components[i] is TEdit  then
@@ -706,7 +677,7 @@ begin
 //          	begin
             		if (Components[i] is TComboBox ) then
                      begin
-                       TComboBox(Components[i]).selected.Text := '';
+                       TComboBox(Components[i]).itemindex:=0;
                      end;
 //               end;
 //           for i := 0 to Componentcount-1 do
@@ -722,13 +693,15 @@ begin
                      begin
                         TLabel(Components[i]).Text:='';
                          if (TLabel(Components[i]).Name = 'lbInd') then
-                            TLabel(Components[i]).Text:='0' ;
+                            TLabel(Components[i]).Text:='b' ;
 //
                      end;
           end;
 end;
 
 procedure TFSaisie.FormActivate(Sender: TObject);
+  var
+    i:integer;
 begin
     Datmaj := DateToStr(Date);
     datamodule1.fdQuerPays.close;
@@ -751,7 +724,7 @@ begin
        end;
          //CbPNaiss.Selected.Text :='';
 //         CbPdec.Selected.Text :='';
-//
+       datamodule1.fdQuerPays.close;
        datamodule1.fdQuerDept.close;
        datamodule1.fdQuerDept.open;
        CbDNaiss.Items.Clear();
@@ -770,8 +743,44 @@ begin
 ////           CbDeptDec.AddItem(OutRequet.FieldByName('dept').AsString,TObject(OutRequet.FieldByName('iddept').AsInteger));
           datamodule1.fdQuerDept.Next;
        end;
+        datamodule1.fdQuerDept.close;
 //         CbDNaiss.Selected.Text:='';
 //         CbDDec.Selected.Text:='';
+    for i := 0 to Componentcount-1 do
+         	begin
+            		if Components[i] is TEdit  then
+                     begin
+                        TEdit(Components[i]).Text := '';
+                     end;
+//               end;
+//         for i := 0 to Componentcount-1 do
+//          	begin
+            		if (Components[i] is TComboBox ) then
+                     begin
+                       TComboBox(Components[i]).itemindex:=0;
+                     end;
+//               end;
+//           for i := 0 to Componentcount-1 do
+//          	begin
+            		if (Components[i] is TMemo ) then
+                     begin
+                       TMemo(Components[i]).Text := '';
+                     end;
+//               end;
+//           for i := 0 to Componentcount-1 do
+//          	begin
+            		if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbInd') or (TLabel(Components[i]).Name = 'lbEpo') or (TLabel(Components[i]).Name =  'lbEpo2') or (TLabel(Components[i]).Name =  'lbMer') or (TLabel(Components[i]).Name =  'lbPer') )) then
+                     begin
+                        TLabel(Components[i]).Text:='';
+                         if (TLabel(Components[i]).Name = 'lbInd') then
+                            TLabel(Components[i]).Text:='b' ;
+//
+                     end;
+                if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMaj'))) then
+                  begin
+                     lbMaj.Text:= 'Mise à jour le : ' ;
+                  end;
+          end;
 
 end;
 

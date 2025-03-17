@@ -392,7 +392,44 @@ begin
     begin
       if Fchoix.Caption = 'Homonymie de la Personne' then
        	begin
-         		Fsaisie.lbInd.text:=  idNom;
+         		 datamodule1.fdQuerChoix.close;
+             datamodule1.fdQuerChoix.SQL.clear;
+             datamodule1.fdQuerChoix.SQL.add( 'SELECT idperson,nom,prenom,if(datnaiss="0000/00/00", "NC",datnaiss) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom');
+             datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
+             datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
+             datamodule1.fdQuerChoix.Open;
+             datamodule1.fdQuerChoix.first;
+             with fchoix.sgChoix do
+                  begin
+                      //j:=0;
+                      while not datamodule1.fdQuerChoix.Eof do
+                      begin
+                        j:=0;
+                        for k :=0 to datamodule1.fdQuerChoix.FieldCount-1 do
+                           begin
+                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
+                            cells[k,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
+                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
+                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
+
+                            datamodule1.fdQuerChoix.Next;
+                           end;
+                           inc(j);
+                      end;
+                  end;
+               datamodule1.fdQuerChoix.close;
+               Fchoix.sgChoix.Columns[0].Width:=40;
+               Fchoix.sgChoix.Columns[1].Width:=120;
+               Fchoix.sgChoix.Columns[2].Width:=120;
+               Fchoix.sgChoix.Columns[3].Width:=80;
+               Fchoix.sgChoix.Visible:=True;
+             // Fchoix.ReqChoix.Active:=False;
+               Fchoix.lbNiv.Visible:=False;
+               Fchoix.edNiv.Visible:=False;
+               Fchoix.height:=250;
+               Fchoix.Width:=500;
+               Fchoix.ShowModal;
+                 //MessageDlg ('il y a déjà des individus avec cette identité',mtInformation,[mbOK],0);
 
           end
        else
@@ -419,17 +456,17 @@ begin
                         j:=0;
                         for k :=0 to datamodule1.fdQuerChoix.FieldCount-1 do
                            begin
-                            Fchoix.sgChoix.cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-                            Fchoix.sgChoix.cells[k,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
-                            Fchoix.sgChoix.cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
-                            Fchoix.sgChoix.cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
+                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
+                            cells[k,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
+                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
+                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
 
                             datamodule1.fdQuerChoix.Next;
                            end;
                            inc(j);
                       end;
                   end;
-
+               datamodule1.fdQuerChoix.close;
           end
        else
        if Fchoix.Caption = 'Homonymie pour la Mère' then
@@ -463,6 +500,7 @@ begin
                 datamodule1.fdQuerChoix.Next;
               end;
               //Fsaisie.lbEpo2.text :=  idNom;
+              datamodule1.fdQuerChoix.close;
            end;
     end;
     if Fchoix.lbChoix.Text='Maj' then

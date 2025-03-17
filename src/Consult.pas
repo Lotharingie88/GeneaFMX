@@ -243,6 +243,7 @@ Datmaj := DateToStr(Date);
            //CbPdec.AddItem(datamodule1.fdQuerPays.FieldByName('nom').AsString,TObject(datamodule1.fdQuerPays.FieldByName('idnation').AsInteger));
            datamodule1.fdQuerPays.Next;
        end;
+        datamodule1.fdQuerPays.close;
          CbPNaiss.ItemIndex :=0;
          CbPdec.ItemIndex :=0;
 //
@@ -264,6 +265,7 @@ Datmaj := DateToStr(Date);
 ////           CbDeptDec.AddItem(OutRequet.FieldByName('dept').AsString,TObject(OutRequet.FieldByName('iddept').AsInteger));
            datamodule1.fdQuerDept.Next;
       end;
+         datamodule1.fdQuerDept.close;
          CbDNaiss.ItemIndex :=0;
          CbDDec.ItemIndex :=0;
     datamodule1.fdQuerNomPren.close;
@@ -283,6 +285,7 @@ Datmaj := DateToStr(Date);
            //CbPdec.AddItem(datamodule1.fdQuerPays.FieldByName('nom').AsString,TObject(datamodule1.fdQuerPays.FieldByName('idnation').AsInteger));
            datamodule1.fdQuerNomPren.Next;
        end;
+         datamodule1.fdQuerNomPren.close;
          CbNom.ItemIndex :=0;
           for i := 0 to Componentcount-1 do
           	begin
@@ -292,12 +295,16 @@ Datmaj := DateToStr(Date);
                      end;
                  if (Components[i] is TComboBox and (TComboBox(Components[i]).Name <> 'CbNom')) then
                      begin
-                       TComboBox(Components[i]).Selected.Text:='';
+                       TComboBox(Components[i]).itemindex:=0;
                      end;
                     if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMMaj') or (TLabel(Components[i]).Name = 'lbPMaj') or (TLabel(Components[i]).Name =  'lbEpMaj') or (TLabel(Components[i]).Name =  'lbEp2Maj')or (TLabel(Components[i]).Name =  'lbNMaj') )) then
                      begin
                        TLabel(Components[i]).Text:='';
                      end;
+                  if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMaj'))) then
+                      begin
+                         lbMaj.Text:= 'Mise à jour le : ' ;
+                      end;
             end;
 end;
 

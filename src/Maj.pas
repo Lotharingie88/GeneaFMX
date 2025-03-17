@@ -72,6 +72,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure cbNomChange(Sender: TObject);
     procedure btRecClick(Sender: TObject);
+
   private
     { Déclarations privées }
   public
@@ -629,30 +630,26 @@ begin
 //         end;
 //
 //     finally
-//      ShowMessage ('Données mises à jour dans la base');
-//       for i := 0 to Componentcount-1 do
-//          	begin
-//            		if Components[i] is TEdit  then
-//                     begin
-//                       TEdit(Components[i]).Text:='';
-//                     end;
-//               end;
-//       for i := 0 to Componentcount-1 do
-//          	begin
-//            		if (Components[i] is TComboBox ) then
-//                     begin
-//                       TComboBox(Components[i]).Text:='';
-//                     end;
-//               end;
-//          for i := 0 to Componentcount-1 do
-//          	begin
-//            		if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMMaj') or (TLabel(Components[i]).Name = 'lbPMaj') or (TLabel(Components[i]).Name =  'lbEpMaj') or (TLabel(Components[i]).Name =  'lbEp2Maj') or (TLabel(Components[i]).Name =  'lbIdInd') )) then
-//                     begin
-//                       TLabel(Components[i]).Caption:='';
-//                     end;
-//               end;
-//         LabDatmaj.Caption:='Mise à jour le : ';
-//         MemMaj.text :='';
+      ShowMessage ('Données mises à jour dans la base');
+       for i := 0 to Componentcount-1 do
+          	begin
+            		if Components[i] is TEdit  then
+                     begin
+                       TEdit(Components[i]).Text:='';
+                     end;
+                if (Components[i] is TComboBox ) then
+                     begin
+                       TComboBox(Components[i]).itemindex:=0;
+                     end;
+                 if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMMaj') or (TLabel(Components[i]).Name = 'lbPMaj') or (TLabel(Components[i]).Name =  'lbEpMaj') or (TLabel(Components[i]).Name =  'lbEp2Maj') or (TLabel(Components[i]).Name =  'lbIdInd') )) then
+                     begin
+                       TLabel(Components[i]).Text:='';
+                     end;
+
+               end;
+
+         lbmaj.Text:='Mise à jour le : ';
+         MemMaj.text :='';
 //     end;
 end;
 
@@ -670,7 +667,11 @@ begin
 //                     begin
 //                       TComboBox(Components[i]).itemindex:=0;
 //                     end;
-                    if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMMaj') or (TLabel(Components[i]).Name = 'lbPMaj') or (TLabel(Components[i]).Name =  'lbEpMaj') or (TLabel(Components[i]).Name =  'lbEp2Maj') )) then
+                    if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMMaj') or (TLabel(Components[i]).Name = 'lbPMaj') )) then
+                     begin
+                       TLabel(Components[i]).Text:='';
+                     end;
+                     if (Components[i] is TLabel and ((TLabel(Components[i]).Name =  'lbEpMaj') or (TLabel(Components[i]).Name =  'lbEp2Maj') )) then
                      begin
                        TLabel(Components[i]).Text:='';
                      end;
@@ -990,7 +991,7 @@ Datmaj := DateToStr(Date);
                      end;
                  if (Components[i] is TComboBox and (TComboBox(Components[i]).Name <> 'CbNom')) then
                      begin
-                       TComboBox(Components[i]).Selected.Text:='';
+                       TComboBox(Components[i]).itemindex:=0;
                      end;
                     if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMMaj') or (TLabel(Components[i]).Name = 'lbPMaj') or (TLabel(Components[i]).Name = 'lbEpMaj') )) then
                      begin
@@ -1000,6 +1001,10 @@ Datmaj := DateToStr(Date);
                      begin
                        TLabel(Components[i]).Text:='';
                      end;
+                     if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMaj'))) then
+                       begin
+                           lbMaj.Text:= 'Mise à jour le : ' ;
+                        end;
             end;
 end;
 
@@ -1009,5 +1014,7 @@ begin
   Datmaj := DateToStr(Date);
 
 end;
+
+
 
 end.

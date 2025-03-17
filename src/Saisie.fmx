@@ -256,7 +256,7 @@ object FSaisie: TFSaisie
       Size.Width = 41.000000000000000000
       Size.Height = 17.000000000000000000
       Size.PlatformDefault = False
-      Text = '0'
+      Text = 'b'
       TabOrder = 45
     end
     object edPEpou: TEdit
@@ -506,7 +506,7 @@ object FSaisie: TFSaisie
       Size.Width = 25.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
-      Text = '0'
+      Text = 'b'
       TabOrder = 48
     end
     object lbPer: TLabel
@@ -515,7 +515,7 @@ object FSaisie: TFSaisie
       Size.Width = 33.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
-      Text = '0'
+      Text = 'b'
       TabOrder = 49
     end
     object lbMer: TLabel
@@ -524,7 +524,7 @@ object FSaisie: TFSaisie
       Size.Width = 33.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
-      Text = '0'
+      Text = 'b'
       TabOrder = 50
     end
     object lbEpo2: TLabel
@@ -533,8 +533,20 @@ object FSaisie: TFSaisie
       Size.Width = 33.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
-      Text = '0'
+      Text = 'b'
       TabOrder = 51
+    end
+    object lbMaj: TLabel
+      StyledSettings = [FontColor]
+      Position.X = 88.000000000000000000
+      Position.Y = 552.000000000000000000
+      Size.Width = 529.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Segoe Script'
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000200000004000000}
+      TabOrder = 52
     end
   end
 end
