@@ -99,10 +99,7 @@ begin
                      begin
                        TEdit(Components[i]).Text:='';
                      end;
-//                 if (Components[i] is TComboBox and (TComboBox(Components[i]).Name <> 'CbNom')) then
-//                     begin
-//                       TComboBox(Components[i]).itemindex:=0;
-//                     end;
+
                     if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMMaj') or (TLabel(Components[i]).Name = 'lbPMaj') or (TLabel(Components[i]).Name =  'lbEpMaj') or (TLabel(Components[i]).Name =  'lbEp2Maj') )) then
                      begin
                        TLabel(Components[i]).Text:='';
@@ -171,8 +168,7 @@ begin
                  		  edPEpo.Text := datamodule1.fdQuerMajPlus.FieldByName('prenom').AsString;
                       lbEpMaj.Text:= datamodule1.fdQuerMajPlus.FieldByName('idperson').AsString;
                     end;
-//
-//                    datamodule1.fdQuerMajPlus.Close;
+                    datamodule1.fdQuerMajPlus.Close;
                     datamodule1.fdQuerMajPlus.SQL.Clear;
                   	datamodule1.fdQuerMajPlus.SQL.Add( 'SELECT idperson,nom,prenom FROM personnes where idperson='+ (datamodule1.fdQuerMaj.FieldByName('idepoubis').AsString ) ) ;
                     datamodule1.fdQuerMajPlus.Open;
@@ -187,28 +183,28 @@ begin
                   	datamodule1.fdQuerMajPlus.SQL.Add( 'SELECT iddept,dept FROM departement where iddept='+ (datamodule1.fdQuerMaj.FieldByName('iddeptdec').AsString ) ) ;
                     datamodule1.fdQuerMajPlus.Open;
                   if (datamodule1.fdQuerMajPlus.RecordCount =1) then
-                         //CbDDec.ItemIndex :=datamodule1.fdQuerMajPlus.FieldByName('iddept').AsInteger;
+
                          CbDDec.selected.Text:=datamodule1.fdQuerMajPlus.FieldByName('dept').AsString;
                     datamodule1.fdQuerMajPlus.Close;
                  	  datamodule1.fdQuerMajPlus.SQL.Clear;
                   	datamodule1.fdQuerMajPlus.SQL.Add( 'SELECT iddept,dept FROM departement where iddept='+ (datamodule1.fdQuerMaj.FieldByName('iddeptnaiss').AsString ) ) ;
                     datamodule1.fdQuerMajPlus.Open;
                   if (datamodule1.fdQuerMajPlus.RecordCount =1) then
-                         //CbDNaiss.ItemIndex :=datamodule1.fdQuerMajPlus.FieldByName('iddept').AsInteger;
+
                  		     CbDNaiss.selected.Text:=datamodule1.fdQuerMajPlus.FieldByName('dept').AsString;
                          datamodule1.fdQuerMajPlus.Close;
                          datamodule1.fdQuerMajPlus.SQL.Clear;
                          datamodule1.fdQuerMajPlus.SQL.Add( 'SELECT idnation,nom FROM pays where idnation='+ (datamodule1.fdQuerMaj.FieldByName('idnatnaiss').AsString ) ) ;
                          datamodule1.fdQuerMajPlus.Open;
                   if (datamodule1.fdQuerMajPlus.RecordCount =1) then
-                         //CbPNaiss.ItemIndex :=datamodule1.fdQuerMajPlus.FieldByName('idnation').AsInteger;
+
                  		     CbPNaiss.Selected.Text:=datamodule1.fdQuerMajPlus.FieldByName('nom').AsString;
                     	   datamodule1.fdQuerMajPlus.Close;
                  		     datamodule1.fdQuerMajPlus.SQL.Clear;
                   		   datamodule1.fdQuerMajPlus.SQL.Add( 'SELECT idnation,nom FROM pays where idnation='+ (datamodule1.fdQuerMaj.FieldByName('idnatdec').AsString ) ) ;
                          datamodule1.fdQuerMajPlus.Open;
                   if (datamodule1.fdQuerMajPlus.RecordCount =1) then
-                         //CbPDec.ItemIndex :=datamodule1.fdQuerMajPlus.FieldByName('idnation').AsInteger;
+
                          CbPDec.Selected.Text:=datamodule1.fdQuerMajPlus.FieldByName('nom').AsString;
                   datamodule1.fdQuerMajPlus.SQL.Clear;
                   datamodule1.fdQuerMajPlus.SQL.Add( 'SELECT count(*) as nbe FROM personnes where idper=:idind or idmer=:idind ' ) ;
@@ -216,7 +212,32 @@ begin
                   datamodule1.fdQuerMajPlus.Open;
                   EdEnf.Text :=datamodule1.fdQuerMajPlus.FieldByName('nbe').AsString;
              end;
-    end;
+           
+           
+    end
+    else
+               begin
+                  for i := 0 to Componentcount-1 do
+                        begin
+                            if Components[i] is TEdit  then
+                                 begin
+                                   TEdit(Components[i]).Text:='';
+                                 end;
+                             if (Components[i] is TComboBox and (TComboBox(Components[i]).Name <> 'CbNom')) then
+                                 begin
+                                   TComboBox(Components[i]).itemindex:=0;
+                                 end;
+                                if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMMaj') or (TLabel(Components[i]).Name = 'lbPMaj') or (TLabel(Components[i]).Name =  'lbEpMaj') or (TLabel(Components[i]).Name =  'lbEp2Maj')or (TLabel(Components[i]).Name =  'lbNMaj') )) then
+                                 begin
+                                   TLabel(Components[i]).Text:='';
+                                 end;
+                              if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMaj'))) then
+                                  begin
+                                     lbMaj.Text:= 'Mise à jour le : ' ;
+                                  end;
+                        end;
+               end;
+
 end;
 
 procedure TFCons.FormActivate(Sender: TObject);
@@ -239,15 +260,13 @@ Datmaj := DateToStr(Date);
            CbPNaiss.ItemIndex := datamodule1.fdQuerPays.FieldByName('idnation').AsInteger;
            CbPdec.Items.Add(datamodule1.fdQuerPays.FieldByName('nom').AsString);
            CbPdec.ItemIndex := datamodule1.fdQuerPays.FieldByName('idnation').AsInteger;
-           //CbPNaiss.AddItem(datamodule1.fdQuerPays.FieldByName('nom').AsString,TObject(datamodule1.fdQuerPays.FieldByName('idnation').AsInteger));
-           //CbPdec.AddItem(datamodule1.fdQuerPays.FieldByName('nom').AsString,TObject(datamodule1.fdQuerPays.FieldByName('idnation').AsInteger));
+
            datamodule1.fdQuerPays.Next;
        end;
         datamodule1.fdQuerPays.close;
          CbPNaiss.ItemIndex :=0;
          CbPdec.ItemIndex :=0;
-//
-       datamodule1.fdQuerDept.close;
+      datamodule1.fdQuerDept.close;
        datamodule1.fdQuerDept.open;
        CbDNaiss.Items.Clear();
        CbDNaiss.Items.Add('');
@@ -261,8 +280,7 @@ Datmaj := DateToStr(Date);
            CbDNaiss.ItemIndex := datamodule1.fdQuerDept.FieldByName('iddept').AsInteger;
            CbDdec.Items.Add(datamodule1.fdQuerDept.FieldByName('dept').AsString);
            CbDdec.ItemIndex := datamodule1.fdQuerDept.FieldByName('iddept').AsInteger;
-////           CbDeptNaiss.AddItem(OutRequet.FieldByName('dept').AsString,TObject(OutRequet.FieldByName('iddept').AsInteger));
-////           CbDeptDec.AddItem(OutRequet.FieldByName('dept').AsString,TObject(OutRequet.FieldByName('iddept').AsInteger));
+
            datamodule1.fdQuerDept.Next;
       end;
          datamodule1.fdQuerDept.close;
@@ -281,8 +299,7 @@ Datmaj := DateToStr(Date);
            CbNom.Items.Add(individu);
            CbNom.ItemIndex := datamodule1.fdQuerNomPren.FieldByName('idperson').AsInteger;
 
-           //CbPNaiss.AddItem(datamodule1.fdQuerPays.FieldByName('nom').AsString,TObject(datamodule1.fdQuerPays.FieldByName('idnation').AsInteger));
-           //CbPdec.AddItem(datamodule1.fdQuerPays.FieldByName('nom').AsString,TObject(datamodule1.fdQuerPays.FieldByName('idnation').AsInteger));
+
            datamodule1.fdQuerNomPren.Next;
        end;
          datamodule1.fdQuerNomPren.close;
