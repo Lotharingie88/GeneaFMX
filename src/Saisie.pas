@@ -262,31 +262,6 @@ begin
                              Fchoix.btNew.visible:=True;
                              Fchoix.btQuit.Visible:=False;
                              Fchoix.LbMsg.Text :='il y a déjà des individus avec cette identité';
-//                             datamodule1.fdQuerChoix.close;
-//                             datamodule1.fdQuerChoix.SQL.clear;
-//                             datamodule1.fdQuerChoix.SQL.add( 'SELECT idperson,nom,prenom,if(datnaiss="0000/00/00", "",DATE_FORMAT(datnaiss,"%d/%m/%Y")) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom');
-//                             datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fsaisie.EdNMer.Text);
-//                             datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fsaisie.EdPMer.Text);
-//                             datamodule1.fdQuerChoix.Open;
-//                             datamodule1.fdQuerChoix.first;
-//                               j:=0;
-//                             while not datamodule1.fdQuerChoix.Eof do
-//                                  begin
-////
-////                                  //IndPers := Fchoix.ReqChoix.FieldByName('idperson').AsString;
-//                                  Fchoix.sgChoix.cells[0,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-//                                  Fchoix.sgChoix.cells[1,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
-//                                  Fchoix.sgChoix.cells[2,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
-//                                  Fchoix.sgChoix.cells[3,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
-//                                    j:=j+1;
-//                                    datamodule1.fdQuerChoix.Next;
-//                                  end;
-//                               Fchoix.sgChoix.Columns[0].Width :=40;;
-//                               Fchoix.sgChoix.Columns[1].Width:=120;
-//                               Fchoix.sgChoix.Columns[2].Width:=120;
-//                               Fchoix.sgChoix.Columns[3].Width:=80;
-//                               Fchoix.sgChoix.Visible:=True;
-//                              //Fchoix.ReqChoix.Active:=False;
                                Fchoix.lbNiv.Visible:=False;
                                Fchoix.edNiv.Visible:=False;
                                fchoix.height:=610;
@@ -335,37 +310,11 @@ begin
                              Fchoix.btNew.visible:=True;
                              Fchoix.btQuit.Visible:=False;
                              Fchoix.LbMsg.text :='il y a déjà des individus avec cette identité';
-//                             Fchoix.ReqChoix.close;
-//                             Fchoix.ReqChoix.SQL.clear;
-//                             Fchoix.ReqChoix.SQL.add( 'SELECT idperson,nom,prenom,if(datnaiss="0000/00/00", "",DATE_FORMAT(datnaiss,"%d/%m/%Y")) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom');
-//                             Fchoix.ReqChoix.ParamByName('Nom').AsString := UpperCase(Fsaisie.EdEpN.Text);
-//                             Fchoix.ReqChoix.ParamByName('Prenom').AsString := UpperCase(Fsaisie.EdEpP.Text);
-//                             Fchoix.ReqChoix.Open;
-//
-//                             Fchoix.ReqChoix.first;
-//                             j:=0;
-//                             while not Fchoix.ReqChoix.Eof do
-//                                  begin
-//
-//                                    //IndPers := Fchoix.ReqChoix.FieldByName('idperson').AsString;
-//                                    Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('idperson').AsString);
-//                                    Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('nom').AsString );
-//                                    Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('prenom').AsString);
-//                                    Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('Naissance').AsString);
-//
-//                                    j:=j+1;
-//                                    Fchoix.ReqChoix.Next;
-//                                  end;
-//                                  Fchoix.sgChoix.ColWidths[0] :=40;
-//                                  Fchoix.sgChoix.ColWidths[1]:=120;
-//                                  Fchoix.sgChoix.ColWidths[2]:=120;
-//                                  Fchoix.sgChoix.ColWidths[3]:=80;
-//                               	  Fchoix.sgChoix.Visible:=True;
-                                  Fchoix.lbNiv.Visible:=False;
-                                  Fchoix.edNiv.Visible:=False;
-                                  fchoix.height:=610;
-                              	  fchoix.Width:=695;
-                                  Fchoix.ShowModal;
+                             Fchoix.lbNiv.Visible:=False;
+                             Fchoix.edNiv.Visible:=False;
+                             fchoix.height:=610;
+                             fchoix.Width:=695;
+                             Fchoix.ShowModal;
                end;
          end;
       except
@@ -408,31 +357,7 @@ begin
                              Fchoix.btNew.visible:=True;
                              Fchoix.btQuit.Visible:=False;
                              Fchoix.LbMsg.text :='il y a déjà des individus avec cette identité';
-//                             Fchoix.ReqChoix.close;
-//                             Fchoix.ReqChoix.SQL.clear;
-//                             Fchoix.ReqChoix.SQL.add( 'SELECT idperson,nom,prenom,if(datnaiss="0000/00/00", "",DATE_FORMAT(datnaiss,"%d/%m/%Y")) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom');
-//                             Fchoix.ReqChoix.ParamByName('Nom').AsString := UpperCase(Fsaisie.EdEp2N.Text);
-//                             Fchoix.ReqChoix.ParamByName('Prenom').AsString := UpperCase(Fsaisie.EdEp2P.Text);
-//                             Fchoix.ReqChoix.Open;
-//
-//                             Fchoix.ReqChoix.first;
-//                             j:=0;
-//                             while not Fchoix.ReqChoix.Eof do
-//                                  begin
-//
-//                                    //IndPers := Fchoix.ReqChoix.FieldByName('idperson').AsString;
-//                                    Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('idperson').AsString);
-//                                    Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('nom').AsString );
-//                                    Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('prenom').AsString);
-//                                    Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('Naissance').AsString);
-//
-//                                    j:=j+1;
-//                                    Fchoix.ReqChoix.Next;
-//                                  end;
-//                                  Fchoix.sgChoix.ColWidths[0] :=40;
-//                                  Fchoix.sgChoix.ColWidths[1]:=120;
-//                                  Fchoix.sgChoix.ColWidths[2]:=120;
-//                                  Fchoix.sgChoix.ColWidths[3]:=80;
+
                                	  Fchoix.sgChoix.Visible:=True;
                                    Fchoix.lbNiv.Visible:=False;
                                    Fchoix.edNiv.Visible:=False;

@@ -7,7 +7,6 @@ object FChoix: TFChoix
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
-  OnActivate = FormActivate
   OnShow = FormShow
   DesignerMasterStyle = 0
   object Layout1: TLayout
@@ -90,8 +89,8 @@ object FChoix: TFChoix
       Size.Height = 304.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 5
-      Viewport.Width = 629.000000000000000000
-      Viewport.Height = 279.000000000000000000
+      Viewport.Width = 633.000000000000000000
+      Viewport.Height = 304.000000000000000000
     end
     object lbChoix: TLabel
       Position.X = 8.000000000000000000

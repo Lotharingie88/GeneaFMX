@@ -156,25 +156,21 @@ begin
           datamodule1.fdQuerMaj.Open;
                    if (datamodule1.fdQuerMaj.FieldByName('nbp').AsInteger=0) or (lbEpMaj.Text='-1') then
                    begin
-//                   	try
-//
-                    	begin
-//
-//                       		datamodule1.fdQuerMajPlus.SQL.Clear;
-//                       		datamodule1.fdQuerMajPlus.SQL.Text := 'INSERT INTO personnes (nom, prenom,idepou,datmaj) '+
-//                        		'VALUES (:Nom, :Prenom,:idEp,:Datmaj)';
-//                       		datamodule1.fdQuerMajPlus.ParamByName('Nom').AsString := UpperCase(NEpou);
-//                       		datamodule1.fdQuerMajPlus.ParamByName('Prenom').AsString := UpperCase(PEpou);
-//                       		datamodule1.fdQuerMajPlus.ParamByName('idEp').AsInteger := idInd;
-//                        	datamodule1.fdQuerMajPlus.ParamByName('Datmaj').AsDate := StrToDate(Datmaj);
-//
-//                       		datamodule1.fdQuerMajPlus.ExecSQL;
-//
-//                         end;
-//
-//                     except
-//
-                      end;
+                   	try
+                        begin
+
+                            datamodule1.fdQuerMajPlus.SQL.Clear;
+                            datamodule1.fdQuerMajPlus.SQL.Text := 'INSERT INTO personnes (nom, prenom,idepou,datmaj) '+
+                              'VALUES (:Nom, :Prenom,:idEp,:Datmaj)';
+                            datamodule1.fdQuerMajPlus.ParamByName('Nom').AsString := UpperCase(NEpou);
+                            datamodule1.fdQuerMajPlus.ParamByName('Prenom').AsString := UpperCase(PEpou);
+                            datamodule1.fdQuerMajPlus.ParamByName('idEp').AsInteger := idInd;
+                            datamodule1.fdQuerMajPlus.ParamByName('Datmaj').AsDate := StrToDate(Datmaj);
+
+                            datamodule1.fdQuerMajPlus.ExecSQL;
+                           end;
+                      except
+                    end;
                    end
               		else
                    if (datamodule1.fdQuerMaj.FieldByName('nbp').AsInteger>=1) then
@@ -188,33 +184,7 @@ begin
                			         Fchoix.btNew.visible:=True;
                			         Fchoix.btQuit.Visible:=False;
                              Fchoix.LbMsg.Text :='il y a déjà des individus avec cette identité';
-//                             Fchoix.ReqChoix.close;
-//                             Fchoix.ReqChoix.SQL.clear;
-//                             Fchoix.ReqChoix.SQL.add( 'SELECT idperson,nom,prenom,if(datnaiss="0000/00/00", "NC",DATE_FORMAT(datnaiss,"%d/%m/%Y")) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom');
-//                             Fchoix.ReqChoix.ParamByName('Nom').AsString := UpperCase(Fmajo.EdNEpmaj.Text);
-//                             Fchoix.ReqChoix.ParamByName('Prenom').AsString := UpperCase(Fmajo.EdPEpmaj.Text);
-//                             Fchoix.ReqChoix.Open;
-//
-//                             Fchoix.ReqChoix.first;
-//                             j:=0;
-//
-//                             while not Fchoix.ReqChoix.Eof do
-//                                  begin
-//
-//                                  IndPers := Fchoix.ReqChoix.FieldByName('idperson').AsString;
-//                                  Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('idperson').AsString);
-//                                  Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('nom').AsString );
-//                                  Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('prenom').AsString);
-//                                  Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('Naissance').AsString);
-//
-//
-//                                  j:=j+1;
-//                                  Fchoix.ReqChoix.Next;
-//                                  end;
-//                               Fchoix.sgChoix.ColWidths[0] :=40;
-//                               Fchoix.sgChoix.ColWidths[1]:=120;
-//                               Fchoix.sgChoix.ColWidths[2]:=120;
-//                               Fchoix.sgChoix.ColWidths[3]:=80;
+
                                Fchoix.sgChoix.Visible:=True;
                                Fchoix.edNiv.Visible:=False;
                                Fchoix.lbNiv.Visible:=false;
@@ -275,32 +245,7 @@ begin
                          Fchoix.btNew.visible:=True;
                          Fchoix.btQuit.Visible:=False;
                          Fchoix.LbMsg.Text :='il y a déjà des individus avec cette identité';
-//                         Fchoix.ReqChoix.close;
-//                         Fchoix.ReqChoix.SQL.clear;
-//                         Fchoix.ReqChoix.SQL.add( 'SELECT idperson,nom,prenom,if(datnaiss="0000/00/00", "NC",DATE_FORMAT(datnaiss,"%d/%m/%Y")) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom');
-//                         Fchoix.ReqChoix.ParamByName('Nom').AsString := UpperCase(Fmajo.EdNEp2maj.Text);
-//                         Fchoix.ReqChoix.ParamByName('Prenom').AsString := UpperCase(Fmajo.EdPEp2maj.Text);
-//                         Fchoix.ReqChoix.Open;
-//
-//                         Fchoix.ReqChoix.first;
-//                         j:=0;
-//
-//                             while not Fchoix.ReqChoix.Eof do
-//                                  begin
-//
-//                                  IndPers := Fchoix.ReqChoix.FieldByName('idperson').AsString;
-//                                  Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('idperson').AsString);
-//                                  Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('nom').AsString );
-//                                  Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('prenom').AsString);
-//                                  Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('Naissance').AsString);
-//
-//                                  j:=j+1;
-//                                  Fchoix.ReqChoix.Next;
-//                                  end;
-//                               Fchoix.sgChoix.ColWidths[0] :=40;
-//                               Fchoix.sgChoix.ColWidths[1]:=120;
-//                               Fchoix.sgChoix.ColWidths[2]:=120;
-//                               Fchoix.sgChoix.ColWidths[3]:=80;
+
                                Fchoix.sgChoix.Visible:=True;
                                Fchoix.edNiv.Visible:=False;
                               Fchoix.lbNiv.Visible:=false;
@@ -319,41 +264,39 @@ begin
 //           //	idEpo2:= StrToInt(lbEp2Maj.Caption);
 //         	//	end;
 //
-//     //père
+     //père
      if (NomPer<>'') then
        begin
-//          datamodule1.fdQuerMaj.close;
-//          datamodule1.fdQuerMaj.SQL.Clear;
-//          datamodule1.fdQuerMaj.SQL.Add( 'SELECT count(*) as nbp,idperson,nom,prenom FROM personnes where nom=:NomPer and prenom=:PrenomPer ') ;
-//          datamodule1.fdQuerMaj.ParamByName('NomPer').AsString := UpperCase(NomPer);
-//          datamodule1.fdQuerMaj.ParamByName('PrenomPer').AsString := UpperCase(PrenomPer);
+         datamodule1.fdQuerMaj.close;
+         datamodule1.fdQuerMaj.SQL.Clear;
+          datamodule1.fdQuerMaj.SQL.Add( 'SELECT count(*) as nbp,idperson,nom,prenom FROM personnes where nom=:NomPer and prenom=:PrenomPer ') ;
+          datamodule1.fdQuerMaj.ParamByName('NomPer').AsString := UpperCase(NomPer);
+          datamodule1.fdQuerMaj.ParamByName('PrenomPer').AsString := UpperCase(PrenomPer);
+          datamodule1.fdQuerMaj.Open;
+                   if (datamodule1.fdQuerMaj.FieldByName('nbp').AsInteger=0) or (lbPMaj.text='-1'  )then
+                   begin
+                   	  try
+                           begin
+    //
+    //                         ReqIns.SQL.Clear;
+    //                         ReqIns.SQL.Text := 'INSERT INTO personnes (nom, prenom,datmaj) '+
+    //                          'VALUES (:Nom, :Prenom,:Datmaj)';
+    //                         ReqIns.ParamByName('Nom').AsString := UpperCase(NomPer);
+    //                         ReqIns.ParamByName('Prenom').AsString := UpperCase(PrenomPer);
+    //                         //ReqIns.ParamByName('idEp').AsInteger := idInd;
+    //                         ReqIns.ParamByName('Datmaj').AsDate := StrToDate(Datmaj);
+    //
+    //                         ReqIns.ExecSQL;
+    //
+                           end;
+                       except
 //
-//          datamodule1.fdQuerMaj.Open;
-//
-//                   if (datamodule1.fdQuerMaj.FieldByName('nbp').AsInteger=0) or (lbPMaj.Caption='-1'  )then
-//                   begin
-//                   	try
-//                       begin
-//
-//                         ReqIns.SQL.Clear;
-//                         ReqIns.SQL.Text := 'INSERT INTO personnes (nom, prenom,datmaj) '+
-//                          'VALUES (:Nom, :Prenom,:Datmaj)';
-//                         ReqIns.ParamByName('Nom').AsString := UpperCase(NomPer);
-//                         ReqIns.ParamByName('Prenom').AsString := UpperCase(PrenomPer);
-//                         //ReqIns.ParamByName('idEp').AsInteger := idInd;
-//                         ReqIns.ParamByName('Datmaj').AsDate := StrToDate(Datmaj);
-//
-//                         ReqIns.ExecSQL;
-//
-//                       end;
-//                       except
-//
-//                       end;
+                      end;
 ////
-//                   end
-//                   else
-//                   if (datamodule1.fdQuerMaj.FieldByName('nbp').AsInteger>=1) then
-//                   begin
+                   end
+                   else
+                   if (datamodule1.fdQuerMaj.FieldByName('nbp').AsInteger>=1) then
+                      begin
 //
 //
 //                             Fchoix.Caption:='MAJ-Homonymie pour le Père';
@@ -397,7 +340,7 @@ begin
 //
 //
 //
-//                   end;
+                      end;
 //
        end ;
 //      // else
@@ -405,80 +348,74 @@ begin
 //       //   idPer:=0;
 //       //  end;
 //
-//     //mère
+     //mère
      if (NomMer<>'') then
        begin
-//         datamodule1.fdQuerMaj.close;
-//          datamodule1.fdQuerMaj.SQL.Clear;
-//          datamodule1.fdQuerMaj.SQL.Add( 'SELECT count(*) as nbp,idperson,nom,prenom FROM personnes where nom=:NomMer and prenom=:PrenomMer ') ;
-//          datamodule1.fdQuerMaj.ParamByName('NomMer').AsString := UpperCase(NomMer);
-//          datamodule1.fdQuerMaj.ParamByName('PrenomMer').AsString := UpperCase(PrenomMer);
-//
-//          datamodule1.fdQuerMaj.Open;
-//                   if (datamodule1.fdQuerMaj.FieldByName('nbp').AsInteger=0) or(lbMMaj.Caption='-1') then
-//                   begin
-//                   	try
-//                       begin
-//
-//                       ReqIns.SQL.Clear;
-//                       ReqIns.SQL.Text := 'INSERT INTO personnes (nom, prenom,datmaj) '+
-//                        'VALUES (:Nom, :Prenom,:Datmaj)';
-//                       ReqIns.ParamByName('Nom').AsString := UpperCase(NomMer);
-//                       ReqIns.ParamByName('Prenom').AsString := UpperCase(PrenomMer);
-//                       ReqIns.ParamByName('Datmaj').AsDate := StrToDate(Datmaj);
-//
-//                       ReqIns.ExecSQL;
-//
-//                       end;
-//                    except
-//
-//                    end;
-////
-//
-//                   end
-//                   else
-//                   if (datamodule1.fdQuerMaj.FieldByName('nbp').AsInteger>=1) then
-//                   begin
-//                             Fchoix.Caption:='MAJ-Homonymie pour la Mère';
-//                             Fchoix.lbChoix.caption:='MAJ';
-//                             Fchoix.RdChoix.Visible := False;
-//                             Fchoix.cbDebArbre.Visible := false;
-//                             Fchoix.Label1.Visible := False;
-//                             Fchoix.btValid.Visible:=True;
-//               			         Fchoix.btNew.visible:=True;
-//               			         Fchoix.btQuit.Visible:=False;
-//                             Fchoix.LbMsg.Caption :='il y a déjà des individus avec cette identité';
-//                             Fchoix.ReqChoix.close;
-//                             Fchoix.ReqChoix.SQL.clear;
-//                             Fchoix.ReqChoix.SQL.add( 'SELECT idperson,nom,prenom,if(datnaiss="0000/00/00", "NC",DATE_FORMAT(datnaiss,"%d/%m/%Y")) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom');
-//                             Fchoix.ReqChoix.ParamByName('Nom').AsString := UpperCase(Fmajo.EdMNmaj.Text);
-//                             Fchoix.ReqChoix.ParamByName('Prenom').AsString := UpperCase(Fmajo.EdMPmaj.Text);
-//                             Fchoix.ReqChoix.Open;
-//
-//                               Fchoix.ReqChoix.first;
-//                               j:=0;
-//                             while not Fchoix.ReqChoix.Eof do
-//                                  begin
-//
-//                                  IndPers := Fchoix.ReqChoix.FieldByName('idperson').AsString;
-//                                  Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('idperson').AsString);
-//                                  Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('nom').AsString );
-//                                  Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('prenom').AsString);
-//                                  Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('Naissance').AsString);
-//                                  j:=j+1;
-//                                  Fchoix.ReqChoix.Next;
-//                                  end;
-//                               Fchoix.sgChoix.ColWidths[0] :=40;
-//                               Fchoix.sgChoix.ColWidths[1]:=120;
-//                               Fchoix.sgChoix.ColWidths[2]:=120;
-//                               Fchoix.sgChoix.ColWidths[3]:=80;
-//                               Fchoix.sgChoix.Visible:=True;
-//
-//                               fchoix.height:=250;
-//                               fchoix.Width:=500;
-//                               Fchoix.ShowModal;
-//
-//                   end;
+         datamodule1.fdQuerMaj.close;
+          datamodule1.fdQuerMaj.SQL.Clear;
+          datamodule1.fdQuerMaj.SQL.Add( 'SELECT count(*) as nbp,idperson,nom,prenom FROM personnes where nom=:NomMer and prenom=:PrenomMer ') ;
+          datamodule1.fdQuerMaj.ParamByName('NomMer').AsString := UpperCase(NomMer);
+          datamodule1.fdQuerMaj.ParamByName('PrenomMer').AsString := UpperCase(PrenomMer);
+          datamodule1.fdQuerMaj.Open;
+                   if (datamodule1.fdQuerMaj.FieldByName('nbp').AsInteger=0) or(lbMMaj.text='-1') then
+                   begin
+                      try
+                           begin
+    //
+    //                       ReqIns.SQL.Clear;
+    //                       ReqIns.SQL.Text := 'INSERT INTO personnes (nom, prenom,datmaj) '+
+    //                        'VALUES (:Nom, :Prenom,:Datmaj)';
+    //                       ReqIns.ParamByName('Nom').AsString := UpperCase(NomMer);
+    //                       ReqIns.ParamByName('Prenom').AsString := UpperCase(PrenomMer);
+    //                       ReqIns.ParamByName('Datmaj').AsDate := StrToDate(Datmaj);
+    //
+    //                       ReqIns.ExecSQL;
+                           end;
+                        except
+                      end;
+                   end
+                   else
+                   if (datamodule1.fdQuerMaj.FieldByName('nbp').AsInteger>=1) then
+                     begin
+  //                             Fchoix.Caption:='MAJ-Homonymie pour la Mère';
+  //                             Fchoix.lbChoix.caption:='MAJ';
+  //                             Fchoix.RdChoix.Visible := False;
+  //                             Fchoix.cbDebArbre.Visible := false;
+  //                             Fchoix.Label1.Visible := False;
+  //                             Fchoix.btValid.Visible:=True;
+  //               			         Fchoix.btNew.visible:=True;
+  //               			         Fchoix.btQuit.Visible:=False;
+  //                             Fchoix.LbMsg.Caption :='il y a déjà des individus avec cette identité';
+  //                             Fchoix.ReqChoix.close;
+  //                             Fchoix.ReqChoix.SQL.clear;
+  //                             Fchoix.ReqChoix.SQL.add( 'SELECT idperson,nom,prenom,if(datnaiss="0000/00/00", "NC",DATE_FORMAT(datnaiss,"%d/%m/%Y")) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom');
+  //                             Fchoix.ReqChoix.ParamByName('Nom').AsString := UpperCase(Fmajo.EdMNmaj.Text);
+  //                             Fchoix.ReqChoix.ParamByName('Prenom').AsString := UpperCase(Fmajo.EdMPmaj.Text);
+  //                             Fchoix.ReqChoix.Open;
+  //
+  //                               Fchoix.ReqChoix.first;
+  //                               j:=0;
+  //                             while not Fchoix.ReqChoix.Eof do
+  //                                  begin
+  //
+  //                                  IndPers := Fchoix.ReqChoix.FieldByName('idperson').AsString;
+  //                                  Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('idperson').AsString);
+  //                                  Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('nom').AsString );
+  //                                  Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('prenom').AsString);
+  //                                  Fchoix.sgChoix.rows[j].Add ( Fchoix.ReqChoix.FieldByName('Naissance').AsString);
+  //                                  j:=j+1;
+  //                                  Fchoix.ReqChoix.Next;
+  //                                  end;
+  //                               Fchoix.sgChoix.ColWidths[0] :=40;
+  //                               Fchoix.sgChoix.ColWidths[1]:=120;
+  //                               Fchoix.sgChoix.ColWidths[2]:=120;
+  //                               Fchoix.sgChoix.ColWidths[3]:=80;
+  //                               Fchoix.sgChoix.Visible:=True;
+  //
+  //                               fchoix.height:=250;
+  //                               fchoix.Width:=500;
+  //                               Fchoix.ShowModal;
+                     end;
 //
        end;
 //       //else
@@ -492,29 +429,25 @@ begin
   try
         if (EdNEpo.Text <>'') and ((lbEpmaj.Text='-1') or (lbEpmaj.Text='0')) then
                 begin
-//                  datamodule1.fdQuerMaj.close;
-//
-//                  datamodule1.fdQuerMaj.SQL.Clear;
-//                  datamodule1.fdQuerMaj.SQL.add('SELECT idperson FROM personnes where nom= :NomEp and prenom= :PrenomEp');
-//                   datamodule1.fdQuerMaj.ParamByName('NomEp').AsString :=UpperCase(NEpou);
-//                  datamodule1.fdQuerMaj.ParamByName('PrenomEp').AsString :=UpperCase(PEpou);
-//
-//                   datamodule1.fdQuerMaj.Open;
-//                  idEpo :=datamodule1.fdQuerMaj.FieldByName('idperson').AsInteger;
-//
-//
-//                end
-//               else
-//              if (lbEpmaj.Caption<>'0') and (lbEpmaj.Caption<>'-1') then
-//                 begin
+                  datamodule1.fdQuerMaj.close;
+                  datamodule1.fdQuerMaj.SQL.Clear;
+                  datamodule1.fdQuerMaj.SQL.add('SELECT idperson FROM personnes where nom= :NomEp and prenom= :PrenomEp');
+                  datamodule1.fdQuerMaj.ParamByName('NomEp').AsString :=UpperCase(NEpou);
+                  datamodule1.fdQuerMaj.ParamByName('PrenomEp').AsString :=UpperCase(PEpou);
+                  datamodule1.fdQuerMaj.Open;
+                  idEpo :=datamodule1.fdQuerMaj.FieldByName('idperson').AsInteger;
+                end
+               else
+              if (lbEpmaj.text<>'0') and (lbEpmaj.text<>'-1') then
+                 begin
 //                 	idEpo := StrToInt(lbEpmaj.Caption) ;
-//                 end
-//                 else
-//                 begin
+                 end
+                 else
+                 begin
 //                	idEpo :=0;
-//                 end;
-//                if (EdNEp2maj.Text <>'') and ((lbEp2maj.Caption='-1') or (lbEp2maj.Caption='0')) then
-//                begin
+                 end;
+                if (EdN2Epo.Text <>'') and ((lbEp2maj.text='-1') or (lbEp2maj.text='0')) then
+                begin
 //                  datamodule1.fdQuerMaj.close;
 //
 //                  datamodule1.fdQuerMaj.SQL.Clear;
@@ -526,18 +459,18 @@ begin
 //                  idEpo2 :=datamodule1.fdQuerMaj.FieldByName('idperson').AsInteger;
 //
 //
-//                end
-//               else
-//              if (lbEp2maj.Caption<>'0') and (lbEp2maj.Caption<>'-1') then
-//                 begin
+                end
+               else
+              if (lbEp2maj.text<>'0') and (lbEp2maj.text<>'-1') then
+                 begin
 //                 	idEpo2 := StrToInt(lbEp2maj.Caption) ;
-//                 end
-//                 else
-//                 begin
+                 end
+                 else
+                 begin
 //                	idEpo2 :=0;
-//                 end;
-//             if (EdPNMaj.Text <>'') and ((lbPMaj.Caption='-1') or (lbPMaj.Caption='0')) then
-//                 begin
+                 end;
+             if (EdNPer.Text <>'') and ((lbPMaj.text='-1') or (lbPMaj.text='0')) then
+                 begin
 //                      datamodule1.fdQuerMaj.close;
 //
 //                      datamodule1.fdQuerMaj.SQL.Clear;
@@ -547,18 +480,18 @@ begin
 //
 //                      datamodule1.fdQuerMaj.Open;
 //                      idPer :=datamodule1.fdQuerMaj.FieldByName('idperson').AsInteger;
-//                end
-//                  else
-//               if (lbPMaj.Caption<>'0') and (lbPMaj.Caption<>'-1') then
-//                 begin
+                end
+                  else
+               if (lbPMaj.text<>'0') and (lbPMaj.text<>'-1') then
+                 begin
 //                      idPer := StrToInt(lbPMaj.Caption) ;
-//                 end
-//              else
-//                 begin
+                 end
+              else
+                 begin
 //               	      idPer :=0;
-//                end;
-//               if (EdMNmaj.Text <>'') and ((lbMMaj.Caption='-1') or (lbMMaj.Caption='0')) then
-//                 begin
+                end;
+               if (EdNMer.Text <>'') and ((lbMMaj.text='-1') or (lbMMaj.text='0')) then
+                 begin
 //                   datamodule1.fdQuerMaj.close;
 //
 //                   datamodule1.fdQuerMaj.SQL.Clear;
@@ -569,18 +502,18 @@ begin
 //                   ReqMaj.Opdatamodule1.fdQuerMajen;
 //                   IdMer :=datamodule1.fdQuerMaj.FieldByName('idperson').AsInteger;
 //
-//                end
-//                 else
-//               if (lbMMaj.Caption<>'0') and (lbMMaj.Caption<>'-1') then
-//                begin
+                end
+                 else
+               if (lbMMaj.text<>'0') and (lbMMaj.text<>'-1') then
+                begin
 //                  IdMer := StrToInt(lbMMaj.Caption) ;
-//                 end
-//               else
-//                 begin
+                 end
+               else
+                 begin
 //                 	IdMer :=0;
-//                end;
+                end;
 //
-//         begin
+         begin
 //
 //           datamodule1.fdQuerMaj.SQL.Clear;
 //           datamodule1.fdQuerMaj.SQL.Text := 'UPDATE  personnes SET lieunaiss=:LNaiss, lieudec=:LDec, prenom2=:Prenom2,'
@@ -591,18 +524,18 @@ begin
 //           datamodule1.fdQuerMaj.ParamByName('Prenom2').AsString := UpperCase(Prenom2);
 //           datamodule1.fdQuerMaj.ParamByName('Prenom3').AsString := UpperCase(Prenom3);
 //           datamodule1.fdQuerMaj.ParamByName('LNaiss').AsString := UpperCase(LNaiss);
-//           if  (MemMaj.Text<>'') then
+           if  (MemMaj.Text<>'') then
 //              datamodule1.fdQuerMaj.ParamByName('Mmaj').AsString := MemMaj.Text
-//              else
+              else
 //              datamodule1.fdQuerMaj.ParamByName('Mmaj').AsString := '';
-//           if (EdDNmaj.Text <>'') and (EdDNmaj.Text <>'NC') then
+           if (EdNaiss.Text <>'') and (EdNaiss.Text <>'NC') then
 //           	datamodule1.fdQuerMaj.ParamByName('Dnaiss').AsDate := StrToDate(Dnaiss)
-//           	else
+           	else
 //           	datamodule1.fdQuerMaj.ParamByName('Dnaiss').AsString := '00/00/0000';
 //           datamodule1.fdQuerMaj.ParamByName('LDec').AsString := UpperCase(LDec);
-//           if (EdDDmaj.Text <>'') and (EdDDmaj.Text <>'NC') then
+           if (EdDec.Text <>'') and (EdDec.Text <>'NC') then
 //           	datamodule1.fdQuerMaj.ParamByName('DDec').AsDate := StrToDate(DDec)
-//           	else
+           	else
 //           	datamodule1.fdQuerMaj.ParamByName('DDec').AsString := '00/00/0000';
 //           datamodule1.fdQuerMaj.ParamByName('idPer').AsInteger := idPer;
 //           datamodule1.fdQuerMaj.ParamByName('idMer').AsInteger := idMer;
@@ -612,13 +545,13 @@ begin
 //           datamodule1.fdQuerMaj.ParamByName('DeptNaiss').AsInteger := DeptNaiss;
 //           datamodule1.fdQuerMaj.ParamByName('NatDec').AsInteger := NatDec;
 //           datamodule1.fdQuerMaj.ParamByName('DeptDec').AsInteger := DeptDec;
-//           if (EdDMmaj.Text <>'') and (EdDMmaj.Text <>'NC') then
+           if (EdMaria.Text <>'') and (EdMaria.Text <>'NC') then
 //           	datamodule1.fdQuerMaj.ParamByName('Dmar').AsDate := StrToDate(Dmar)
-//           	else
+           	else
 //           	datamodule1.fdQuerMaj.ParamByName('Dmar').AsString := '00/00/0000';
-//           if (EdDM2maj.Text <>'') and (EdDM2maj.Text <>'NC') then
+           if (Ed2Maria.Text <>'') and (Ed2Maria.Text <>'NC') then
 //           	datamodule1.fdQuerMaj.ParamByName('Dmar2').AsDate := StrToDate(Dmar2)
-//           	else
+           	else
 //           	datamodule1.fdQuerMaj.ParamByName('Dmar2').AsString := '00/00/0000';
 //           datamodule1.fdQuerMaj.ParamByName('Datmaj').AsDate := StrToDate(Datmaj);
 //
