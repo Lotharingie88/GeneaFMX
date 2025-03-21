@@ -62,9 +62,9 @@ type
     Label18: TLabel;
     lbNMaj: TLabel;
     lbEpMaj: TLabel;
-    LbEp2Maj: TLabel;
     lbPMaj: TLabel;
     lbMMaj: TLabel;
+    lb2Epo: TLabel;
     procedure btQuitClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -176,7 +176,7 @@ begin
                     begin
                  		edN2Epo.Text := datamodule1.fdQuerMajPlus.FieldByName('nom').AsString;
                  		edP2Epo.Text := datamodule1.fdQuerMajPlus.FieldByName('prenom').AsString;
-                    lbEp2Maj.Text:= datamodule1.fdQuerMajPlus.FieldByName('idperson').AsString;
+                    lb2Epo.Text:= datamodule1.fdQuerMajPlus.FieldByName('idperson').AsString;
                     end;
                     datamodule1.fdQuerMajPlus.Close;
                  	  datamodule1.fdQuerMajPlus.SQL.Clear;

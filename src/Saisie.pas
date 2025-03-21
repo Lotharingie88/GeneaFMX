@@ -171,6 +171,13 @@ begin
                Fchoix.btNew.visible:=True;
                Fchoix.btQuit.Visible:=False;
                Fchoix.LbMsg.Text :='il y a déjà des individus avec cette identité';
+               Fchoix.lbArbr.Visible:=False;
+
+                             Fchoix.lbNiv.Visible:=False;
+                             Fchoix.edNiv.Visible:=False;
+                             fchoix.height:=610;
+                             fchoix.Width:=695;
+                             Fchoix.ShowModal;
         end;
      except
 
@@ -515,74 +522,65 @@ begin
                  begin
 //                   //ShowMessage ('Epoux :'+ IdEpo.ToString);
 //                   //MessageDlg ('1',mtInformation,[mbOK],0);
-//                   ReqSupp.close;
-//
-//                   ReqSupp.SQL.Clear;
-//                   ReqSupp.SQL.Text := 'SELECT idperson FROM personnes where idepou=:IdEpo';
-//                   ReqSupp.ParamByName('IdEpo').AsInteger := IdEpo;
-//
-//                   ReqSupp.Open;
-//                   idInd := ReqSupp.FieldByName('idperson').AsInteger;
-//
-//
-//                    try
-//                         if (idInd <> 0) then
-//                         begin
+                   datamodule1.fdQuerSais.close;
+
+                   datamodule1.fdQuerSais.SQL.Clear;
+                   datamodule1.fdQuerSais.SQL.Text := 'SELECT idperson FROM personnes where idepou=:IdEpo';
+                   datamodule1.fdQuerSais.ParamByName('IdEpo').AsInteger := IdEpo;
+
+                   datamodule1.fdQuerSais.Open;
+                   idInd := datamodule1.fdQuerSais.FieldByName('idperson').AsInteger;
+
+
+                    try
+                         if (idInd <> 0) then
+                         begin
 //                           //ShowMessage ('Début Epoux et pers :'+ IdEpo.ToString + idInd.ToString);
-//
-//                           ReqSupp2.SQL.Clear;
-//                           ReqSupp2.SQL.Text := 'UPDATE  personnes SET idepou=:idInd, datmaj=:Datmaj WHERE idperson=:IdEpo';
-//                           ReqSupp2.ParamByName('idInd').AsInteger := idInd;
-//                           ReqSupp2.ParamByName('IdEpo').AsInteger := IdEpo;
-//                           ReqSupp2.ParamByName('Datmaj').AsDate := StrToDate(Datmaj);
-//
-//                           ReqSupp2.ExecSQL;
-//
-//
-//
-//                       	end;
-//
-//                     except
-//                     end;
-//                 end;
-//                 if (IdEpo2 <> 0) then
-//                 begin
-//                   //ShowMessage ('Epoux :'+ IdEpo.ToString);
-//                   //MessageDlg ('1',mtInformation,[mbOK],0);
-//                   ReqSupp.close;
-//
-//                   ReqSupp.SQL.Clear;
-//                   ReqSupp.SQL.Text := 'SELECT idperson FROM personnes where idepoubis=:IdEpo2';
-//                   ReqSupp.ParamByName('IdEpo2').AsInteger := IdEpo2;
-//
-//                   ReqSupp.Open;
-//                   idInd := ReqSupp.FieldByName('idperson').AsInteger;
-//
-//
-//                    //try
-//                         if (idInd <> 0) then
-//                         begin
-//                           //ShowMessage ('Début Epoux et pers :'+ IdEpo.ToString + idInd.ToString);
-//
-//                           ReqSupp2.SQL.Clear;
-//                           ReqSupp2.SQL.Text := 'UPDATE  personnes SET idepoubis=:idEpo2, datmaj=:Datmaj WHERE idperson=:IdInd';
-//                           ReqSupp2.ParamByName('IdInd').AsInteger := idInd;
-//                           ReqSupp2.ParamByName('IdEpo2').AsInteger := IdEpo2;
-//                           ReqSupp2.ParamByName('Datmaj').AsDate := StrToDate(Datmaj);
-//
-//                           ReqSupp2.ExecSQL;
-//
-//
-//
+                           datamodule1.fdQuerSaisPlus.SQL.Clear;
+                           datamodule1.fdQuerSaisPlus.SQL.Text := 'UPDATE  personnes SET idepou=:idInd, datmaj=:Datmaj WHERE idperson=:IdEpo';
+                           datamodule1.fdQuerSaisPlus.ParamByName('idInd').AsInteger := idInd;
+                           datamodule1.fdQuerSaisPlus.ParamByName('IdEpo').AsInteger := IdEpo;
+                           datamodule1.fdQuerSaisPlus.ParamByName('Datmaj').AsDate := StrToDate(Datmaj);
+
+                           datamodule1.fdQuerSaisPlus.ExecSQL;
                        	end;
 //
-        except
-        end;
-//                 end;
+                     except
+                     end;
+                 end;
+                 if (IdEpo2 <> 0) then
+                     begin
+    //                   //ShowMessage ('Epoux :'+ IdEpo.ToString);
+    //                   //MessageDlg ('1',mtInformation,[mbOK],0);
+                       datamodule1.fdQuerSais.close;
+
+                       datamodule1.fdQuerSais.SQL.Clear;
+                       datamodule1.fdQuerSais.SQL.Text := 'SELECT idperson FROM personnes where idepoubis=:IdEpo2';
+                       datamodule1.fdQuerSais.ParamByName('IdEpo2').AsInteger := IdEpo2;
+                       datamodule1.fdQuerSais.Open;
+                       idInd := datamodule1.fdQuerSais.FieldByName('idperson').AsInteger;
+    //
+    //
+                        try
+                             if (idInd <> 0) then
+                             begin
+    //                           //ShowMessage ('Début Epoux et pers :'+ IdEpo.ToString + idInd.ToString);
+                               datamodule1.fdQuerSaisPlus.SQL.Clear;
+                               datamodule1.fdQuerSaisPlus.SQL.Text := 'UPDATE  personnes SET idepoubis=:idEpo2, datmaj=:Datmaj WHERE idperson=:IdInd';
+                               datamodule1.fdQuerSaisPlus.ParamByName('IdInd').AsInteger := idInd;
+                               datamodule1.fdQuerSaisPlus.ParamByName('IdEpo2').AsInteger := IdEpo2;
+                               datamodule1.fdQuerSaisPlus.ParamByName('Datmaj').AsDate := StrToDate(Datmaj);
+
+                               datamodule1.fdQuerSaisPlus.ExecSQL;
+                            end;
+//
+                          except
+                          end;
+                 end;
 //
 //
-//               except
-//               end;
+               except
+               end;
 
 
 
@@ -618,7 +616,7 @@ begin
                      begin
                         TLabel(Components[i]).Text:='';
                          if (TLabel(Components[i]).Name = 'lbInd') then
-                            TLabel(Components[i]).Text:='b' ;
+                            TLabel(Components[i]).Text:='0' ;
 //
                      end;
           end;
@@ -698,7 +696,7 @@ begin
                      begin
                         TLabel(Components[i]).Text:='';
                          if (TLabel(Components[i]).Name = 'lbInd') then
-                            TLabel(Components[i]).Text:='b' ;
+                            TLabel(Components[i]).Text:='0' ;
 //
                      end;
                 if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMaj'))) then

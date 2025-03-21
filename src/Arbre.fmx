@@ -53,6 +53,7 @@ object FArbre: TFArbre
       Size.Width = 81.000000000000000000
       Size.Height = 17.000000000000000000
       Size.PlatformDefault = False
+      CharCase = ecUpperCase
       OnChange = edInd0Change
     end
     object sbArbre: TScrollBox
@@ -73,6 +74,14 @@ object FArbre: TFArbre
         Text = '0'
         TabOrder = 0
       end
+    end
+    object lbNiv: TLabel
+      Position.X = 856.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 24.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
     end
   end
 end

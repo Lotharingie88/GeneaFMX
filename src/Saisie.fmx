@@ -238,8 +238,8 @@ object FSaisie: TFSaisie
       Size.Height = 289.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 22
-      Viewport.Width = 509.000000000000000000
-      Viewport.Height = 285.000000000000000000
+      Viewport.Width = 513.000000000000000000
+      Viewport.Height = 289.000000000000000000
     end
     object Label21: TLabel
       Position.X = 648.000000000000000000
@@ -256,7 +256,7 @@ object FSaisie: TFSaisie
       Size.Width = 41.000000000000000000
       Size.Height = 17.000000000000000000
       Size.PlatformDefault = False
-      Text = 'b'
+      Text = '0'
       TabOrder = 45
     end
     object edPEpou: TEdit

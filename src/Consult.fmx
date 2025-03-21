@@ -2,7 +2,7 @@ object FCons: TFCons
   Left = 0
   Top = 0
   Caption = 'Consultation'
-  ClientHeight = 749
+  ClientHeight = 743
   ClientWidth = 1079
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -11,6 +11,7 @@ object FCons: TFCons
   OnCreate = FormCreate
   DesignerMasterStyle = 0
   object Layout1: TLayout
+    Position.X = 8.000000000000000000
     Position.Y = 4.000000000000000000
     Size.Width = 1065.000000000000000000
     Size.Height = 737.000000000000000000
@@ -520,15 +521,6 @@ object FCons: TFCons
       Text = 'lbEpMaj'
       TabOrder = 48
     end
-    object LbEp2Maj: TLabel
-      Position.X = 424.000000000000000000
-      Position.Y = 303.000000000000000000
-      Size.Width = 65.000000000000000000
-      Size.Height = 25.000000000000000000
-      Size.PlatformDefault = False
-      Text = 'LbEp2Maj'
-      TabOrder = 49
-    end
     object lbPMaj: TLabel
       Position.X = 424.000000000000000000
       Position.Y = 336.000000000000000000
@@ -536,7 +528,7 @@ object FCons: TFCons
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'lbPMaj'
-      TabOrder = 50
+      TabOrder = 49
     end
     object lbMMaj: TLabel
       Position.X = 424.000000000000000000
@@ -545,6 +537,15 @@ object FCons: TFCons
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'lbMMaj'
+      TabOrder = 50
+    end
+    object lb2Epo: TLabel
+      Position.X = 424.000000000000000000
+      Position.Y = 303.000000000000000000
+      Size.Width = 57.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'lb2Epo'
       TabOrder = 51
     end
   end

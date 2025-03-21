@@ -6,8 +6,8 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
   FMX.Controls.Presentation, FMX.Layouts, System.Rtti, FMX.Grid.Style,
-  FMX.ScrollBox, FMX.Grid, FMX.Edit, FMX.ListBox,udbgenea, Data.Bind.EngExt,
-  Fmx.Bind.DBEngExt, Fmx.Bind.Grid, System.Bindings.Outputs, Fmx.Bind.Editors,
+  FMX.ScrollBox, FMX.Grid, FMX.Edit, FMX.ListBox,udbgenea,firedac.stan.Param, Data.Bind.EngExt,
+  Fmx.Bind.DBEngExt,data.DB, Fmx.Bind.Grid, System.Bindings.Outputs, Fmx.Bind.Editors,
   Data.Bind.Components, Data.Bind.Grid, Data.Bind.DBScope;
 
 type
@@ -227,7 +227,7 @@ begin
      if lbChoix.text='Arbre' then
      begin
 
-              Person := cbDebArbre.Selected.Text;
+              Person := cbDebArbre.Text;
 
               datamodule1.fdQuerChoixPlus.close;
               datamodule1.fdQuerChoixPlus.SQL.clear;
@@ -236,8 +236,10 @@ begin
 
               datamodule1.fdQuerChoixPlus.ParamByName('indiv').AsString := Person;
               datamodule1.fdQuerChoixPlus.Open;
-              Farbre.edInd0.Text:= datamodule1.fdQuerChoixPlus.FieldByName('idperson').AsString;
-             Fchoix.Close;
+              indpers:=datamodule1.fdQuerChoixPlus.FieldByName('idperson').AsInteger;
+              Farbre.edInd0.Text:= indpers.ToString;
+              Farbre.lbNiv.Text:= edniv.Text;
+              Fchoix.Close;
      end;
 end;
 
@@ -258,10 +260,10 @@ begin
              datamodule1.fdQuerChoix.first;
              with fchoix.sgChoix do
                   begin
-                      //j:=0;
+                      j:=0;
                       while not datamodule1.fdQuerChoix.Eof do
                       begin
-                        j:=0;
+                        //j:=0;
                         for k :=0 to datamodule1.fdQuerChoix.FieldCount-1 do
                            begin
                            //IndPers := datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
@@ -270,8 +272,9 @@ begin
                             cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
                             cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
 
-                            datamodule1.fdQuerChoix.Next;
+                            //datamodule1.fdQuerChoix.Next;
                            end;
+                           datamodule1.fdQuerChoix.Next;
                            inc(j);
                       end;
                   end;
@@ -281,12 +284,7 @@ begin
                Fchoix.sgChoix.Columns[2].Width:=120;
                Fchoix.sgChoix.Columns[3].Width:=80;
                Fchoix.sgChoix.Visible:=True;
-             // Fchoix.ReqChoix.Active:=False;
-               Fchoix.lbNiv.Visible:=False;
-               Fchoix.edNiv.Visible:=False;
-               Fchoix.height:=250;
-               Fchoix.Width:=500;
-               Fchoix.ShowModal;
+             
                  //MessageDlg ('il y a déjà des individus avec cette identité',mtInformation,[mbOK],0);
 
           end
@@ -623,7 +621,7 @@ begin
 
                datamodule1.fdQuerChoix.Next;
        	  end;
-        	cbDebArbre.selected.Text:='';
+        	cbDebArbre.ItemIndex:=0;
           datamodule1.fdQuerChoix.close;
     end;
 end;

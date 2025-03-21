@@ -16,6 +16,7 @@ type
     edInd0: TEdit;
     sbArbre: TScrollBox;
     Label1: TLabel;
+    lbNiv: TLabel;
     procedure btQuitClick(Sender: TObject);
     procedure btCreateClick(Sender: TObject);
     procedure edInd0Change(Sender: TObject);
@@ -35,6 +36,7 @@ implementation
     choix2;
   var
     IndPers,iP,iM : string;
+    Indind:integer;
     datmaj:string;
     ed: tedit;
 procedure TFArbre.btCreateClick(Sender: TObject);
@@ -104,7 +106,7 @@ procedure TFArbre.edInd0Change(Sender: TObject);
 	k :single;
   indiv: array  of array of integer;
 begin
-  t:= StrToInt( Fchoix.edNiv.Text);
+  t:= StrToInt( lbNiv.Text);
    interv:=6;
    largeEd:=120;
    hautEd:=20;
@@ -118,11 +120,11 @@ begin
 
  if (edInd0.Text<>'') and (edInd0.Text<>'0') then
  	begin
-       IndPers:= edInd0.Text;
+       IndInd:= edInd0.Text.ToInteger();
         	datamodule1.fdQuerArbr.close;
       	  datamodule1.fdQuerArbr.SQL.clear;
       	  datamodule1.fdQuerArbr.SQL.Text:= 'SELECT idperson,idper,idmer,nom,prenom FROM personnes where idperson=:IndPers';
-          datamodule1.fdQuerArbr.ParamByName('IndPers').AsInteger := IndPers.ToInteger;
+          datamodule1.fdQuerArbr.ParamByName('IndPers').AsInteger := Indind;
 
       	  datamodule1.fdQuerArbr.Open;
           l:=0;
@@ -200,19 +202,20 @@ begin
                          end ;
 
 
-                     //with TEdit.Create(self) do
+                     with ed.Create(self) do
 
-                     //begin
-                          ed.Create(self);
+                     begin
+                          //ed.Create(self);
                           ed.Parent := sbArbre;
                           ed.Width := largeEd;
                           ed.Height:= hautEd;
+                          ed.position.y:=haut;
                           //ed.Top:=haut;
 
                           if i=0 then
 
                                 begin
-                                    //ed.Left := centre-(largeEd div 2);
+                                    ed.position.X := centre-(largeEd div 2);
 
                                     ed.Name:= 'edAscN'+IntToStr(i)+'_'+IntToStr(j);
                                     ed.Text:= datamodule1.fdQuerArbr.FieldByName('nom').AsString + ' ' + datamodule1.fdQuerArbr.FieldByName('prenom').AsString;
@@ -228,8 +231,8 @@ begin
                                    case j of
                                      1:
                                      begin
-                                     //Left := centre-( r* largeEd) - (interv div 2);
-                                     n:=Left;
+                                        ed.position.X := centre-( r* largeEd) - (interv div 2);
+                                        //n:=ed.position.X;
 
                                          datamodule1.fdQuerArbr.close;
                                          datamodule1.fdQuerArbr.SQL.clear;
@@ -244,7 +247,7 @@ begin
 
                                      else
                                          begin
-                                         //Left := (n) + ((j-1)*(largeEd+interv))  ;
+                                         ed.position.X:= (n) + ((j-1)*(largeEd+interv))  ;
                                          ed.Text:= 'test'+ IntToStr(j);
                                          ed.Tag:=   l;
                                          end;
@@ -259,7 +262,7 @@ begin
                                    case j of
                                      1:
                                      begin
-                                     //Left := centre- (r*(largeEd + interv ));
+                                     ed.position.X := centre- (r*(largeEd + interv ));
                                      n:=Left;
                                      end
                                      else Left := (n) + ((j-1)* (largeEd+interv) )+(interv div 2) ;
@@ -282,7 +285,8 @@ begin
                                   end;
 
                              end;
-                         //end;
+                            datamodule1.fdQuerArbrPlus.close;
+                         end;
                          //MessageDlg ('l : '+ l.ToString,mtInformation,[mbOK],0);
 
                          l:=l+1;
