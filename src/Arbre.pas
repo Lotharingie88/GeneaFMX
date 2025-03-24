@@ -17,9 +17,11 @@ type
     sbArbre: TScrollBox;
     Label1: TLabel;
     lbNiv: TLabel;
+    edNivo: TEdit;
     procedure btQuitClick(Sender: TObject);
     procedure btCreateClick(Sender: TObject);
     procedure edInd0Change(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Déclarations privées }
   public
@@ -42,21 +44,23 @@ implementation
 procedure TFArbre.btCreateClick(Sender: TObject);
    var
 	individu :String;
-     i:Integer;
+     p:Integer;
 begin
     edInd0.Text:='';
-     for i:=(Componentcount-1) downto 0 do
+     for p:=(Componentcount-1) downto 0 do
           	begin
                     //MessageDlg ('j : '+ Componentcount.ToString ,mtInformation,[mbOK],0);
-            		if (Components[i] is TEdit)  and
-                    	( TEdit(Components[i]).Name <> 'edInd0') then
+            		if (Components[p] is TEdit)  and
+                    	( TEdit(Components[p]).Name <> 'edInd0') and ( TEdit(Components[p]).Name <> 'edNivo') then
                      	begin
-                      		TEdit(Components[i]).parent:=nil;
-                      		TEdit(Components[i]).Free;
+                      		Components[p].DisposeOf;
                      	end
                          else
-                     if (Components[i] is TLabel)  then
-                         TLabel(Components[i]).Free;
+                     if (Components[p] is TLabel) and (components[p].Name <> 'LbNiv')  then
+                      begin
+
+                         Components[p].DisposeOf;
+                      end;
                end;
 
      Fchoix.Caption:='Arbre';
@@ -85,15 +89,15 @@ begin
 
  //       	fchoix.cbDebArbre.selected.Text:='';
 //        	datamodule1.fdQuerChoix.Active:=False;
-     	    fchoix.cbDebArbre.Visible:=True;
+     	    //fchoix.cbDebArbre.Visible:=True;
      	    fchoix.sgChoix.Visible:=False;
           fchoix.btNew.Visible:=False;
      	    Fchoix.LbMsg.Visible:=False;
           Fchoix.lbNiv.Visible:=True;
           Fchoix.edNiv.Visible:=True;
           Fchoix.RdChoix.Visible:=false;
- //         fchoix.Show;
-     	    fchoix.ShowModal;
+          fchoix.Show;
+     	    //fchoix.ShowModal;
 end;
 
 procedure TFArbre.btQuitClick(Sender: TObject);
@@ -106,13 +110,14 @@ procedure TFArbre.edInd0Change(Sender: TObject);
 	k :single;
   indiv: array  of array of integer;
 begin
-  t:= StrToInt( lbNiv.Text);
+    t:= edNivo.text.ToInteger();
    interv:=6;
    largeEd:=120;
    hautEd:=20;
    w:= round(single(Power(2,t))) *(largeEd+interv);
-   //sbArbre.clientWidth :=w;
-
+    //sbArbre.Width :=w;
+    sbArbre.Width :=FArbre.Width - 96;
+    sbArbre.Height :=FArbre.Height - 210;
    nbi:=round((2*power(2,t))-1);
 
  setlength(indiv,nbi,4);
@@ -125,7 +130,6 @@ begin
       	  datamodule1.fdQuerArbr.SQL.clear;
       	  datamodule1.fdQuerArbr.SQL.Text:= 'SELECT idperson,idper,idmer,nom,prenom FROM personnes where idperson=:IndPers';
           datamodule1.fdQuerArbr.ParamByName('IndPers').AsInteger := Indind;
-
       	  datamodule1.fdQuerArbr.Open;
           l:=0;
           a:=0;
@@ -170,130 +174,112 @@ begin
             //writeln(indiv[i,0]);
             //MessageDlg ('indiv : '+ indiv[i,0].ToString+ indiv[i,1].ToString+ indiv[i,2].ToString+ indiv[i,3].ToString ,mtInformation,[mbOK],0);
           end;
-
-
-
           haut:=8;
           centre:=round(w/2) ;
 
-
-
-
-
-          for i:=0  to t do
+          for i:=0  to t-1 do
               begin
-              k:=single(Power(2,i));
-              r:= round(single((Power(2,i)/ 2)));
+                  k:=single(Power(2,i));
+                  r:= round(single((Power(2,i)/ 2)));
 
-              m:= round(k);
-              n:=0;
+                  m:= round(k);
+                  n:=0;
 
-          	  for j := 1 to m do
+          	    for j := 1 to m do
                 	begin
-                	v:= round(j /2);
-                	if (v<>0) then
+                	    v:= round(j /2);
+                	  if (v<>0) then
                         begin
-                		    with TLabel.Create(self) do
+                		      with TLabel.Create(self) do
                              begin
                                Parent := sbArbre;
                                Name:= 'lbAscN'+IntToStr(i)+'_'+IntToStr(j);
-                               Visible:= False;
+                               Visible:=false;
                             end;
                          end ;
+                          with tedit.Create(self) do
 
+                            begin
 
-                     with ed.Create(self) do
-
-                     begin
-                          //ed.Create(self);
-                          ed.Parent := sbArbre;
-                          ed.Width := largeEd;
-                          ed.Height:= hautEd;
-                          ed.position.y:=haut;
-                          //ed.Top:=haut;
-
-                          if i=0 then
-
+                            Parent := sbArbre;
+                            Width := largeEd;
+                            Height:= hautEd;
+                            position.y:=haut;
+                              if i=0 then
                                 begin
-                                    ed.position.X := centre-(largeEd div 2);
-
-                                    ed.Name:= 'edAscN'+IntToStr(i)+'_'+IntToStr(j);
-                                    ed.Text:= datamodule1.fdQuerArbr.FieldByName('nom').AsString + ' ' + datamodule1.fdQuerArbr.FieldByName('prenom').AsString;
-                                    ed.tag := datamodule1.fdQuerArbr.FieldByName('idPer').AsInteger ;
+                                    position.X := centre-(largeEd div 2);
+                                    Name:= 'edAscN'+IntToStr(i)+'_'+IntToStr(j);
+                                    Text:= datamodule1.fdQuerArbr.FieldByName('nom').AsString + ' ' + datamodule1.fdQuerArbr.FieldByName('prenom').AsString;
+                                    tag := datamodule1.fdQuerArbr.FieldByName('idPer').AsInteger ;
                                     iP:=datamodule1.fdQuerArbr.FieldByName('idPer').AsString;
                                     iM:='0';
-                               end
-                             else
-                             if i=1 then
-                                begin
-                                 // MessageDlg ('j : '+ j.ToString ,mtInformation,[mbOK],0);
-
-                                   case j of
-                                     1:
-                                     begin
-                                        ed.position.X := centre-( r* largeEd) - (interv div 2);
-                                        //n:=ed.position.X;
-
-                                         datamodule1.fdQuerArbr.close;
-                                         datamodule1.fdQuerArbr.SQL.clear;
-                                         datamodule1.fdQuerArbr.SQL.Text:= 'SELECT idper,idmer,nom,prenom FROM personnes where idperson=:iP';
-                                         datamodule1.fdQuerArbr.ParamByName('iP').AsInteger := iP.ToInteger;
-                                         datamodule1.fdQuerArbr.Active:=True;
-                                         datamodule1.fdQuerArbr.Open;
-                                         ed.Text:= datamodule1.fdQuerArbr.FieldByName('nom').AsString + ' ' + datamodule1.fdQuerArbr.FieldByName('prenom').AsString;
-                                         ed.Tag:=   l;
-                                         IndPers:=datamodule1.fdQuerArbr.FieldByName('idPer').AsString ;
-                                     end
-
-                                     else
-                                         begin
-                                         ed.position.X:= (n) + ((j-1)*(largeEd+interv))  ;
-                                         ed.Text:= 'test'+ IntToStr(j);
-                                         ed.Tag:=   l;
-                                         end;
-                                   end;
-                                   ed.Name:= 'edAscN'+IntToStr(i)+'_'+IntToStr(j);
-
                                 end
-                             else
-                             if (i>1) and (i<=t) then
+                                else
+                                if i=1 then
+                                    begin
+    //                                 // MessageDlg ('j : '+ j.ToString ,mtInformation,[mbOK],0);
+    //
+                                       case j of
+                                         1:
+                                         begin
+                                            position.X := centre-( r* largeEd) - (interv div 2);
+                                            n:=centre-( r* largeEd) - (interv div 2);
 
-                                begin
-                                   case j of
-                                     1:
-                                     begin
-                                     ed.position.X := centre- (r*(largeEd + interv ));
-                                     n:=Left;
-                                     end
-                                     else Left := (n) + ((j-1)* (largeEd+interv) )+(interv div 2) ;
-                                   end;
-                                   ed.Name:= 'edAscN'+IntToStr(i)+'_'+IntToStr(j);
-                                   ed.Text:= 'test'+ IntToStr(j);
-                                   ed.Tag:=   l;
-
-                                end;
-                            for tr :=0  to (nbi-1) do
-                             begin
-                               if l=tr then
-                                  begin
-                                     datamodule1.fdQuerArbrPlus.close;
-                                     datamodule1.fdQuerArbrPlus.SQL.clear;
-                                     datamodule1.fdQuerArbrPlus.SQL.Text:= 'SELECT nom,prenom FROM personnes where idperson=:IndPers';
-                                     datamodule1.fdQuerArbrPlus.ParamByName('IndPers').AsInteger := indiv[tr,1];
-                                     datamodule1.fdQuerArbrPlus.Open;
-                                     ed.Text:=datamodule1.fdQuerArbrPlus.FieldByName('nom').AsString + ' ' + datamodule1.fdQuerArbrPlus.FieldByName('prenom').AsString ;
-                                  end;
-
+                                             datamodule1.fdQuerArbr.close;
+                                             datamodule1.fdQuerArbr.SQL.clear;
+                                             datamodule1.fdQuerArbr.SQL.Text:= 'SELECT idper,idmer,nom,prenom FROM personnes where idperson=:iP';
+                                             datamodule1.fdQuerArbr.ParamByName('iP').AsInteger := iP.ToInteger;
+                                             datamodule1.fdQuerArbr.Active:=True;
+                                             datamodule1.fdQuerArbr.Open;
+                                             Text:= datamodule1.fdQuerArbr.FieldByName('nom').AsString + ' ' + datamodule1.fdQuerArbr.FieldByName('prenom').AsString;
+                                             Tag:=   l;
+                                             IndPers:=datamodule1.fdQuerArbr.FieldByName('idPer').AsString ;
+                                         end
+                                         else
+                                             begin
+                                                position.X:= (n) + ((j-1)*(largeEd+interv))  ;
+                                                Text:= 'test'+ IntToStr(j);
+                                                Tag:=   l;
+                                             end;
+                                      end;
+                                       Name:= 'edAscN'+IntToStr(i)+'_'+IntToStr(j);
+    //
+                                    end
+                                     else
+                                       if (i>1) and (i<=t) then
+                                        begin
+                                           case j of
+                                             1:
+                                               begin
+                                                 position.X := centre- (r*(largeEd + interv ));
+                                                 n :=centre- (r*(largeEd + interv ));
+                                               end
+                                                 else position.X := (n) + ((j-1)* (largeEd+interv) )+(interv div 2) ;
+                                               end;
+                                               Name:= 'edAscN'+IntToStr(i)+'_'+IntToStr(j);
+                                               Text:= 'test'+ IntToStr(j);
+                                               Tag:=   l;
+                                        end;
+                              for tr :=0  to (nbi-1) do
+                                   begin
+                                     if l=tr then
+                                        begin
+                                           datamodule1.fdQuerArbrPlus.close;
+                                           datamodule1.fdQuerArbrPlus.SQL.clear;
+                                           datamodule1.fdQuerArbrPlus.SQL.Text:= 'SELECT nom,prenom FROM personnes where idperson=:IndPers';
+                                           datamodule1.fdQuerArbrPlus.ParamByName('IndPers').AsInteger := indiv[tr,1];
+                                           datamodule1.fdQuerArbrPlus.Open;
+                                           Text:=datamodule1.fdQuerArbrPlus.FieldByName('nom').AsString + ' ' + datamodule1.fdQuerArbrPlus.FieldByName('prenom').AsString ;
+                                         end;
                              end;
-                            datamodule1.fdQuerArbrPlus.close;
-                         end;
-                         //MessageDlg ('l : '+ l.ToString,mtInformation,[mbOK],0);
-
-                         l:=l+1;
-                         end;
+                              datamodule1.fdQuerArbrPlus.close;
+                        end;
+//                         //MessageDlg ('l : '+ l.ToString,mtInformation,[mbOK],0);
+                           l:=l+1;
+              end;
                       haut:=haut+32;
 
-                   end;
+  end;
 
   end;
 
@@ -313,6 +299,11 @@ begin
 
 
 
+end;
+
+procedure TFArbre.FormShow(Sender: TObject);
+begin
+    edNivo.text:=fchoix.edNiv.text;
 end;
 
 end.

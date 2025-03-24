@@ -1,6 +1,5 @@
 ﻿[DataModule1.FDQuerChoix]
-Visible=False
-Coordinates=590,338,173,36
+Coordinates=773,348,173,36
 
 [ToolBar1]
 Coordinates=169,338,67,36
@@ -19,10 +18,6 @@ Coordinates=205,1,58,58
 
 [DataModule1.FDQuerSais]
 Coordinates=364,174,165,58
-
-[BindSourceDB1]
-Coordinates=36,154,159,80
-Visible=True
 
 [sgChoix]
 Coordinates=117,77,61,58
@@ -47,9 +42,6 @@ Coordinates=769,78,168,58
 
 [lbArbr]
 Coordinates=297,338,49,58
-
-[BindingsList1]
-Coordinates=0,302,91,36
 
 [DataModule1.FDQuerNomPren]
 Coordinates=301,1,194,58
@@ -89,4 +81,8 @@ Coordinates=533,78,190,58
 
 [DataModule1.FDQuerArbr]
 Coordinates=769,1,164,58
+
+[]
+Coordinates=0,302,91,36
+Visible=True
 

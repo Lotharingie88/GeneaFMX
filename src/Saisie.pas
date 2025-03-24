@@ -7,7 +7,7 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
   FMX.Controls.Presentation, FMX.Layouts, FMX.Memo.Types, FMX.ListBox, FMX.Edit,
   FMX.ScrollBox, FMX.Memo,UdbGenea, Data.Bind.EngExt, Fmx.Bind.DBEngExt,
-  System.Rtti, System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.Components,
+  System.Rtti,Firedac.stan.Param, System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.Components,
   Data.Bind.DBScope,FMX.Platform;
 
 type

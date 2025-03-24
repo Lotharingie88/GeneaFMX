@@ -7,6 +7,7 @@ object FArbre: TFArbre
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnShow = FormShow
   DesignerMasterStyle = 0
   object Layout1: TLayout
     Position.X = 8.000000000000000000
@@ -82,6 +83,15 @@ object FArbre: TFArbre
       Size.Height = 24.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 3
+    end
+    object edNivo: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 4
+      Position.X = 97.000000000000000000
+      Position.Y = 7.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 18.000000000000000000
+      Size.PlatformDefault = False
     end
   end
 end

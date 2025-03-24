@@ -1,9 +1,12 @@
 object FChoix: TFChoix
   Left = 0
   Top = 0
+  BorderStyle = Single
   Caption = 'Form2'
   ClientHeight = 578
   ClientWidth = 695
+  Position = MainFormCenter
+  FormStyle = StayOnTop
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -89,8 +92,8 @@ object FChoix: TFChoix
       Size.Height = 304.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 5
-      Viewport.Width = 629.000000000000000000
-      Viewport.Height = 279.000000000000000000
+      Viewport.Width = 633.000000000000000000
+      Viewport.Height = 304.000000000000000000
     end
     object lbChoix: TLabel
       Position.X = 8.000000000000000000
@@ -153,17 +156,5 @@ object FChoix: TFChoix
       Size.PlatformDefault = False
       TabOrder = 3
     end
-  end
-  object BindingsList1: TBindingsList
-    Methods = <>
-    OutputConverters = <>
-    Left = 580
-    Top = 461
-  end
-  object BindSourceDB1: TBindSourceDB
-    DataSet = DataModule1.FDQuerChoix
-    ScopeMappings = <>
-    Left = 424
-    Top = 464
   end
 end

@@ -26,8 +26,6 @@ type
     lbSelect: TLabel;
     lbArbr: TLabel;
     lbNiv: TLabel;
-    BindingsList1: TBindingsList;
-    BindSourceDB1: TBindSourceDB;
     lbNom: TLabel;
     lbPren: TLabel;
     procedure btQuitClick(Sender: TObject);
@@ -138,6 +136,7 @@ end;
 procedure TFChoix.btValidClick(Sender: TObject);
   var
     idnom:string;
+    t:integer;
 begin
    if lbChoix.text='Saisie' then
    	begin
@@ -226,8 +225,10 @@ begin
      else
      if lbChoix.text='Arbre' then
      begin
-
-              Person := cbDebArbre.Text;
+             if edNiv.Text <>'' then
+              begin
+              farbre.edNivo.text:=edniv.text;
+              Person := cbDebArbre.Selected.Text;
 
               datamodule1.fdQuerChoixPlus.close;
               datamodule1.fdQuerChoixPlus.SQL.clear;
@@ -238,9 +239,15 @@ begin
               datamodule1.fdQuerChoixPlus.Open;
               indpers:=datamodule1.fdQuerChoixPlus.FieldByName('idperson').AsInteger;
               Farbre.edInd0.Text:= indpers.ToString;
-              Farbre.lbNiv.Text:= edniv.Text;
-              Fchoix.Close;
+
+              //t:=fchoix.edniv.Text.ToInteger();
+              //Farbre.lbNiv.text:=t.ToString;
+              //Fchoix.Close;
+              end
+              else
+              edniv.SetFocus;
      end;
+     fchoix.Close;
 end;
 
 procedure TFChoix.FormShow(Sender: TObject);
@@ -604,6 +611,7 @@ begin
     end;
    if Fchoix.lbChoix.Text='Arbre' then
     begin
+        cbDebArbre.Visible:=true;
         datamodule1.fdQuerChoix.close;
         datamodule1.fdQuerChoix.SQL.clear;
         datamodule1.fdQuerChoix.SQL.Text:= 'SELECT idperson,nom,prenom,datnaiss FROM personnes order by nom,prenom';
