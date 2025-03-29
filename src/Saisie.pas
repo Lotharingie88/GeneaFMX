@@ -3,7 +3,7 @@ unit Saisie;
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  Winapi.Windows, Winapi.Messages,System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
   FMX.Controls.Presentation, FMX.Layouts, FMX.Memo.Types, FMX.ListBox, FMX.Edit,
   FMX.ScrollBox, FMX.Memo,UdbGenea, Data.Bind.EngExt, Fmx.Bind.DBEngExt,
@@ -72,6 +72,7 @@ type
     procedure btQuitClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btRecClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Déclarations privées }
   public
@@ -172,12 +173,12 @@ begin
                Fchoix.btQuit.Visible:=False;
                Fchoix.LbMsg.Text :='il y a déjà des individus avec cette identité';
                Fchoix.lbArbr.Visible:=False;
-
-                             Fchoix.lbNiv.Visible:=False;
-                             Fchoix.edNiv.Visible:=False;
-                             fchoix.height:=610;
-                             fchoix.Width:=695;
-                             Fchoix.ShowModal;
+               Fchoix.lbNiv.Visible:=False;
+               Fchoix.edNiv.Visible:=False;
+               fchoix.height:=610;
+               fchoix.Width:=695;
+               Fchoix.Showmodal;
+               //lbind.Text:=Fchoix.sgChoix.selected.ToString;
         end;
      except
 
@@ -516,6 +517,10 @@ begin
       except
 
       end;
+        finally
+              ShowMessage ('Données insèrées dans la base');
+           end;
+
 
      	 try
          		if (IdEpo <> 0) then
@@ -548,6 +553,8 @@ begin
                      except
                      end;
                  end;
+
+
                  if (IdEpo2 <> 0) then
                      begin
     //                   //ShowMessage ('Epoux :'+ IdEpo.ToString);
@@ -584,11 +591,11 @@ begin
 
 
 
-     finally
-       ShowMessage ('Données insèrées dans la base');
+     //finally
+       //ShowMessage ('Données insèrées dans la base');
 
 
-     end;
+     //end;
       for i := 0 to Componentcount-1 do
          	begin
             		if Components[i] is TEdit  then
@@ -626,6 +633,91 @@ procedure TFSaisie.FormActivate(Sender: TObject);
   var
     i:integer;
 begin
+//    Datmaj := DateToStr(Date);
+//    datamodule1.fdQuerPays.close;
+//     datamodule1.fdQuerPays.open;
+//     CbPNaiss.Items.Clear();
+//     CbPNaiss.Items.Add('');
+//     CbPNaiss.ItemIndex := 0;
+//     CbPdec.Items.Clear();
+//     CbPdec.Items.Add('');
+//     CbPdec.ItemIndex := 0;
+//  	while not datamodule1.fdQuerPays.Eof do
+//       begin
+//           CbPNaiss.Items.Add(datamodule1.fdQuerPays.FieldByName('nom').AsString);
+//           CbPNaiss.ItemIndex := datamodule1.fdQuerPays.FieldByName('idnation').AsInteger;
+//           CbPdec.Items.Add(datamodule1.fdQuerPays.FieldByName('nom').AsString);
+//           CbPdec.ItemIndex := datamodule1.fdQuerPays.FieldByName('idnation').AsInteger;
+//           //CbPNaiss.AddItem(datamodule1.fdQuerPays.FieldByName('nom').AsString,TObject(datamodule1.fdQuerPays.FieldByName('idnation').AsInteger));
+//           //CbPdec.AddItem(datamodule1.fdQuerPays.FieldByName('nom').AsString,TObject(datamodule1.fdQuerPays.FieldByName('idnation').AsInteger));
+//           datamodule1.fdQuerPays.Next;
+//       end;
+//         //CbPNaiss.Selected.Text :='';
+////         CbPdec.Selected.Text :='';
+//       datamodule1.fdQuerPays.close;
+//       datamodule1.fdQuerDept.close;
+//       datamodule1.fdQuerDept.open;
+//       CbDNaiss.Items.Clear();
+//       CbDNaiss.Items.Add('');
+//       CbDNaiss.ItemIndex := 0;
+//       CbDDec.Items.Clear();
+//       CbDDec.Items.Add('');
+//       CbDDec.ItemIndex := 0;
+//     while not datamodule1.fdQuerDept.Eof do
+//       begin
+//           CbDNaiss.Items.Add(datamodule1.fdQuerDept.FieldByName('dept').AsString);
+//           CbDNaiss.ItemIndex := datamodule1.fdQuerDept.FieldByName('iddept').AsInteger;
+//           CbDdec.Items.Add(datamodule1.fdQuerDept.FieldByName('dept').AsString);
+//           CbDdec.ItemIndex := datamodule1.fdQuerDept.FieldByName('iddept').AsInteger;
+//////           CbDeptNaiss.AddItem(OutRequet.FieldByName('dept').AsString,TObject(OutRequet.FieldByName('iddept').AsInteger));
+//////           CbDeptDec.AddItem(OutRequet.FieldByName('dept').AsString,TObject(OutRequet.FieldByName('iddept').AsInteger));
+//          datamodule1.fdQuerDept.Next;
+//       end;
+//        datamodule1.fdQuerDept.close;
+////         CbDNaiss.Selected.Text:='';
+////         CbDDec.Selected.Text:='';
+//    for i := 0 to Componentcount-1 do
+//         	begin
+//            		if Components[i] is TEdit  then
+//                     begin
+//                        TEdit(Components[i]).Text := '';
+//                     end;
+////               end;
+////         for i := 0 to Componentcount-1 do
+////          	begin
+//            		if (Components[i] is TComboBox ) then
+//                     begin
+//                       TComboBox(Components[i]).itemindex:=0;
+//                     end;
+////               end;
+////           for i := 0 to Componentcount-1 do
+////          	begin
+//            		if (Components[i] is TMemo ) then
+//                     begin
+//                       TMemo(Components[i]).Text := '';
+//                     end;
+////               end;
+////           for i := 0 to Componentcount-1 do
+////          	begin
+//            		if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbInd') or (TLabel(Components[i]).Name = 'lbEpo') or (TLabel(Components[i]).Name =  'lbEpo2') or (TLabel(Components[i]).Name =  'lbMer') or (TLabel(Components[i]).Name =  'lbPer') )) then
+//                     begin
+//                        TLabel(Components[i]).Text:='';
+//                         if (TLabel(Components[i]).Name = 'lbInd') then
+//                            TLabel(Components[i]).Text:='0' ;
+////
+//                     end;
+//                if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMaj'))) then
+//                  begin
+//                     lbMaj.Text:= 'Mise à jour le : ' ;
+//                  end;
+//          end;
+
+end;
+
+procedure TFSaisie.FormCreate(Sender: TObject);
+ var
+    i:integer;
+begin
     Datmaj := DateToStr(Date);
     datamodule1.fdQuerPays.close;
      datamodule1.fdQuerPays.open;
@@ -641,12 +733,10 @@ begin
            CbPNaiss.ItemIndex := datamodule1.fdQuerPays.FieldByName('idnation').AsInteger;
            CbPdec.Items.Add(datamodule1.fdQuerPays.FieldByName('nom').AsString);
            CbPdec.ItemIndex := datamodule1.fdQuerPays.FieldByName('idnation').AsInteger;
-           //CbPNaiss.AddItem(datamodule1.fdQuerPays.FieldByName('nom').AsString,TObject(datamodule1.fdQuerPays.FieldByName('idnation').AsInteger));
-           //CbPdec.AddItem(datamodule1.fdQuerPays.FieldByName('nom').AsString,TObject(datamodule1.fdQuerPays.FieldByName('idnation').AsInteger));
+
            datamodule1.fdQuerPays.Next;
        end;
-         //CbPNaiss.Selected.Text :='';
-//         CbPdec.Selected.Text :='';
+
        datamodule1.fdQuerPays.close;
        datamodule1.fdQuerDept.close;
        datamodule1.fdQuerDept.open;
@@ -662,49 +752,36 @@ begin
            CbDNaiss.ItemIndex := datamodule1.fdQuerDept.FieldByName('iddept').AsInteger;
            CbDdec.Items.Add(datamodule1.fdQuerDept.FieldByName('dept').AsString);
            CbDdec.ItemIndex := datamodule1.fdQuerDept.FieldByName('iddept').AsInteger;
-////           CbDeptNaiss.AddItem(OutRequet.FieldByName('dept').AsString,TObject(OutRequet.FieldByName('iddept').AsInteger));
-////           CbDeptDec.AddItem(OutRequet.FieldByName('dept').AsString,TObject(OutRequet.FieldByName('iddept').AsInteger));
+
           datamodule1.fdQuerDept.Next;
        end;
         datamodule1.fdQuerDept.close;
-//         CbDNaiss.Selected.Text:='';
-//         CbDDec.Selected.Text:='';
+
     for i := 0 to Componentcount-1 do
          	begin
             		if Components[i] is TEdit  then
                      begin
                         TEdit(Components[i]).Text := '';
                      end;
-//               end;
-//         for i := 0 to Componentcount-1 do
-//          	begin
             		if (Components[i] is TComboBox ) then
                      begin
                        TComboBox(Components[i]).itemindex:=0;
                      end;
-//               end;
-//           for i := 0 to Componentcount-1 do
-//          	begin
             		if (Components[i] is TMemo ) then
                      begin
                        TMemo(Components[i]).Text := '';
                      end;
-//               end;
-//           for i := 0 to Componentcount-1 do
-//          	begin
             		if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbInd') or (TLabel(Components[i]).Name = 'lbEpo') or (TLabel(Components[i]).Name =  'lbEpo2') or (TLabel(Components[i]).Name =  'lbMer') or (TLabel(Components[i]).Name =  'lbPer') )) then
                      begin
                         TLabel(Components[i]).Text:='';
                          if (TLabel(Components[i]).Name = 'lbInd') then
                             TLabel(Components[i]).Text:='0' ;
-//
                      end;
                 if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMaj'))) then
                   begin
                      lbMaj.Text:= 'Mise à jour le : ' ;
                   end;
           end;
-
 end;
 
 end.

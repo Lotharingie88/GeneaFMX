@@ -88,12 +88,14 @@ object FChoix: TFChoix
       ClipChildren = True
       Position.X = 8.000000000000000000
       Position.Y = 136.000000000000000000
-      Size.Width = 633.000000000000000000
-      Size.Height = 304.000000000000000000
+      Size.Width = 641.000000000000000000
+      Size.Height = 310.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 5
-      Viewport.Width = 633.000000000000000000
-      Viewport.Height = 304.000000000000000000
+      Options = [Editing, ColumnResize, ColumnMove, ColLines, RowLines, RowSelect, Tabs, Header, HeaderClick, AutoDisplacement]
+      OnSelectCell = sgChoixSelectCell
+      Viewport.Width = 637.000000000000000000
+      Viewport.Height = 285.000000000000000000
     end
     object lbChoix: TLabel
       Position.X = 8.000000000000000000
@@ -156,5 +158,22 @@ object FChoix: TFChoix
       Size.PlatformDefault = False
       TabOrder = 3
     end
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      DataSource = BindSourceDB1
+      GridControl = sgChoix
+      Columns = <>
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = DataModule1.FDQuerChoix
+    ScopeMappings = <>
+    Left = 336
+    Top = 272
   end
 end

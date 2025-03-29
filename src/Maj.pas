@@ -62,11 +62,11 @@ type
     edPMer: TEdit;
     edEnf: TEdit;
     Label18: TLabel;
-    lbNMaj: TLabel;
-    lbEpMaj: TLabel;
-    LbEp2Maj: TLabel;
-    lbPMaj: TLabel;
-    lbMMaj: TLabel;
+    lbInd: TLabel;
+    lbEpo: TLabel;
+    LbEpo2: TLabel;
+    lbPer: TLabel;
+    lbMer: TLabel;
     procedure btQuitClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -138,11 +138,11 @@ begin
      idEpo2:=0;
      idPer:=0;
      idMer:=0;
-     lbEpMaj.Text:=IntTostr(idEpo);
-     lbEp2Maj.Text:=IntTostr(idEpo2);
-     lbPMaj.Text:=IntTostr(idPer);
-     lbMMaj.Text:=IntTostr(idMer);
-     lbNMaj.Text:=IntTostr(idInd);
+     lbEpo.Text:=IntTostr(idEpo);
+     lbEpo2.Text:=IntTostr(idEpo2);
+     lbPer.Text:=IntTostr(idPer);
+     lbMer.Text:=IntTostr(idMer);
+     lbInd.Text:=IntTostr(idInd);
 //
 //     //controle des homonymie
 //     //époux
@@ -154,7 +154,7 @@ begin
           datamodule1.fdQuerMaj.ParamByName('NEPou').AsString := NEpou;
           datamodule1.fdQuerMaj.ParamByName('PEPou').AsString := PEpou;
           datamodule1.fdQuerMaj.Open;
-                   if (datamodule1.fdQuerMaj.FieldByName('nbp').AsInteger=0) or (lbEpMaj.Text='-1') then
+                   if (datamodule1.fdQuerMaj.FieldByName('nbp').AsInteger=0) or (lbEpo.Text='-1') then
                    begin
                    	try
                         begin
@@ -211,7 +211,7 @@ begin
           datamodule1.fdQuerMaj.ParamByName('PEPou2').AsString := UpperCase(PEpou2);
 
           datamodule1.fdQuerMaj.Open;
-                   if (datamodule1.fdQuerMaj.FieldByName('nbp').AsInteger=0) or (lbEp2Maj.text='-1') then
+                   if (datamodule1.fdQuerMaj.FieldByName('nbp').AsInteger=0) or (lbEpo2.text='-1') then
                    begin
 //                   	try
 //
@@ -273,7 +273,7 @@ begin
           datamodule1.fdQuerMaj.ParamByName('NomPer').AsString := UpperCase(NomPer);
           datamodule1.fdQuerMaj.ParamByName('PrenomPer').AsString := UpperCase(PrenomPer);
           datamodule1.fdQuerMaj.Open;
-                   if (datamodule1.fdQuerMaj.FieldByName('nbp').AsInteger=0) or (lbPMaj.text='-1'  )then
+                   if (datamodule1.fdQuerMaj.FieldByName('nbp').AsInteger=0) or (lbPer.text='-1'  )then
                    begin
                    	  try
                            begin
@@ -357,7 +357,7 @@ begin
           datamodule1.fdQuerMaj.ParamByName('NomMer').AsString := UpperCase(NomMer);
           datamodule1.fdQuerMaj.ParamByName('PrenomMer').AsString := UpperCase(PrenomMer);
           datamodule1.fdQuerMaj.Open;
-                   if (datamodule1.fdQuerMaj.FieldByName('nbp').AsInteger=0) or(lbMMaj.text='-1') then
+                   if (datamodule1.fdQuerMaj.FieldByName('nbp').AsInteger=0) or(lbMer.text='-1') then
                    begin
                       try
                            begin
@@ -427,7 +427,7 @@ begin
 //
 //
   try
-        if (EdNEpo.Text <>'') and ((lbEpmaj.Text='-1') or (lbEpmaj.Text='0')) then
+        if (EdNEpo.Text <>'') and ((lbEpo.Text='-1') or (lbEpo.Text='0')) then
                 begin
                   datamodule1.fdQuerMaj.close;
                   datamodule1.fdQuerMaj.SQL.Clear;
@@ -438,7 +438,7 @@ begin
                   idEpo :=datamodule1.fdQuerMaj.FieldByName('idperson').AsInteger;
                 end
                else
-              if (lbEpmaj.text<>'0') and (lbEpmaj.text<>'-1') then
+              if (lbEpo.text<>'0') and (lbEpo.text<>'-1') then
                  begin
 //                 	idEpo := StrToInt(lbEpmaj.Caption) ;
                  end
@@ -446,7 +446,7 @@ begin
                  begin
 //                	idEpo :=0;
                  end;
-                if (EdN2Epo.Text <>'') and ((lbEp2maj.text='-1') or (lbEp2maj.text='0')) then
+                if (EdN2Epo.Text <>'') and ((lbEpo2.text='-1') or (lbEpo2.text='0')) then
                 begin
 //                  datamodule1.fdQuerMaj.close;
 //
@@ -461,7 +461,7 @@ begin
 //
                 end
                else
-              if (lbEp2maj.text<>'0') and (lbEp2maj.text<>'-1') then
+              if (lbEpo2.text<>'0') and (lbEpo2.text<>'-1') then
                  begin
 //                 	idEpo2 := StrToInt(lbEp2maj.Caption) ;
                  end
@@ -469,7 +469,7 @@ begin
                  begin
 //                	idEpo2 :=0;
                  end;
-             if (EdNPer.Text <>'') and ((lbPMaj.text='-1') or (lbPMaj.text='0')) then
+             if (EdNPer.Text <>'') and ((lbPer.text='-1') or (lbPer.text='0')) then
                  begin
 //                      datamodule1.fdQuerMaj.close;
 //
@@ -482,7 +482,7 @@ begin
 //                      idPer :=datamodule1.fdQuerMaj.FieldByName('idperson').AsInteger;
                 end
                   else
-               if (lbPMaj.text<>'0') and (lbPMaj.text<>'-1') then
+               if (lbPer.text<>'0') and (lbPer.text<>'-1') then
                  begin
 //                      idPer := StrToInt(lbPMaj.Caption) ;
                  end
@@ -490,7 +490,7 @@ begin
                  begin
 //               	      idPer :=0;
                 end;
-               if (EdNMer.Text <>'') and ((lbMMaj.text='-1') or (lbMMaj.text='0')) then
+               if (EdNMer.Text <>'') and ((lbMer.text='-1') or (lbMer.text='0')) then
                  begin
 //                   datamodule1.fdQuerMaj.close;
 //
@@ -504,7 +504,7 @@ begin
 //
                 end
                  else
-               if (lbMMaj.text<>'0') and (lbMMaj.text<>'-1') then
+               if (lbMer.text<>'0') and (lbMer.text<>'-1') then
                 begin
 //                  IdMer := StrToInt(lbMMaj.Caption) ;
                  end
@@ -620,7 +620,7 @@ begin
      if (datamodule1.fdQuerMaj.RecordCount =1) then
            	begin
                   IndPers := datamodule1.fdQuerMaj.FieldByName('idperson').AsInteger;
-                  lbNMaj.Text :=  datamodule1.fdQuerMaj.FieldByName('idperson').AsString;
+                  lbInd.Text :=  datamodule1.fdQuerMaj.FieldByName('idperson').AsString;
                  	EdNaiss.Text :=  datamodule1.fdQuerMaj.FieldByName('Naissance').AsString;
                   EdDec.Text := datamodule1.fdQuerMaj.FieldByName('Deces').AsString;
                   EdMaria.Text := datamodule1.fdQuerMaj.FieldByName('Mariage').AsString;
@@ -643,7 +643,7 @@ begin
                       begin
                  		    EdNMer.Text := datamodule1.fdQuerMajPlus.FieldByName('nom').AsString;
                      		EdPmer.Text := datamodule1.fdQuerMajPlus.FieldByName('prenom').AsString;
-                        lbMMaj.Text:= datamodule1.fdQuerMajPlus.FieldByName('idperson').AsString;
+                        lbMer.Text:= datamodule1.fdQuerMajPlus.FieldByName('idperson').AsString;
                     end;
 
                     datamodule1.fdQuerMajPlus.Close;
@@ -654,7 +654,7 @@ begin
                     begin
                  		  edNPer.Text := datamodule1.fdQuerMajPlus.FieldByName('nom').AsString;
                  		  edPPer.Text := datamodule1.fdQuerMajPlus.FieldByName('prenom').AsString;
-                      lbPMaj.text:= datamodule1.fdQuerMajPlus.FieldByName('idperson').AsString;
+                      lbPer.text:= datamodule1.fdQuerMajPlus.FieldByName('idperson').AsString;
                     end;
                    datamodule1.fdQuerMajPlus.Close;
                  	 datamodule1.fdQuerMajPlus.SQL.Clear;
@@ -664,7 +664,7 @@ begin
                     begin
                  		  edNEpo.Text := datamodule1.fdQuerMajPlus.FieldByName('nom').AsString;
                  		  edPEpo.Text := datamodule1.fdQuerMajPlus.FieldByName('prenom').AsString;
-                      lbEpMaj.Text:= datamodule1.fdQuerMajPlus.FieldByName('idperson').AsString;
+                      lbEpo.Text:= datamodule1.fdQuerMajPlus.FieldByName('idperson').AsString;
                     end;
                     datamodule1.fdQuerMajPlus.Close;
                     datamodule1.fdQuerMajPlus.SQL.Clear;
@@ -674,7 +674,7 @@ begin
                     begin
                  		edN2Epo.Text := datamodule1.fdQuerMajPlus.FieldByName('nom').AsString;
                  		edP2Epo.Text := datamodule1.fdQuerMajPlus.FieldByName('prenom').AsString;
-                    lbEp2Maj.Text:= datamodule1.fdQuerMajPlus.FieldByName('idperson').AsString;
+                    lbEpo2.Text:= datamodule1.fdQuerMajPlus.FieldByName('idperson').AsString;
                     end;
                     datamodule1.fdQuerMajPlus.Close;
                  	  datamodule1.fdQuerMajPlus.SQL.Clear;
@@ -726,7 +726,7 @@ begin
                                  end;
                                 if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMMaj') or (TLabel(Components[i]).Name = 'lbPMaj') or (TLabel(Components[i]).Name =  'lbEpMaj') or (TLabel(Components[i]).Name =  'lbEp2Maj')or (TLabel(Components[i]).Name =  'lbNMaj') )) then
                                  begin
-                                   TLabel(Components[i]).Text:='';
+                                   TLabel(Components[i]).text.Empty;
                                  end;
                               if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMaj'))) then
                                   begin

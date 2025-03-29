@@ -5,7 +5,8 @@ interface
 uses
   System.SysUtils, System.Types,system.Math, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,UdbGenea,
-  FMX.StdCtrls, FMX.Controls.Presentation, FMX.Layouts, FMX.Edit;
+  FMX.StdCtrls, FMX.Controls.Presentation, FMX.Layouts,system.DateUtils, FMX.Edit,
+  FMX.Memo.Types, FMX.ScrollBox, FMX.Memo;
 
 type
   TFArbre = class(TForm)
@@ -18,6 +19,7 @@ type
     Label1: TLabel;
     lbNiv: TLabel;
     edNivo: TEdit;
+    Memo1: TMemo;
     procedure btQuitClick(Sender: TObject);
     procedure btCreateClick(Sender: TObject);
     procedure edInd0Change(Sender: TObject);
@@ -41,6 +43,7 @@ implementation
     Indind:integer;
     datmaj:string;
     ed: tedit;
+    memi:tmemo;
 procedure TFArbre.btCreateClick(Sender: TObject);
    var
 	individu :String;
@@ -59,6 +62,11 @@ begin
                      if (Components[p] is TLabel) and (components[p].Name <> 'LbNiv')  then
                       begin
 
+                         Components[p].DisposeOf;
+                      end;
+                     if (Components[p] is TMemo)   then
+                      begin
+                         Components[p].Free;
                          Components[p].DisposeOf;
                       end;
                end;
@@ -96,6 +104,7 @@ begin
           Fchoix.lbNiv.Visible:=True;
           Fchoix.edNiv.Visible:=True;
           Fchoix.RdChoix.Visible:=false;
+          Fchoix.cbdebarbre.Visible:=True;
           fchoix.Show;
      	    //fchoix.ShowModal;
 end;
@@ -111,9 +120,9 @@ procedure TFArbre.edInd0Change(Sender: TObject);
   indiv: array  of array of integer;
 begin
     t:= edNivo.text.ToInteger();
-   interv:=6;
-   largeEd:=120;
-   hautEd:=20;
+   interv:=10;
+   largeEd:=150;
+   hautEd:=40;
    w:= round(single(Power(2,t))) *(largeEd+interv);
     //sbArbre.Width :=w;
     sbArbre.Width :=FArbre.Width - 96;
@@ -128,7 +137,7 @@ begin
        IndInd:= edInd0.Text.ToInteger();
         	datamodule1.fdQuerArbr.close;
       	  datamodule1.fdQuerArbr.SQL.clear;
-      	  datamodule1.fdQuerArbr.SQL.Text:= 'SELECT idperson,idper,idmer,nom,prenom FROM personnes where idperson=:IndPers';
+      	  datamodule1.fdQuerArbr.SQL.Text:= 'SELECT idperson,idper,idmer,nom,prenom,datdec,datnaiss FROM personnes where idperson=:IndPers';
           datamodule1.fdQuerArbr.ParamByName('IndPers').AsInteger := Indind;
       	  datamodule1.fdQuerArbr.Open;
           l:=0;
@@ -197,7 +206,8 @@ begin
                                Visible:=false;
                             end;
                          end ;
-                          with tedit.Create(self) do
+                          //with tedit.Create(self) do
+                          with tmemo.Create(self) do
 
                             begin
 
@@ -205,11 +215,17 @@ begin
                             Width := largeEd;
                             Height:= hautEd;
                             position.y:=haut;
+                            textsettings.HorzAlign := ttextalign.Center;
+                            textsettings.Font.Size:=10;
+                            textsettings.Font.style:=font.style + [tfontstyle.fsBold];
+                            //margins.Bottom := 100 ;
+                            //margins.Top:=100;
                               if i=0 then
                                 begin
                                     position.X := centre-(largeEd div 2);
                                     Name:= 'edAscN'+IntToStr(i)+'_'+IntToStr(j);
                                     Text:= datamodule1.fdQuerArbr.FieldByName('nom').AsString + ' ' + datamodule1.fdQuerArbr.FieldByName('prenom').AsString;
+
                                     tag := datamodule1.fdQuerArbr.FieldByName('idPer').AsInteger ;
                                     iP:=datamodule1.fdQuerArbr.FieldByName('idPer').AsString;
                                     iM:='0';
@@ -266,10 +282,14 @@ begin
                                         begin
                                            datamodule1.fdQuerArbrPlus.close;
                                            datamodule1.fdQuerArbrPlus.SQL.clear;
-                                           datamodule1.fdQuerArbrPlus.SQL.Text:= 'SELECT nom,prenom FROM personnes where idperson=:IndPers';
+                                           datamodule1.fdQuerArbrPlus.SQL.Text:= 'SELECT nom,prenom,datdec as Dec,datnaiss as Naiss FROM personnes where idperson=:IndPers';
                                            datamodule1.fdQuerArbrPlus.ParamByName('IndPers').AsInteger := indiv[tr,1];
                                            datamodule1.fdQuerArbrPlus.Open;
-                                           Text:=datamodule1.fdQuerArbrPlus.FieldByName('nom').AsString + ' ' + datamodule1.fdQuerArbrPlus.FieldByName('prenom').AsString ;
+                                           if (datamodule1.fdQuerArbrPlus.FieldByName('nom').AsString<>'') and (datamodule1.fdQuerArbrPlus.FieldByName('prenom').AsString<>'') then
+
+                                           Text:=datamodule1.fdQuerArbrPlus.FieldByName('nom').AsString + ' ' + datamodule1.fdQuerArbrPlus.FieldByName('prenom').AsString + ' (' + YearOf(datamodule1.fdQuerArbrPlus.FieldByName('Naiss').AsDateTime).ToString + '-'+YearOf(datamodule1.fdQuerArbrPlus.FieldByName('Dec').AsDateTime).ToString  + ')'
+                                              else
+                                              text:='';
                                          end;
                              end;
                               datamodule1.fdQuerArbrPlus.close;
@@ -277,24 +297,13 @@ begin
 //                         //MessageDlg ('l : '+ l.ToString,mtInformation,[mbOK],0);
                            l:=l+1;
               end;
-                      haut:=haut+32;
+                      haut:=haut+40;
 
   end;
 
   end;
 
-          //EdN10.Tag := ReqArbr.FieldByName('idper').AsInteger;
-          //EdN11.Tag := ReqArbr.FieldByName('idmer').AsInteger;
 
-          //ReqArbr.Active := False;
-      	//ReqArbr.SQL.clear;
-      	//ReqArbr.SQL.Text:= 'SELECT idper,idmer,nom,prenom FROM personnes where idperson=:IndPers';
-          //ReqArbr.ParamByName('IndPers').AsInteger := EdN10.Tag;
-          //ReqArbr.Active:=True;
-         //	ReqArbr.Open;
-          //EdN20.Tag := ReqArbr.FieldByName('idper').AsInteger;
-          //EdN21.Tag := ReqArbr.FieldByName('idmer').AsInteger;
-          //EdN10.Text := ReqArbr.FieldByName('nom').AsString + ' ' + ReqArbr.FieldByName('prenom').AsString ;
           datamodule1.fdQuerArbr.close;
 
 
@@ -302,8 +311,30 @@ begin
 end;
 
 procedure TFArbre.FormShow(Sender: TObject);
+  var
+    p:integer;
 begin
     edNivo.text:=fchoix.edNiv.text;
+    for p:=(Componentcount-1) downto 0 do
+          	begin
+                    //MessageDlg ('j : '+ Componentcount.ToString ,mtInformation,[mbOK],0);
+            		if (Components[p] is TEdit)  and
+                    	( TEdit(Components[p]).Name <> 'edInd0') and ( TEdit(Components[p]).Name <> 'edNivo') then
+                     	begin
+                      		Components[p].DisposeOf;
+                     	end
+                         else
+                     if (Components[p] is TLabel) and (components[p].Name <> 'LbNiv')  then
+                      begin
+
+                         Components[p].DisposeOf;
+                      end;
+                     if (Components[p] is TMemo)   then
+                      begin
+
+                         Components[p].DisposeOf;
+                      end;
+               end;
 end;
 
 end.

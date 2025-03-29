@@ -8,6 +8,7 @@ object FSaisie: TFSaisie
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnActivate = FormActivate
+  OnCreate = FormCreate
   DesignerMasterStyle = 0
   object Layout1: TLayout
     Position.X = -64.000000000000000000
@@ -238,8 +239,8 @@ object FSaisie: TFSaisie
       Size.Height = 289.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 22
-      Viewport.Width = 513.000000000000000000
-      Viewport.Height = 289.000000000000000000
+      Viewport.Width = 509.000000000000000000
+      Viewport.Height = 285.000000000000000000
     end
     object Label21: TLabel
       Position.X = 648.000000000000000000
@@ -506,7 +507,7 @@ object FSaisie: TFSaisie
       Size.Width = 25.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
-      Text = 'b'
+      Text = '0'
       TabOrder = 48
     end
     object lbPer: TLabel
@@ -515,7 +516,7 @@ object FSaisie: TFSaisie
       Size.Width = 33.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
-      Text = 'b'
+      Text = '0'
       TabOrder = 49
     end
     object lbMer: TLabel
@@ -524,7 +525,7 @@ object FSaisie: TFSaisie
       Size.Width = 33.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
-      Text = 'b'
+      Text = '0'
       TabOrder = 50
     end
     object lbEpo2: TLabel
@@ -533,7 +534,7 @@ object FSaisie: TFSaisie
       Size.Width = 33.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
-      Text = 'b'
+      Text = '0'
       TabOrder = 51
     end
     object lbMaj: TLabel

@@ -102,7 +102,7 @@ begin
 
                     if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMMaj') or (TLabel(Components[i]).Name = 'lbPMaj') or (TLabel(Components[i]).Name =  'lbEpMaj') or (TLabel(Components[i]).Name =  'lbEp2Maj') )) then
                      begin
-                       TLabel(Components[i]).Text:='';
+                       TLabel(Components[i]).Text.Empty;
                      end;
                end;
   Individu := CbNom.Text;
@@ -229,7 +229,7 @@ begin
                                  end;
                                 if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMMaj') or (TLabel(Components[i]).Name = 'lbPMaj') or (TLabel(Components[i]).Name =  'lbEpMaj') or (TLabel(Components[i]).Name =  'lbEp2Maj')or (TLabel(Components[i]).Name =  'lbNMaj') )) then
                                  begin
-                                   TLabel(Components[i]).Text:='';
+                                   TLabel(Components[i]).Text.Empty;
                                  end;
                               if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMaj'))) then
                                   begin
@@ -316,7 +316,7 @@ Datmaj := DateToStr(Date);
                      end;
                     if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMMaj') or (TLabel(Components[i]).Name = 'lbPMaj') or (TLabel(Components[i]).Name =  'lbEpMaj') or (TLabel(Components[i]).Name =  'lbEp2Maj')or (TLabel(Components[i]).Name =  'lbNMaj') )) then
                      begin
-                       TLabel(Components[i]).Text:='';
+                       TLabel(Components[i]).Text.Empty;
                      end;
                   if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMaj'))) then
                       begin
