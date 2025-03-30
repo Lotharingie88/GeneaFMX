@@ -26,6 +26,9 @@ type
     menQuit: TMenuItem;
     menPrint: TMenuItem;
     menOuv: TMenuItem;
+    menHelp: TMenuItem;
+    menAbout: TMenuItem;
+    menGuid: TMenuItem;
     procedure btQuitClick(Sender: TObject);
     procedure menQuitClick(Sender: TObject);
     procedure MenSaisClick(Sender: TObject);

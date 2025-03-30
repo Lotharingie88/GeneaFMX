@@ -314,6 +314,8 @@ begin
                              Fchoix.RdChoix.Visible := False;
                              Fchoix.cbDebArbre.Visible := false;
                              Fchoix.lbSelect.Visible := False;
+                             Fchoix.lbNom.Text:=edNEpou.Text ;
+                             Fchoix.lbPren.Text:=edPEpou.text ;
                              Fchoix.btValid.Visible:=True;
                              Fchoix.btNew.visible:=True;
                              Fchoix.btQuit.Visible:=False;
@@ -361,6 +363,8 @@ begin
                              Fchoix.RdChoix.Visible := False;
                              Fchoix.cbDebArbre.Visible := false;
                              Fchoix.lbSelect.Visible := False;
+                             Fchoix.lbNom.Text:=edN2Epo.Text ;
+                             Fchoix.lbPren.Text:=edP2Epo.text ;
                              Fchoix.btValid.Visible:=True;
                              Fchoix.btNew.visible:=True;
                              Fchoix.btQuit.Visible:=False;

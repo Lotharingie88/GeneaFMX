@@ -162,28 +162,28 @@ begin
        else
        if Fchoix.Caption = 'Homonymie pour l Epoux(se)' then
            begin
-         		Fsaisie.lbEpo.text :=  idNom;
+         		Fsaisie.lbEpo.text :=  t.ToString;
             Fchoix.Close;
             //lbSelect.Caption:=idnom;
           end
         else
        if Fchoix.Caption = 'Homonymie pour le Père' then
            begin
-         		Fsaisie.lbPer.text :=  idNom;
+         		Fsaisie.lbPer.text :=  t.ToString;
             Fchoix.Close;
             //lbSelect.Caption:=idnom;
           end
        else
        if Fchoix.Caption = 'Homonymie pour la Mère' then
           begin
-         		Fsaisie.lbMer.text :=  idNom;
+         		Fsaisie.lbMer.text :=  t.ToString;
              Fchoix.Close;
             //lbSelect.Caption:=idnom;
           end
         else
        if Fchoix.Caption = 'Homonymie pour l Epoux(se)2' then
            begin
-         		Fsaisie.lbEpo2.text :=  idNom;
+         		Fsaisie.lbEpo2.text :=  t.ToString;
             Fchoix.Close;
             //lbSelect.Caption:=idnom;
           end;
@@ -195,20 +195,18 @@ begin
      if lbChoix.text='MAJ' then
      begin
        //i:=sgChoix.Selection.Top ;
-       i:=sgChoix.Row;
-
-       idNom:=sgChoix.Cells[0,i];
-
+       idNom:=sgChoix.selected.ToString();
+       t:=sgChoix.Cells[0,idnom.ToInteger()].ToInteger();
        if Fchoix.Caption = 'MAJ-Homonymie pour l Epoux(se)' then
            begin
-         		Fmaj.lbEpo.text :=  idNom;
+         		Fmaj.lbEpo.text :=  t.ToString;
             //lbSelect.Caption:=idnom;
             Fchoix.Close;
           end
         else
        if Fchoix.Caption = 'MAJ-Homonymie pour le Père' then
            begin
-         		Fmaj.lbPer.text :=  idNom;
+         		Fmaj.lbPer.text :=  t.ToString;
             //lbSelect.Caption:=idnom;
             Fchoix.Close;
           end
@@ -216,14 +214,14 @@ begin
        if Fchoix.Caption = 'MAJ-Homonymie pour la Mère' then
           begin
             //ShowMessage ('IdNom :' + idNom);
-         		Fmaj.lbMer.text :=  idNom;
+         		Fmaj.lbMer.text :=  t.ToString;
             //lbSelect.Caption:=idnom;
             Fchoix.Close;
           end
         else
         if Fchoix.Caption = 'MAJ-Homonymie pour l Epoux(se)2' then
            begin
-         		Fmaj.lbEpo2.text :=  idNom;
+         		Fmaj.lbEpo2.text :=  t.ToString;
             //lbSelect.Caption:=idnom;
             Fchoix.Close;
           end;
@@ -284,19 +282,15 @@ begin
                       j:=0;
                       rowcount:=datamodule1.fdQuerChoix.RecordCount;
                       while not datamodule1.fdQuerChoix.Eof do
-
                       begin
                         k:=0;
 
                             cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
                             cells[k+1,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
-
                             cells[k+2,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
                             cells[k+3,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
- //                          end;
-                           datamodule1.fdQuerChoix.Next;
-                           inc(j);
-////
+                            datamodule1.fdQuerChoix.Next;
+                            inc(j);
                       end;
                   end;
                //datamodule1.fdQuerChoix.close;
@@ -312,29 +306,27 @@ begin
        else
        if Fchoix.Caption = 'Homonymie pour l Epoux(se)' then
            begin
-         		Fsaisie.lbEpo.text :=  idNom;
-            datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fsaisie.EdNEpou.Text);
-            datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fsaisie.EdPEpou.Text);
+         		//Fsaisie.lbEpo.text :=  idNom;
+            //datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fsaisie.EdNEpou.Text);
+            //datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fsaisie.EdPEpou.Text);
+            datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
+            datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
             datamodule1.fdQuerChoix.Open;
             datamodule1.fdQuerChoix.first;
-            with fchoix.sgChoix do
+            with sgChoix do
                   begin
-                      //j:=0;
+                      j:=0;
+                      rowcount:=datamodule1.fdQuerChoix.RecordCount;
                       while not datamodule1.fdQuerChoix.Eof do
                       begin
-                        j:=0;
-                        for k :=0 to datamodule1.fdQuerChoix.FieldCount-1 do
-                           begin
-                            //IndPers := datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-                            cells[k,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
-                            //ShowMessage ('IdNom :' + datamodule1.fdQuerChoix.FieldByName('nom').AsString );
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
+                        k:=0;
 
+                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
+                            cells[k+1,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
+                            cells[k+2,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
+                            cells[k+3,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
                             datamodule1.fdQuerChoix.Next;
-                           end;
-                           inc(j);
+                            inc(j);
                       end;
                   end;
 
@@ -351,58 +343,47 @@ begin
                 datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.text;
                 datamodule1.fdQuerChoix.Open;
                 datamodule1.fdQuerChoix.first;
-//                with fchoix.sgChoix do
-//                  begin
-//                      j:=0;
-                while not datamodule1.fdQuerChoix.Eof do
+                with sgChoix do
+                  begin
+                      j:=0;
+                      rowcount:=datamodule1.fdQuerChoix.RecordCount;
+                      while not datamodule1.fdQuerChoix.Eof do
                       begin
-                        with fchoix.sgChoix do
-                          begin
-                        j:=1;
-                        //j:=0;
-                        ShowMessage ('IdNom :' + datamodule1.fdQuerChoix.FieldByName('nom').AsString );
-                        for k :=0 to datamodule1.fdQuerChoix.FieldCount-1 do
-                           begin
-                           //IndPers := datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
+                        k:=0;
 
                             cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-                            cells[k,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
-
+                            cells[k+1,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
+                            cells[k+2,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
+                            cells[k+3,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
                             datamodule1.fdQuerChoix.Next;
-                            sgchoix.Repaint;
-                           end;
-                           inc(j);
+                            inc(j);
                       end;
-                    end;
-               datamodule1.fdQuerChoix.close;
+                  end;
           end
        else
        if Fchoix.Caption = 'Homonymie pour la Mère' then
           begin
-         		Fsaisie.lbMer.text :=  idNom;
-            datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fsaisie.EdNMer.Text);
-            datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fsaisie.EdPMer.Text);
+         		//Fsaisie.lbMer.text :=  idNom;
+            //datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fsaisie.EdNMer.Text);
+            //datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fsaisie.EdPMer.Text);
+            datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
+            datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
             datamodule1.fdQuerChoix.Open;
             datamodule1.fdQuerChoix.first;
-            with fchoix.sgChoix do
+            with sgChoix do
                   begin
-                      //j:=0;
+                      j:=0;
+                      rowcount:=datamodule1.fdQuerChoix.RecordCount;
                       while not datamodule1.fdQuerChoix.Eof do
                       begin
-                        j:=0;
-                        for k :=0 to datamodule1.fdQuerChoix.FieldCount-1 do
-                           begin
-                           //IndPers := datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-                            cells[k,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
+                        k:=0;
 
+                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
+                            cells[k+1,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
+                            cells[k+2,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
+                            cells[k+3,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
                             datamodule1.fdQuerChoix.Next;
-                           end;
-                           inc(j);
+                            inc(j);
                       end;
                   end;
 
@@ -411,40 +392,36 @@ begin
 //                               Fchoix.sgChoix.Columns[2].Width:=120;
 //                               Fchoix.sgChoix.Columns[3].Width:=80;
 //                               Fchoix.sgChoix.Visible:=True;
-//                              //Fchoix.ReqChoix.Active:=False;
 
 
           end
         else
        if Fchoix.Caption = 'Homonymie pour l Epoux(se)2' then
            begin
-         		Fsaisie.lbEpo2.text :=  idNom;
-            datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fsaisie.EdN2Epo.Text);
-            datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fsaisie.EdP2Epo.Text);
+         		//Fsaisie.lbEpo2.text :=  idNom;
+            //datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fsaisie.EdN2Epo.Text);
+            //datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fsaisie.EdP2Epo.Text);
+            datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
+            datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
             datamodule1.fdQuerChoix.Open;
             datamodule1.fdQuerChoix.first;
-              with fchoix.sgChoix do
+            with sgChoix do
                   begin
-                      //j:=0;
+                      j:=0;
+                      rowcount:=datamodule1.fdQuerChoix.RecordCount;
                       while not datamodule1.fdQuerChoix.Eof do
                       begin
-                        j:=0;
-                        for k :=0 to datamodule1.fdQuerChoix.FieldCount-1 do
-                           begin
-                           //IndPers := datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-                            cells[k,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
+                        k:=0;
 
+                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
+                            cells[k+1,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
+                            cells[k+2,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
+                            cells[k+3,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
                             datamodule1.fdQuerChoix.Next;
-                           end;
-                           inc(j);
+                            inc(j);
                       end;
                   end;
-
-              //Fsaisie.lbEpo2.text :=  idNom;
-              datamodule1.fdQuerChoix.close;
+              
            end;
     end;
     if Fchoix.lbChoix.Text='Maj' then
@@ -459,71 +436,63 @@ begin
         if Fchoix.Caption = 'Homonymie de la Personne' then
        	begin
          		Fmaj.lbInd.text:=  idNom;
-
-            //Fchoix.Close;
-            //lbSelect.Caption:=idnom;
           end
        else
        if Fchoix.Caption = 'Homonymie pour l Epoux(se)' then
            begin
-         		Fmaj.lbEpo.text :=  idNom;
-              datamodule1.fdQuerChoix.close;
-              datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fmaj.EdNEpo.Text);
-              datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fmaj.EdPEpo.Text);
+         		//Fmaj.lbEpo.text :=  idNom;
+              //datamodule1.fdQuerChoix.close;
+              //datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fmaj.EdNEpo.Text);
+              //datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fmaj.EdPEpo.Text);
+              datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
+              datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
               datamodule1.fdQuerChoix.Open;
               datamodule1.fdQuerChoix.first;
-              with fchoix.sgChoix do
+              with sgChoix do
                   begin
-                      //j:=0;
+                      j:=0;
+                      rowcount:=datamodule1.fdQuerChoix.RecordCount;
                       while not datamodule1.fdQuerChoix.Eof do
                       begin
-                        j:=0;
-                        for k :=0 to datamodule1.fdQuerChoix.FieldCount-1 do
-                           begin
-                           //IndPers := datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-                            cells[k,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
+                        k:=0;
 
+                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
+                            cells[k+1,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
+                            cells[k+2,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
+                            cells[k+3,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
                             datamodule1.fdQuerChoix.Next;
-                           end;
-                           inc(j);
+                            inc(j);
                       end;
                   end;
-
 //                               Fchoix.sgChoix.ColWidths[0] :=40;
 //                               Fchoix.sgChoix.ColWidths[1]:=120;
 //                               Fchoix.sgChoix.ColWidths[2]:=120;
 //                               Fchoix.sgChoix.ColWidths[3]:=80;
-            //Fchoix.Close;
-            //lbSelect.Caption:=idnom;
           end
         else
        if Fchoix.Caption = 'Homonymie pour le Père' then
            begin
-         		Fmaj.lbPer.text :=  idNom;
-            datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fmaj.EdNPer.Text);
-            datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fmaj.EdPPer.Text);
+         		//Fmaj.lbPer.text :=  idNom;
+            //datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fmaj.EdNPer.Text);
+            //datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fmaj.EdPPer.Text);
+            datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
+            datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
             datamodule1.fdQuerChoix.Open;
             datamodule1.fdQuerChoix.first;
-            with fchoix.sgChoix do
+            with sgChoix do
                   begin
-                      //j:=0;
+                      j:=0;
+                      rowcount:=datamodule1.fdQuerChoix.RecordCount;
                       while not datamodule1.fdQuerChoix.Eof do
                       begin
-                        j:=0;
-                        for k :=0 to datamodule1.fdQuerChoix.FieldCount-1 do
-                           begin
-                           //IndPers := datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-                            cells[k,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
+                        k:=0;
 
+                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
+                            cells[k+1,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
+                            cells[k+2,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
+                            cells[k+3,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
                             datamodule1.fdQuerChoix.Next;
-                           end;
-                           inc(j);
+                            inc(j);
                       end;
                   end;
 
@@ -531,80 +500,70 @@ begin
 //                               Fchoix.sgChoix.ColWidths[1]:=120;
 //                               Fchoix.sgChoix.ColWidths[2]:=120;
 //                               Fchoix.sgChoix.ColWidths[3]:=80;
-            //Fchoix.Close;
-            //lbSelect.Caption:=idnom;
           end
        else
        if Fchoix.Caption = 'Homonymie pour la Mère' then
           begin
-         		Fmaj.lbMer.text :=  idNom;
-            datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fmaj.EdNMer.Text);
-            datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fmaj.EdPMer.Text);
+         		//Fmaj.lbMer.text :=  idNom;
+            //datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fmaj.EdNMer.Text);
+            //datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fmaj.EdPMer.Text);
+            datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
+            datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
             datamodule1.fdQuerChoix.Open;
             datamodule1.fdQuerChoix.first;
-            with fchoix.sgChoix do
+            with sgChoix do
                   begin
-                      //j:=0;
+                      j:=0;
+                      rowcount:=datamodule1.fdQuerChoix.RecordCount;
                       while not datamodule1.fdQuerChoix.Eof do
                       begin
-                        j:=0;
-                        for k :=0 to datamodule1.fdQuerChoix.FieldCount-1 do
-                           begin
-                           //IndPers := datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-                            cells[k,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
+                        k:=0;
 
+                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
+                            cells[k+1,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
+                            cells[k+2,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
+                            cells[k+3,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
                             datamodule1.fdQuerChoix.Next;
-                           end;
-                           inc(j);
+                            inc(j);
                       end;
                   end;
-
 //                               Fchoix.sgChoix.ColWidths[0] :=40;
 //                               Fchoix.sgChoix.ColWidths[1]:=120;
 //                               Fchoix.sgChoix.ColWidths[2]:=120;
 //                               Fchoix.sgChoix.ColWidths[3]:=80;
 //                               Fchoix.sgChoix.Visible:=True;
-             //Fchoix.Close;
-            //lbSelect.Caption:=idnom;
           end
         else
        if Fchoix.Caption = 'Homonymie pour l Epoux(se)2' then
            begin
-         		Fmaj.lbEpo2.text :=  idNom;
-            datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fmaj.EdN2Epo.Text);
-            datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fmaj.EdP2Epo.Text);
+         		//Fmaj.lbEpo2.text :=  idNom;
+            //datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fmaj.EdN2Epo.Text);
+            //datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fmaj.EdP2Epo.Text);
+            datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
+            datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
             datamodule1.fdQuerChoix.Open;
             datamodule1.fdQuerChoix.first;
-            with fchoix.sgChoix do
+            with sgChoix do
                   begin
-                      //j:=0;
+                      j:=0;
+                      rowcount:=datamodule1.fdQuerChoix.RecordCount;
                       while not datamodule1.fdQuerChoix.Eof do
                       begin
-                        j:=0;
-                        for k :=0 to datamodule1.fdQuerChoix.FieldCount-1 do
-                           begin
-                           //IndPers := datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-                            cells[k,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
+                        k:=0;
 
+                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
+                            cells[k+1,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
+                            cells[k+2,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
+                            cells[k+3,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
                             datamodule1.fdQuerChoix.Next;
-                           end;
-                           inc(j);
+                            inc(j);
                       end;
                   end;
-            datamodule1.fdQuerChoix.close;
 //                               Fchoix.sgChoix.ColWidths[0] :=40;
 //                               Fchoix.sgChoix.ColWidths[1]:=120;
 //                               Fchoix.sgChoix.ColWidths[2]:=120;
 //                               Fchoix.sgChoix.ColWidths[3]:=80;
                                Fchoix.sgChoix.Visible:=True;
-            //Fchoix.Close;
-            //lbSelect.Caption:=idnom;
           end;
     end;
    if Fchoix.lbChoix.Text='Arbre' then

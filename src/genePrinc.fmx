@@ -65,6 +65,18 @@ object GeneaPrinc: TGeneaPrinc
       object menFen: TMenuItem
         Text = 'Fen'#234'tre'
       end
+      object menHelp: TMenuItem
+        Text = 'Aide'
+        object menAbout: TMenuItem
+          Locked = True
+          ShortCut = 112
+          Text = 'A Propos'
+        end
+        object menGuid: TMenuItem
+          Locked = True
+          Text = 'Guide'
+        end
+      end
     end
     object StatusBar1: TStatusBar
       Position.Y = 725.000000000000000000
