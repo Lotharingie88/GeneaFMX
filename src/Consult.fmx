@@ -503,49 +503,49 @@ object FCons: TFCons
       Size.PlatformDefault = False
       CharCase = ecUpperCase
     end
-    object lbNMaj: TLabel
+    object lbInd: TLabel
       Position.X = 400.000000000000000000
       Position.Y = 8.000000000000000000
       Size.Width = 49.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
-      Text = 'lbNMaj'
+      Text = '0'
       TabOrder = 47
     end
-    object lbEpMaj: TLabel
+    object lbEpo: TLabel
       Position.X = 424.000000000000000000
       Position.Y = 238.000000000000000000
       Size.Width = 49.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
-      Text = 'lbEpMaj'
+      Text = '0'
       TabOrder = 48
     end
-    object lbPMaj: TLabel
+    object lbPer: TLabel
       Position.X = 424.000000000000000000
       Position.Y = 336.000000000000000000
       Size.Width = 49.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
-      Text = 'lbPMaj'
+      Text = '0'
       TabOrder = 49
     end
-    object lbMMaj: TLabel
+    object lbMer: TLabel
       Position.X = 424.000000000000000000
-      Position.Y = 376.000000000000000000
+      Position.Y = 369.000000000000000000
       Size.Width = 41.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
-      Text = 'lbMMaj'
+      Text = '0'
       TabOrder = 50
     end
-    object lb2Epo: TLabel
+    object lbEpo2: TLabel
       Position.X = 424.000000000000000000
       Position.Y = 303.000000000000000000
       Size.Width = 57.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
-      Text = 'lb2Epo'
+      Text = '0'
       TabOrder = 51
     end
   end

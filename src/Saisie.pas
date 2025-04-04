@@ -69,10 +69,12 @@ type
     lbMer: TLabel;
     lbEpo2: TLabel;
     lbMaj: TLabel;
+    btPhot: TButton;
     procedure btQuitClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btRecClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btPhotClick(Sender: TObject);
   private
     { Déclarations privées }
   public
@@ -89,6 +91,11 @@ implementation
     Choix2;
  var
     datmaj:string;
+procedure TFSaisie.btPhotClick(Sender: TObject);
+begin
+    ShowMessage ('une photo à integrer ?');
+end;
+
 procedure TFSaisie.btQuitClick(Sender: TObject);
 begin
   Fsaisie.hide;
@@ -149,7 +156,7 @@ begin
      ///  controle sur les données : homonymie,....
      ///  </summary>
        //verification d homonymie
-     try
+     //try
          datamodule1.fdQuerSais.close;
          datamodule1.fdQuerSais.SQL.Clear;
          datamodule1.fdQuerSais.SQL.Text := 'SELECT count(*) as nbi,idperson,nom,prenom,datnaiss FROM personnes where nom= :Nom and prenom = :Prenom';
@@ -180,13 +187,13 @@ begin
                Fchoix.Showmodal;
                //lbind.Text:=Fchoix.sgChoix.selected.ToString;
         end;
-     except
+     //except
 
-     end;
+     //end;
 
 
      // on gère les parents
-      try
+      //try
        if (EdNPer.Text <>'') then
          begin
            datamodule1.fdQuerSais.close;
@@ -231,10 +238,10 @@ begin
                              Fchoix.ShowModal;
                end;
          end;
-      except
-      end;
+      //except
+      //end;
 
-      try
+      //try
        if (EdNMer.Text <>'') then
          begin
            datamodule1.fdQuerSais.close;
@@ -277,10 +284,10 @@ begin
                                Fchoix.ShowModal;
                end;
          end;
-     except
-     end;
+     //except
+     //end;
      //.... et l epoux s il y a lieu !
-     try
+     //try
       if (EdNEpou.Text <>'') then
         begin
            datamodule1.fdQuerSais.close;
@@ -327,11 +334,11 @@ begin
                              Fchoix.ShowModal;
                end;
          end;
-      except
+      //except
 
-      end;
+      //end;
       //et l epoux2 s'il y a eu second mariage
-     try
+     //try
       if (EdN2Epo.Text <>'') then
          begin
              datamodule1.fdQuerSais.close;
@@ -378,8 +385,8 @@ begin
                                	   Fchoix.ShowModal;
                end;
          end;
-      except
-     end;
+      //except
+     //end;
 
 
     // on démarre l implementation dans la base de donnée
@@ -475,43 +482,43 @@ begin
                  end;
              if (lbInd.text='0') or (lbInd.text='-1') then
               begin
-             	with datamodule1.fdQuerSais do
-               	begin
-                     close;
-                     SQL.Clear;
-                     SQL.Text := 'INSERT INTO personnes (nom, prenom, datnaiss,datdec,lieunaiss,lieudec,prenom2,prenom3,datmaria,idnatnaiss,idnatdec,iddeptnaiss,iddeptdec,idepou,idepoubis,idper,idmer,memo,datmaj) '+
-                      'VALUES (:Nom, :Prenom,:Dnaiss,:Ddec,:Lnaiss,:Ldec,:Pren2,:Pren3,:Dmar,:IdNnaiss,:IdNdec,:IdDnaiss,:IdDdec,:IdEpo,:IdEpo2,:IdPer,:IdMer,:MemI,:Datmaj)';
-                     ParamByName('Nom').AsString :=UpperCase(Nom);
-                     ParamByName('Prenom').AsString := UpperCase(Prenom);
-                     ParamByName('MemI').AsString := Memo.Text;
-                     if (EdDnaiss.text <>'') then
-                           ParamByName('Dnaiss').AsDate := StrToDate(Dnaiss)
-                      else
-                           ParamByName('Dnaiss').AsString := '00/00/0000';
-                      if (EdDdec.text <>'') then
-                           ParamByName('Ddec').AsDate := StrToDate(Ddec)
-                      else
-                       ParamByName('Ddec').AsString := '00/00/0000';
-                       ParamByName('Lnaiss').AsString := UpperCase(Lnaiss);
-                       ParamByName('Ldec').AsString := UpperCase(Ldec);
-                       ParamByName('Pren2').AsString := UpperCase(Pren2);
-                       ParamByName('Pren3').AsString := UpperCase(Pren3);
-                      if (EdDMaria.text <>'') then
-                           ParamByName('Dmar').AsDate := StrToDate(Dmar)
-                       else
-                           ParamByName('Dmar').AsString := '00/00/0000';
-                           ParamByName('IdNnaiss').AsInteger := IdNnaiss;
-                           ParamByName('IdNdec').AsInteger := IdNdec;
-                           ParamByName('IdDnaiss').AsInteger := IdDnaiss;
-                           ParamByName('IdDdec').AsInteger := IdDdec;
-                           ParamByName('IdEpo').AsInteger := IdEpo;
-                           ParamByName('IdEpo2').AsInteger := IdEpo2;
-                           ParamByName('IdPer').AsInteger := IdPer;
-                           ParamByName('IdMer').AsInteger := IdMer;
-                           ParamByName('Datmaj').AsDate := StrToDate(Datmaj);
-                           ExecSQL;
-                           close;
-               	end;
+                  with datamodule1.fdQuerSais do
+                    begin
+                         close;
+                         SQL.Clear;
+                         SQL.Text := 'INSERT INTO personnes (nom, prenom, datnaiss,datdec,lieunaiss,lieudec,prenom2,prenom3,datmaria,idnatnaiss,idnatdec,iddeptnaiss,iddeptdec,idepou,idepoubis,idper,idmer,memo,datmaj) '+
+                          'VALUES (:Nom, :Prenom,:Dnaiss,:Ddec,:Lnaiss,:Ldec,:Pren2,:Pren3,:Dmar,:IdNnaiss,:IdNdec,:IdDnaiss,:IdDdec,:IdEpo,:IdEpo2,:IdPer,:IdMer,:MemI,:Datmaj)';
+                         ParamByName('Nom').AsString :=Nom;
+                         ParamByName('Prenom').AsString := Prenom;
+                         ParamByName('MemI').AsString := Memo.Text;
+                         if (EdDnaiss.text <>'') then
+                               ParamByName('Dnaiss').AsDate := StrToDate(Dnaiss)
+                          else
+                               ParamByName('Dnaiss').AsString := '00/00/0000';
+                          if (EdDdec.text <>'') then
+                               ParamByName('Ddec').AsDate := StrToDate(Ddec)
+                          else
+                           ParamByName('Ddec').AsString := '00/00/0000';
+                           ParamByName('Lnaiss').AsString := Lnaiss;
+                           ParamByName('Ldec').AsString := Ldec;
+                           ParamByName('Pren2').AsString := Pren2;
+                           ParamByName('Pren3').AsString := Pren3;
+                          if (EdDMaria.text <>'') then
+                               ParamByName('Dmar').AsDate := StrToDate(Dmar)
+                           else
+                               ParamByName('Dmar').AsString := '00/00/0000';
+                            ParamByName('IdNnaiss').AsInteger := IdNnaiss;
+                            ParamByName('IdNdec').AsInteger := IdNdec;
+                            ParamByName('IdDnaiss').AsInteger := IdDnaiss;
+                            ParamByName('IdDdec').AsInteger := IdDdec;
+                            ParamByName('IdEpo').AsInteger := IdEpo;
+                            ParamByName('IdEpo2').AsInteger := IdEpo2;
+                            ParamByName('IdPer').AsInteger := IdPer;
+                            ParamByName('IdMer').AsInteger := IdMer;
+                            ParamByName('Datmaj').AsDate := StrToDate(Datmaj);
+                            ExecSQL;
+                            close;
+                    end;
                end
                else
                begin
@@ -526,7 +533,7 @@ begin
            end;
 
 
-     	 try
+     	 //try
          		if (IdEpo <> 0) then
                  begin
 //                   //ShowMessage ('Epoux :'+ IdEpo.ToString);
@@ -590,8 +597,8 @@ begin
                  end;
 //
 //
-               except
-               end;
+               //except
+               //end;
 
 
 

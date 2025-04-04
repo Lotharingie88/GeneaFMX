@@ -328,6 +328,17 @@ object FSaisie: TFSaisie
         Text = 'Photo'
         TabOrder = 0
       end
+      object btPhot: TButton
+        Position.X = 56.000000000000000000
+        Position.Y = 73.000000000000000000
+        Size.Width = 17.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = '+'
+        TextSettings.Trimming = None
+        OnClick = btPhotClick
+      end
     end
     object edDMaria: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]

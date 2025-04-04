@@ -9,6 +9,7 @@ object FMaj: TFMaj
   FormFactor.Devices = [Desktop]
   OnActivate = FormActivate
   OnCreate = FormCreate
+  OnClose = FormClose
   DesignerMasterStyle = 0
   object Layout1: TLayout
     Position.Y = 4.000000000000000000
@@ -241,6 +242,17 @@ object FMaj: TFMaj
         Text = 'Photo'
         TabOrder = 1
       end
+      object btPhot: TButton
+        Position.X = 64.000000000000000000
+        Position.Y = 88.000000000000000000
+        Size.Width = 17.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Text = '+'
+        TextSettings.Trimming = None
+        OnClick = btPhotClick
+      end
     end
     object memMaj: TMemo
       Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
@@ -252,8 +264,8 @@ object FMaj: TFMaj
       Size.Height = 201.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 33
-      Viewport.Width = 517.000000000000000000
-      Viewport.Height = 197.000000000000000000
+      Viewport.Width = 521.000000000000000000
+      Viewport.Height = 201.000000000000000000
     end
     object cbNom: TComboBox
       Position.X = 104.000000000000000000
@@ -265,6 +277,7 @@ object FMaj: TFMaj
       OnChange = cbNomChange
     end
     object cbDNaiss: TComboBox
+      ItemIndex = 0
       Position.X = 521.000000000000000000
       Position.Y = 143.000000000000000000
       Size.Width = 185.000000000000000000
@@ -273,6 +286,7 @@ object FMaj: TFMaj
       TabOrder = 35
     end
     object cbPNaiss: TComboBox
+      ItemIndex = 0
       Position.X = 736.000000000000000000
       Position.Y = 142.000000000000000000
       Size.Width = 177.000000000000000000
@@ -281,6 +295,7 @@ object FMaj: TFMaj
       TabOrder = 36
     end
     object cbDDec: TComboBox
+      ItemIndex = 0
       Position.X = 521.000000000000000000
       Position.Y = 176.000000000000000000
       Size.Width = 185.000000000000000000
@@ -289,6 +304,7 @@ object FMaj: TFMaj
       TabOrder = 37
     end
     object cbPDec: TComboBox
+      ItemIndex = 0
       Position.X = 736.000000000000000000
       Position.Y = 175.000000000000000000
       Size.Width = 177.000000000000000000

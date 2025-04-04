@@ -15,7 +15,8 @@ object DataModule1: TDataModule1
     Params.Strings = (
       'Database=C:\user\GitLocal\geneaFM\data\adn.db'
       'DriverID=SQLite'
-      'LockingMode=Normal')
+      'LockingMode=Exclusive'
+      'DateTimeFormat=DateTime')
     Connected = True
     LoginPrompt = False
     Left = 528
