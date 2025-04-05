@@ -428,17 +428,17 @@ begin
     begin
         datamodule1.fdQuerChoix.close;
         datamodule1.fdQuerChoix.SQL.clear;
-        datamodule1.fdQuerChoix.SQL.add( 'SELECT idperson,nom,prenom,if(datnaiss="0000/00/00", "NC",DATE_FORMAT(datnaiss,"%d/%m/%Y")) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom');
+        datamodule1.fdQuerChoix.SQL.text:= 'SELECT idperson,nom,prenom,if(datnaiss="0000/00/00", "NC",DATE_FORMAT(datnaiss,"%d/%m/%Y")) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom';
         datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
         datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
         datamodule1.fdQuerChoix.Open;
 
-        if Fchoix.Caption = 'Homonymie de la Personne' then
+        if Fchoix.Caption = 'MAJ-Homonymie de la Personne' then
        	begin
          		Fmaj.lbInd.text:=  idNom;
           end
        else
-       if Fchoix.Caption = 'Homonymie pour l Epoux(se)' then
+       if Fchoix.Caption = 'MAJ-Homonymie pour l Epoux(se)' then
            begin
          		//Fmaj.lbEpo.text :=  idNom;
               //datamodule1.fdQuerChoix.close;
@@ -470,7 +470,7 @@ begin
 //                               Fchoix.sgChoix.ColWidths[3]:=80;
           end
         else
-       if Fchoix.Caption = 'Homonymie pour le Père' then
+       if Fchoix.Caption = 'MAJ-Homonymie pour le Père' then
            begin
          		//Fmaj.lbPer.text :=  idNom;
             //datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fmaj.EdNPer.Text);
@@ -502,7 +502,7 @@ begin
 //                               Fchoix.sgChoix.ColWidths[3]:=80;
           end
        else
-       if Fchoix.Caption = 'Homonymie pour la Mère' then
+       if Fchoix.Caption = 'MAJ-Homonymie pour la Mère' then
           begin
          		//Fmaj.lbMer.text :=  idNom;
             //datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fmaj.EdNMer.Text);
@@ -534,7 +534,7 @@ begin
 //                               Fchoix.sgChoix.Visible:=True;
           end
         else
-       if Fchoix.Caption = 'Homonymie pour l Epoux(se)2' then
+       if Fchoix.Caption = 'MAJ-Homonymie pour l Epoux(se)2' then
            begin
          		//Fmaj.lbEpo2.text :=  idNom;
             //datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fmaj.EdN2Epo.Text);
