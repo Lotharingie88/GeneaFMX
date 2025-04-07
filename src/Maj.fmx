@@ -7,7 +7,6 @@ object FMaj: TFMaj
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
-  OnActivate = FormActivate
   OnCreate = FormCreate
   OnClose = FormClose
   DesignerMasterStyle = 0
@@ -523,6 +522,7 @@ object FMaj: TFMaj
       Size.Width = 49.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
+      Text = '0'
       TabOrder = 47
     end
     object lbEpo: TLabel

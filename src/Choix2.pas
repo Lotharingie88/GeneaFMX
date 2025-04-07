@@ -53,7 +53,7 @@ implementation
    arbre,saisie,maj;
  var
   IndPers,j:integer;
-  idNom,Person,nom,prenom:string;
+  idNom,Person:string;
 procedure TFChoix.btNewClick(Sender: TObject);
 begin
   if lbChoix.Text='Saisie' then
@@ -197,9 +197,11 @@ begin
        //i:=sgChoix.Selection.Top ;
        idNom:=sgChoix.selected.ToString();
        t:=sgChoix.Cells[0,idnom.ToInteger()].ToInteger();
+       ShowMessage ('IdNom :' + t.ToString );
        if Fchoix.Caption = 'MAJ-Homonymie pour l Epoux(se)' then
            begin
          		Fmaj.lbEpo.text :=  t.ToString;
+            ShowMessage ('test :' + t.ToString );
             //lbSelect.Caption:=idnom;
             Fchoix.Close;
           end
@@ -293,12 +295,12 @@ begin
                             inc(j);
                       end;
                   end;
-               //datamodule1.fdQuerChoix.close;
+
                sgChoix.Columns[0].Width:=40;
                sgChoix.Columns[1].Width:=120;
                sgChoix.Columns[2].Width:=120;
                sgChoix.Columns[3].Width:=80;
-               //Fchoix.sgChoix.Visible:=True;
+
 
                  //MessageDlg ('il y a déjà des individus avec cette identité',mtInformation,[mbOK],0);
 
@@ -306,9 +308,7 @@ begin
        else
        if Fchoix.Caption = 'Homonymie pour l Epoux(se)' then
            begin
-         		//Fsaisie.lbEpo.text :=  idNom;
-            //datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fsaisie.EdNEpou.Text);
-            //datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fsaisie.EdPEpou.Text);
+
             datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
             datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
             datamodule1.fdQuerChoix.Open;
@@ -317,6 +317,7 @@ begin
                   begin
                       j:=0;
                       rowcount:=datamodule1.fdQuerChoix.RecordCount;
+                      //MessageDlg ('il y a déjà des individus avec cette identité',mtInformation,[mbOK],0);
                       while not datamodule1.fdQuerChoix.Eof do
                       begin
                         k:=0;
@@ -330,11 +331,6 @@ begin
                       end;
                   end;
 
-//                                  Fchoix.sgChoix.ColWidths[0] :=40;
-//                                  Fchoix.sgChoix.ColWidths[1]:=120;
-//                                  Fchoix.sgChoix.ColWidths[2]:=120;
-//                                  Fchoix.sgChoix.ColWidths[3]:=80;
-//                               	  Fchoix.sgChoix.Visible:=True;
           end
         else
        if Fchoix.Caption = 'Homonymie pour le Père' then
@@ -363,9 +359,7 @@ begin
        else
        if Fchoix.Caption = 'Homonymie pour la Mère' then
           begin
-         		//Fsaisie.lbMer.text :=  idNom;
-            //datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fsaisie.EdNMer.Text);
-            //datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fsaisie.EdPMer.Text);
+
             datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
             datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
             datamodule1.fdQuerChoix.Open;
@@ -374,6 +368,7 @@ begin
                   begin
                       j:=0;
                       rowcount:=datamodule1.fdQuerChoix.RecordCount;
+
                       while not datamodule1.fdQuerChoix.Eof do
                       begin
                         k:=0;
@@ -387,20 +382,13 @@ begin
                       end;
                   end;
 
-//                               Fchoix.sgChoix.Columns[0].Width :=40;;
-//                               Fchoix.sgChoix.Columns[1].Width:=120;
-//                               Fchoix.sgChoix.Columns[2].Width:=120;
-//                               Fchoix.sgChoix.Columns[3].Width:=80;
-//                               Fchoix.sgChoix.Visible:=True;
 
 
           end
         else
        if Fchoix.Caption = 'Homonymie pour l Epoux(se)2' then
            begin
-         		//Fsaisie.lbEpo2.text :=  idNom;
-            //datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fsaisie.EdN2Epo.Text);
-            //datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fsaisie.EdP2Epo.Text);
+
             datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
             datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
             datamodule1.fdQuerChoix.Open;
@@ -424,11 +412,12 @@ begin
               
            end;
     end;
-    if Fchoix.lbChoix.Text='Maj' then
+    if Fchoix.lbChoix.Text='MAJ' then
     begin
+        sgChoix.Visible:=True;
         datamodule1.fdQuerChoix.close;
         datamodule1.fdQuerChoix.SQL.clear;
-        datamodule1.fdQuerChoix.SQL.text:= 'SELECT idperson,nom,prenom,if(datnaiss="0000/00/00", "NC",DATE_FORMAT(datnaiss,"%d/%m/%Y")) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom';
+        datamodule1.fdQuerChoix.SQL.text:= 'SELECT idperson,nom,prenom,if(datnaiss="0000/00/00", "NC",datnaiss) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom';
         datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
         datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
         datamodule1.fdQuerChoix.Open;
@@ -440,10 +429,7 @@ begin
        else
        if Fchoix.Caption = 'MAJ-Homonymie pour l Epoux(se)' then
            begin
-         		//Fmaj.lbEpo.text :=  idNom;
-              //datamodule1.fdQuerChoix.close;
-              //datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fmaj.EdNEpo.Text);
-              //datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fmaj.EdPEpo.Text);
+
               datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
               datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
               datamodule1.fdQuerChoix.Open;
@@ -452,10 +438,11 @@ begin
                   begin
                       j:=0;
                       rowcount:=datamodule1.fdQuerChoix.RecordCount;
+                      ShowMessage ('r:' + rowcount.ToString);
                       while not datamodule1.fdQuerChoix.Eof do
                       begin
                         k:=0;
-
+                            ShowMessage ('r2:' + rowcount.ToString);
                             cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
                             cells[k+1,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
                             cells[k+2,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
@@ -464,17 +451,12 @@ begin
                             inc(j);
                       end;
                   end;
-//                               Fchoix.sgChoix.ColWidths[0] :=40;
-//                               Fchoix.sgChoix.ColWidths[1]:=120;
-//                               Fchoix.sgChoix.ColWidths[2]:=120;
-//                               Fchoix.sgChoix.ColWidths[3]:=80;
+
           end
         else
        if Fchoix.Caption = 'MAJ-Homonymie pour le Père' then
            begin
-         		//Fmaj.lbPer.text :=  idNom;
-            //datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fmaj.EdNPer.Text);
-            //datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fmaj.EdPPer.Text);
+
             datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
             datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
             datamodule1.fdQuerChoix.Open;
@@ -483,10 +465,11 @@ begin
                   begin
                       j:=0;
                       rowcount:=datamodule1.fdQuerChoix.RecordCount;
+                      ShowMessage ('r3:' + rowcount.ToString);
                       while not datamodule1.fdQuerChoix.Eof do
                       begin
                         k:=0;
-
+                            ShowMessage ('r4:' + rowcount.ToString);
                             cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
                             cells[k+1,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
                             cells[k+2,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
@@ -496,17 +479,12 @@ begin
                       end;
                   end;
 
-//                              Fchoix.sgChoix.ColWidths[0] :=40;
-//                               Fchoix.sgChoix.ColWidths[1]:=120;
-//                               Fchoix.sgChoix.ColWidths[2]:=120;
-//                               Fchoix.sgChoix.ColWidths[3]:=80;
+
           end
        else
        if Fchoix.Caption = 'MAJ-Homonymie pour la Mère' then
           begin
-         		//Fmaj.lbMer.text :=  idNom;
-            //datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fmaj.EdNMer.Text);
-            //datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fmaj.EdPMer.Text);
+
             datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
             datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
             datamodule1.fdQuerChoix.Open;
@@ -527,18 +505,12 @@ begin
                             inc(j);
                       end;
                   end;
-//                               Fchoix.sgChoix.ColWidths[0] :=40;
-//                               Fchoix.sgChoix.ColWidths[1]:=120;
-//                               Fchoix.sgChoix.ColWidths[2]:=120;
-//                               Fchoix.sgChoix.ColWidths[3]:=80;
-//                               Fchoix.sgChoix.Visible:=True;
+
           end
         else
        if Fchoix.Caption = 'MAJ-Homonymie pour l Epoux(se)2' then
            begin
-         		//Fmaj.lbEpo2.text :=  idNom;
-            //datamodule1.fdQuerChoix.ParamByName('Nom').AsString := UpperCase(Fmaj.EdN2Epo.Text);
-            //datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := UpperCase(Fmaj.EdP2Epo.Text);
+
             datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
             datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
             datamodule1.fdQuerChoix.Open;
@@ -559,16 +531,13 @@ begin
                             inc(j);
                       end;
                   end;
-//                               Fchoix.sgChoix.ColWidths[0] :=40;
-//                               Fchoix.sgChoix.ColWidths[1]:=120;
-//                               Fchoix.sgChoix.ColWidths[2]:=120;
-//                               Fchoix.sgChoix.ColWidths[3]:=80;
+
                                Fchoix.sgChoix.Visible:=True;
           end;
     end;
    if Fchoix.lbChoix.Text='Arbre' then
     begin
-        //cbDebArbre.Visible:=true;
+
         datamodule1.fdQuerChoix.close;
         datamodule1.fdQuerChoix.SQL.clear;
         datamodule1.fdQuerChoix.SQL.Text:= 'SELECT idperson,nom,prenom,datnaiss FROM personnes order by nom,prenom';

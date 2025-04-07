@@ -74,6 +74,14 @@ object FArbre: TFArbre
         Size.PlatformDefault = False
         Text = '0'
         TabOrder = 0
+        object Line1: TLine
+          LineType = Diagonal
+          Position.X = 64.000000000000000000
+          Position.Y = 16.000000000000000000
+          Size.Width = 137.000000000000000000
+          Size.Height = 1.000000000000000000
+          Size.PlatformDefault = False
+        end
       end
       object Memo1: TMemo
         Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
@@ -85,8 +93,8 @@ object FArbre: TFArbre
         Size.PlatformDefault = False
         TabOrder = 1
         Visible = False
-        Viewport.Width = 113.000000000000000000
-        Viewport.Height = 49.000000000000000000
+        Viewport.Width = 109.000000000000000000
+        Viewport.Height = 45.000000000000000000
       end
     end
     object lbNiv: TLabel

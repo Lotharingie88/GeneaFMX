@@ -49,7 +49,7 @@ begin
           datamodule1.fdQuerGlob.SQL.Clear;
           datamodule1.fdQuerGlob.SQL.Text:= 'SELECT idperson as "Rèf.",nom,prenom,if(datnaiss="0000/00/00", "",datnaiss) as Naissance,if(datdec="0000/00/00","",datdec) as Décès,'
           +'lieunaiss as "Lieu de naissance",lieudec as "Lieu de décès",idper as "Père",idmer as "Mère",idepou as "Epoux(se)",idepoubis as "Epoux(se)2"'
-          + ' FROM personnes order by datnaiss desc ' ;
+          + ' FROM personnes order by nom,prenom,datnaiss desc ' ;
           //ReqGlob.ParamByName('NomMer').AsString := UpperCase(NomMer);
           //ReqGlob.ParamByName('PrenomMer').AsString := UpperCase(PrenomMer);
           datamodule1.fdQuerGlob.Open;

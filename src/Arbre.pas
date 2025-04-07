@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types,system.Math, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,UdbGenea,
   FMX.StdCtrls, FMX.Controls.Presentation, FMX.Layouts,system.DateUtils, FMX.Edit,
-  FMX.Memo.Types, FMX.ScrollBox, FMX.Memo;
+  FMX.Memo.Types, FMX.ScrollBox, FMX.Memo, FMX.Objects;
 
 type
   TFArbre = class(TForm)
@@ -20,6 +20,7 @@ type
     lbNiv: TLabel;
     edNivo: TEdit;
     Memo1: TMemo;
+    Line1: TLine;
     procedure btQuitClick(Sender: TObject);
     procedure btCreateClick(Sender: TObject);
     procedure edInd0Change(Sender: TObject);
@@ -50,24 +51,27 @@ procedure TFArbre.btCreateClick(Sender: TObject);
      p:Integer;
 begin
     edInd0.Text:='';
+    edNivo.text:='';
      for p:=(Componentcount-1) downto 0 do
           	begin
                     //MessageDlg ('j : '+ Componentcount.ToString ,mtInformation,[mbOK],0);
             		if (Components[p] is TEdit)  and
                     	( TEdit(Components[p]).Name <> 'edInd0') and ( TEdit(Components[p]).Name <> 'edNivo') then
                      	begin
-                      		Components[p].DisposeOf;
+                          Components[p].free;
+                      		//Components[p].DisposeOf;
                      	end
                          else
                      if (Components[p] is TLabel) and (components[p].Name <> 'LbNiv')  then
                       begin
-
-                         Components[p].DisposeOf;
+                         Components[p].free;
+                         //Components[p].DisposeOf;
                       end;
                      if (Components[p] is TMemo)   then
                       begin
+                         //Components[p];
                          Components[p].Free;
-                         Components[p].DisposeOf;
+                         //Components[p].DisposeOf;
                       end;
                end;
 
@@ -98,12 +102,15 @@ begin
  //       	fchoix.cbDebArbre.selected.Text:='';
 //        	datamodule1.fdQuerChoix.Active:=False;
      	    //fchoix.cbDebArbre.Visible:=True;
+          fchoix.lbNom.Visible:=false;
+          fchoix.lbPren.visible:=false;
      	    fchoix.sgChoix.Visible:=False;
           fchoix.btNew.Visible:=False;
      	    Fchoix.LbMsg.Visible:=False;
           Fchoix.lbNiv.Visible:=True;
           Fchoix.edNiv.Visible:=True;
           Fchoix.RdChoix.Visible:=false;
+          fchoix.cbDebArbre.Repaint;
           Fchoix.cbdebarbre.Visible:=True;
           fchoix.Show;
      	    //fchoix.ShowModal;
@@ -321,18 +328,19 @@ begin
             		if (Components[p] is TEdit)  and
                     	( TEdit(Components[p]).Name <> 'edInd0') and ( TEdit(Components[p]).Name <> 'edNivo') then
                      	begin
-                      		Components[p].DisposeOf;
+                          Components[p].free;
+                      		//Components[p].DisposeOf;
                      	end
                          else
                      if (Components[p] is TLabel) and (components[p].Name <> 'LbNiv')  then
                       begin
-
-                         Components[p].DisposeOf;
+                          Components[p].free;
+                         //Components[p].DisposeOf;
                       end;
                      if (Components[p] is TMemo)   then
                       begin
-
-                         Components[p].DisposeOf;
+                          Components[p].free;
+                         //Components[p].DisposeOf;
                       end;
                end;
 end;

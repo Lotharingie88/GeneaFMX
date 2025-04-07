@@ -71,7 +71,6 @@ type
     lbMaj: TLabel;
     btPhot: TButton;
     procedure btQuitClick(Sender: TObject);
-    procedure FormActivate(Sender: TObject);
     procedure btRecClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btPhotClick(Sender: TObject);
@@ -102,7 +101,7 @@ begin
 end;
 
 procedure TFSaisie.btRecClick(Sender: TObject);
-  var Nom, Prenom,NomPer,PrenomPer,NomMer,PrenomMer,NomEp,PrenomEp,Dnaiss,Dmar,Dmar2,PEpo2,NEpo2,Lnaiss,Ddec,Ldec,Pren2,Pren3,Datmaj : string;
+  var Nom, Prenom,NomPer,PrenomPer,NomMer,PrenomMer,NomEp,PrenomEp,Dnaiss,Dmar,D2mar,PEpo2,NEpo2,Lnaiss,Ddec,Ldec,Pren2,Pren3,Datmaj : string;
  		idInd,idPer,idMer,IdNnaiss,IdNdec,IdDnaiss,IdDdec,IdEpo,IdEpo2,Total,nbP,nbM,nbEp,nbEp2,i,j : Integer;
 begin
   Datmaj := DateToStr(Date);
@@ -130,7 +129,7 @@ begin
      Ldec := EdLDec.Text;
      Pren2 := EdPren2.Text;
      Pren3 := EdPren3.Text;
-     Dmar2:=EdD2Maria.Text;
+     D2mar:=EdD2Maria.Text;
      PEpo2:=EdP2Epo.Text;
      NEpo2:=EdN2Epo.Text;
      if CbDNaiss.text<>'' then
@@ -277,11 +276,11 @@ begin
                              Fchoix.btNew.visible:=True;
                              Fchoix.btQuit.Visible:=False;
                              Fchoix.LbMsg.Text :='il y a déjà des individus avec cette identité';
-                               Fchoix.lbNiv.Visible:=False;
-                               Fchoix.edNiv.Visible:=False;
-                               fchoix.height:=610;
-                               fchoix.Width:=695;
-                               Fchoix.ShowModal;
+                             Fchoix.lbNiv.Visible:=False;
+                             Fchoix.edNiv.Visible:=False;
+                             fchoix.height:=610;
+                             fchoix.Width:=695;
+                             Fchoix.ShowModal;
                end;
          end;
      //except
@@ -376,13 +375,11 @@ begin
                              Fchoix.btNew.visible:=True;
                              Fchoix.btQuit.Visible:=False;
                              Fchoix.LbMsg.text :='il y a déjà des individus avec cette identité';
-
-                               	  Fchoix.sgChoix.Visible:=True;
-                                   Fchoix.lbNiv.Visible:=False;
-                                   Fchoix.edNiv.Visible:=False;
-                               	   fchoix.height:=610;
-                              	   fchoix.Width:=695;
-                               	   Fchoix.ShowModal;
+                             Fchoix.lbNiv.Visible:=False;
+                             Fchoix.edNiv.Visible:=False;
+                             fchoix.height:=610;
+                             fchoix.Width:=695;
+                             Fchoix.ShowModal;
                end;
          end;
       //except
@@ -486,19 +483,19 @@ begin
                     begin
                          close;
                          SQL.Clear;
-                         SQL.Text := 'INSERT INTO personnes (nom, prenom, datnaiss,datdec,lieunaiss,lieudec,prenom2,prenom3,datmaria,idnatnaiss,idnatdec,iddeptnaiss,iddeptdec,idepou,idepoubis,idper,idmer,memo,datmaj) '+
-                          'VALUES (:Nom, :Prenom,:Dnaiss,:Ddec,:Lnaiss,:Ldec,:Pren2,:Pren3,:Dmar,:IdNnaiss,:IdNdec,:IdDnaiss,:IdDdec,:IdEpo,:IdEpo2,:IdPer,:IdMer,:MemI,:Datmaj)';
+                         SQL.Text := 'INSERT INTO personnes (nom, prenom, datnaiss,datdec,lieunaiss,lieudec,prenom2,prenom3,datmaria,datmarbis,idnatnaiss,idnatdec,iddeptnaiss,iddeptdec,idepou,idepoubis,idper,idmer,memo,datmaj) '+
+                          'VALUES (:Nom, :Prenom,:Dnaiss,:Ddec,:Lnaiss,:Ldec,:Pren2,:Pren3,:Dmar,:D2mar,:IdNnaiss,:IdNdec,:IdDnaiss,:IdDdec,:IdEpo,:IdEpo2,:IdPer,:IdMer,:MemI,:Datmaj)';
                          ParamByName('Nom').AsString :=Nom;
                          ParamByName('Prenom').AsString := Prenom;
                          ParamByName('MemI').AsString := Memo.Text;
                          if (EdDnaiss.text <>'') then
                                ParamByName('Dnaiss').AsDate := StrToDate(Dnaiss)
                           else
-                               ParamByName('Dnaiss').AsString := '00/00/0000';
+                               ParamByName('Dnaiss').AsDate := 00/00/0000;
                           if (EdDdec.text <>'') then
                                ParamByName('Ddec').AsDate := StrToDate(Ddec)
                           else
-                           ParamByName('Ddec').AsString := '00/00/0000';
+                           ParamByName('Ddec').AsDate := 00/00/0000;
                            ParamByName('Lnaiss').AsString := Lnaiss;
                            ParamByName('Ldec').AsString := Ldec;
                            ParamByName('Pren2').AsString := Pren2;
@@ -506,7 +503,11 @@ begin
                           if (EdDMaria.text <>'') then
                                ParamByName('Dmar').AsDate := StrToDate(Dmar)
                            else
-                               ParamByName('Dmar').AsString := '00/00/0000';
+                               ParamByName('Dmar').AsDate := 00/00/0000;
+                            if (EdD2Maria.text <>'') then
+                               ParamByName('D2mar').AsDate := StrToDate(D2mar)
+                           else
+                               ParamByName('D2mar').AsDate := 00/00/0000;
                             ParamByName('IdNnaiss').AsInteger := IdNnaiss;
                             ParamByName('IdNdec').AsInteger := IdNdec;
                             ParamByName('IdDnaiss').AsInteger := IdDnaiss;
@@ -640,90 +641,7 @@ begin
           end;
 end;
 
-procedure TFSaisie.FormActivate(Sender: TObject);
-  var
-    i:integer;
-begin
-//    Datmaj := DateToStr(Date);
-//    datamodule1.fdQuerPays.close;
-//     datamodule1.fdQuerPays.open;
-//     CbPNaiss.Items.Clear();
-//     CbPNaiss.Items.Add('');
-//     CbPNaiss.ItemIndex := 0;
-//     CbPdec.Items.Clear();
-//     CbPdec.Items.Add('');
-//     CbPdec.ItemIndex := 0;
-//  	while not datamodule1.fdQuerPays.Eof do
-//       begin
-//           CbPNaiss.Items.Add(datamodule1.fdQuerPays.FieldByName('nom').AsString);
-//           CbPNaiss.ItemIndex := datamodule1.fdQuerPays.FieldByName('idnation').AsInteger;
-//           CbPdec.Items.Add(datamodule1.fdQuerPays.FieldByName('nom').AsString);
-//           CbPdec.ItemIndex := datamodule1.fdQuerPays.FieldByName('idnation').AsInteger;
-//           //CbPNaiss.AddItem(datamodule1.fdQuerPays.FieldByName('nom').AsString,TObject(datamodule1.fdQuerPays.FieldByName('idnation').AsInteger));
-//           //CbPdec.AddItem(datamodule1.fdQuerPays.FieldByName('nom').AsString,TObject(datamodule1.fdQuerPays.FieldByName('idnation').AsInteger));
-//           datamodule1.fdQuerPays.Next;
-//       end;
-//         //CbPNaiss.Selected.Text :='';
-////         CbPdec.Selected.Text :='';
-//       datamodule1.fdQuerPays.close;
-//       datamodule1.fdQuerDept.close;
-//       datamodule1.fdQuerDept.open;
-//       CbDNaiss.Items.Clear();
-//       CbDNaiss.Items.Add('');
-//       CbDNaiss.ItemIndex := 0;
-//       CbDDec.Items.Clear();
-//       CbDDec.Items.Add('');
-//       CbDDec.ItemIndex := 0;
-//     while not datamodule1.fdQuerDept.Eof do
-//       begin
-//           CbDNaiss.Items.Add(datamodule1.fdQuerDept.FieldByName('dept').AsString);
-//           CbDNaiss.ItemIndex := datamodule1.fdQuerDept.FieldByName('iddept').AsInteger;
-//           CbDdec.Items.Add(datamodule1.fdQuerDept.FieldByName('dept').AsString);
-//           CbDdec.ItemIndex := datamodule1.fdQuerDept.FieldByName('iddept').AsInteger;
-//////           CbDeptNaiss.AddItem(OutRequet.FieldByName('dept').AsString,TObject(OutRequet.FieldByName('iddept').AsInteger));
-//////           CbDeptDec.AddItem(OutRequet.FieldByName('dept').AsString,TObject(OutRequet.FieldByName('iddept').AsInteger));
-//          datamodule1.fdQuerDept.Next;
-//       end;
-//        datamodule1.fdQuerDept.close;
-////         CbDNaiss.Selected.Text:='';
-////         CbDDec.Selected.Text:='';
-//    for i := 0 to Componentcount-1 do
-//         	begin
-//            		if Components[i] is TEdit  then
-//                     begin
-//                        TEdit(Components[i]).Text := '';
-//                     end;
-////               end;
-////         for i := 0 to Componentcount-1 do
-////          	begin
-//            		if (Components[i] is TComboBox ) then
-//                     begin
-//                       TComboBox(Components[i]).itemindex:=0;
-//                     end;
-////               end;
-////           for i := 0 to Componentcount-1 do
-////          	begin
-//            		if (Components[i] is TMemo ) then
-//                     begin
-//                       TMemo(Components[i]).Text := '';
-//                     end;
-////               end;
-////           for i := 0 to Componentcount-1 do
-////          	begin
-//            		if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbInd') or (TLabel(Components[i]).Name = 'lbEpo') or (TLabel(Components[i]).Name =  'lbEpo2') or (TLabel(Components[i]).Name =  'lbMer') or (TLabel(Components[i]).Name =  'lbPer') )) then
-//                     begin
-//                        TLabel(Components[i]).Text:='';
-//                         if (TLabel(Components[i]).Name = 'lbInd') then
-//                            TLabel(Components[i]).Text:='0' ;
-////
-//                     end;
-//                if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMaj'))) then
-//                  begin
-//                     lbMaj.Text:= 'Mise à jour le : ' ;
-//                  end;
-//          end;
 
-end;
 
 procedure TFSaisie.FormCreate(Sender: TObject);
  var
@@ -784,9 +702,9 @@ begin
                      end;
             		if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbInd') or (TLabel(Components[i]).Name = 'lbEpo') or (TLabel(Components[i]).Name =  'lbEpo2') or (TLabel(Components[i]).Name =  'lbMer') or (TLabel(Components[i]).Name =  'lbPer') )) then
                      begin
-                        TLabel(Components[i]).Text:='';
-                         if (TLabel(Components[i]).Name = 'lbInd') then
-                            TLabel(Components[i]).Text:='0' ;
+                        TLabel(Components[i]).Text:='0';
+                         //if (TLabel(Components[i]).Name = 'lbInd') then
+                           // TLabel(Components[i]).Text:='0' ;
                      end;
                 if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMaj'))) then
                   begin
