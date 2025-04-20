@@ -50,25 +50,11 @@ begin
           datamodule1.fdQuerGlob.SQL.Text:= 'SELECT idperson as "Rèf.",nom,prenom,if(datnaiss="0000/00/00", "",datnaiss) as Naissance,if(datdec="0000/00/00","",datdec) as Décès,'
           +'lieunaiss as "Lieu de naissance",lieudec as "Lieu de décès",idper as "Père",idmer as "Mère",idepou as "Epoux(se)",idepoubis as "Epoux(se)2"'
           + ' FROM personnes order by nom,prenom,datnaiss desc ' ;
-          //ReqGlob.ParamByName('NomMer').AsString := UpperCase(NomMer);
-          //ReqGlob.ParamByName('PrenomMer').AsString := UpperCase(PrenomMer);
+          
           datamodule1.fdQuerGlob.Open;
 
 
-          //datamodule1.fdQuerGlob.FieldByName('nom').AsString;
-//          dbgGenea.Columns[0].Width:=40;
-//          dbgGenea.Columns[1].Width:=150;
-//          dbgGenea.Columns[2].Width:=150;
-//          dbgGenea.Columns[3].Width:=75;
-//          dbgGenea.Columns[4].Width:=75;
-//          dbgGenea.Columns[5].Width:=135;
-//          dbgGenea.Columns[6].Width:=130;
-//          dbgGenea.Columns[7].Width:=40;
-//          dbgGenea.Columns[8].Width:=40;
-//          dbgGenea.Columns[9].Width:=55;
-//          dbgGenea.Columns[10].Width:=60;
-          //dbgGenea.Update;
-          //dbgGenea.BeginUpdate;
+
           datamodule1.fdQuerGlob.FieldByName('nom').AsString;
             dbgGenea2.Columns[0].Width:=40;
           dbgGenea2.Columns[1].Width:=150;

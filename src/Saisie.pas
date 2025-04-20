@@ -491,11 +491,11 @@ begin
                          if (EdDnaiss.text <>'') then
                                ParamByName('Dnaiss').AsDate := StrToDate(Dnaiss)
                           else
-                               ParamByName('Dnaiss').AsDate := 00/00/0000;
+                               ParamByName('Dnaiss').AsString := '0000-00-00';
                           if (EdDdec.text <>'') then
                                ParamByName('Ddec').AsDate := StrToDate(Ddec)
                           else
-                           ParamByName('Ddec').AsDate := 00/00/0000;
+                           ParamByName('Ddec').AsString := '0000-00-00';
                            ParamByName('Lnaiss').AsString := Lnaiss;
                            ParamByName('Ldec').AsString := Ldec;
                            ParamByName('Pren2').AsString := Pren2;
@@ -503,11 +503,11 @@ begin
                           if (EdDMaria.text <>'') then
                                ParamByName('Dmar').AsDate := StrToDate(Dmar)
                            else
-                               ParamByName('Dmar').AsDate := 00/00/0000;
+                               ParamByName('Dmar').AsString := '0000-00-00';
                             if (EdD2Maria.text <>'') then
                                ParamByName('D2mar').AsDate := StrToDate(D2mar)
                            else
-                               ParamByName('D2mar').AsDate := 00/00/0000;
+                               ParamByName('D2mar').AsString := '0000-00-00';
                             ParamByName('IdNnaiss').AsInteger := IdNnaiss;
                             ParamByName('IdNdec').AsInteger := IdNdec;
                             ParamByName('IdDnaiss').AsInteger := IdDnaiss;
@@ -519,6 +519,7 @@ begin
                             ParamByName('Datmaj').AsDate := StrToDate(Datmaj);
                             ExecSQL;
                             close;
+                            ShowMessage ('Données insèrées dans la base');
                     end;
                end
                else
@@ -530,7 +531,7 @@ begin
 
       end;
         finally
-              ShowMessage ('Données insèrées dans la base');
+              //ShowMessage ('Données insèrées dans la base');
            end;
 
 

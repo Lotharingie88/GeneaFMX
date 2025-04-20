@@ -14,10 +14,9 @@ object DataModule1: TDataModule1
     ConnectionName = 'geneasqlite'
     Params.Strings = (
       'Database=C:\user\GitLocal\geneaFM\data\adn.db'
-      'DriverID=SQLite'
-      'LockingMode=Exclusive'
-      'DateTimeFormat=DateTime')
-    Connected = True
+      'LockingMode=Normal'
+      'DateTimeFormat=DateTime'
+      'DriverID=SQLite')
     LoginPrompt = False
     Left = 528
     Top = 8
@@ -32,7 +31,6 @@ object DataModule1: TDataModule1
     Top = 16
   end
   object FDQuerPays: TFDQuery
-    Active = True
     Connection = FDConnecSqLite
     SQL.Strings = (
       'select idnation,nom from pays')
@@ -40,7 +38,6 @@ object DataModule1: TDataModule1
     Top = 64
   end
   object FDQuerDept: TFDQuery
-    Active = True
     Connection = FDConnecSqLite
     SQL.Strings = (
       'select iddept,dept from departement')
@@ -48,7 +45,6 @@ object DataModule1: TDataModule1
     Top = 64
   end
   object FDQuerNomPren: TFDQuery
-    Active = True
     Connection = FDConnecSqLite
     SQL.Strings = (
       'select idperson,nom,prenom from personnes  order by nom,prenom')

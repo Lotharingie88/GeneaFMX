@@ -1,0 +1,59 @@
+object FAprop: TFAprop
+  Left = 0
+  Top = 0
+  Caption = 'A Propos...'
+  ClientHeight = 480
+  ClientWidth = 267
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Layout1: TLayout
+    Position.X = 8.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 257.000000000000000000
+    Size.Height = 465.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object btAprop: TButton
+      Position.X = 40.000000000000000000
+      Position.Y = 424.000000000000000000
+      Size.Width = 161.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'OK'
+      TextSettings.Trimming = None
+      OnClick = btApropClick
+    end
+    object memAprop: TMemo
+      Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+      DataDetectorTypes = []
+      Lines.Strings = (
+        ' Application de G'#233'n'#233'alogie'
+        'Cr'#233'ation et modif des fiches individus.'
+        'Construction de l arbre.'
+        'Vision globale des individus de la base.'
+        ''
+        'D'#233'velopp'#233'e en Delphi FMX 12 avec base'
+        ' en SQLite et MYSQL.'
+        ''
+        'Application OpenSource sous licence :...'
+        ''
+        'Ann'#233'e 2024.'
+        ''
+        'Copyright :  '#169' Sylvain Thouvenot.')
+      ShowScrollBars = False
+      StyledSettings = [Family, FontColor]
+      TextSettings.Font.Size = 13.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      Position.Y = 8.000000000000000000
+      Size.Width = 257.000000000000000000
+      Size.Height = 388.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Viewport.Width = 253.000000000000000000
+      Viewport.Height = 384.000000000000000000
+    end
+  end
+end

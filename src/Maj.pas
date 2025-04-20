@@ -115,11 +115,11 @@ begin
                      end;
                     if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMer') or (TLabel(Components[i]).Name = 'lbPer') or (TLabel(Components[i]).Name = 'lbEpo') )) then
                      begin
-                       TLabel(Components[i]).Text.Empty;
+                       TLabel(Components[i]).Text:='0';
                      end;
                     if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbEpo2') or (TLabel(Components[i]).Name = 'lbInd'))) then
                      begin
-                       TLabel(Components[i]).Text.Empty;
+                       TLabel(Components[i]).Text:='0';
                      end;
                      if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMaj'))) then
                        begin
@@ -227,11 +227,11 @@ begin
                              Fchoix.ShowModal;
                      end;
 
-         end
-       	else
-         		begin
-            	idEpo:= StrToInt(lbEpo.text);
-         	 end;
+         end ;
+//       	else
+//         		begin
+//            	idEpo:= StrToInt(lbEpo.text);
+//         	 end;
 
 //     //epoux2
      if (NEpou2<>'') then
@@ -421,12 +421,12 @@ begin
                 if (EdN2Epo.Text <>'') and ((lbEpo2.text='-1') or (lbEpo2.text='0')) then
                 begin
 //                  datamodule1.fdQuerMaj.close;
-//                  datamodule1.fdQuerMaj.SQL.Clear;
-//                  datamodule1.fdQuerMaj.SQL.text:='SELECT idperson FROM personnes where nom= :NomEp2 and prenom= :PrenomEp2';
-//                  datamodule1.fdQuerMaj.ParamByName('NomEp2').AsString :=NEpou2;
-//                  datamodule1.fdQuerMaj.ParamByName('PrenomEp2').AsString :=PEpou2;
-//                  datamodule1.fdQuerMaj.Open;
-//                  idEpo2 :=datamodule1.fdQuerMaj.FieldByName('idperson').AsInteger;
+                  datamodule1.fdQuerMaj.SQL.Clear;
+                  datamodule1.fdQuerMaj.SQL.text:='SELECT idperson FROM personnes where nom= :NomEp2 and prenom= :PrenomEp2';
+                  datamodule1.fdQuerMaj.ParamByName('NomEp2').AsString :=NEpou2;
+                  datamodule1.fdQuerMaj.ParamByName('PrenomEp2').AsString :=PEpou2;
+                  datamodule1.fdQuerMaj.Open;
+                  idEpo2 :=datamodule1.fdQuerMaj.FieldByName('idperson').AsInteger;
                 end
                else
               if (lbEpo2.text<>'0') and (lbEpo2.text<>'-1') then
@@ -440,12 +440,12 @@ begin
              if (EdNPer.Text <>'') and ((lbPer.text='-1') or (lbPer.text='0')) then
                  begin
 //                      datamodule1.fdQuerMaj.close;
-//                      datamodule1.fdQuerMaj.SQL.Clear;
-//                      datamodule1.fdQuerMaj.SQL.text:='SELECT idperson FROM personnes where nom= :NomPer and prenom= :PrenomPer';
-//                      datamodule1.fdQuerMaj.ParamByName('NomPer').AsString :=NomPer;
-//                      datamodule1.fdQuerMaj.ParamByName('PrenomPer').AsString :=PrenomPer;
-//                      datamodule1.fdQuerMaj.Open;
-//                      idPer :=datamodule1.fdQuerMaj.FieldByName('idperson').AsInteger;
+                      datamodule1.fdQuerMaj.SQL.Clear;
+                      datamodule1.fdQuerMaj.SQL.text:='SELECT idperson FROM personnes where nom= :NomPer and prenom= :PrenomPer';
+                      datamodule1.fdQuerMaj.ParamByName('NomPer').AsString :=NomPer;
+                      datamodule1.fdQuerMaj.ParamByName('PrenomPer').AsString :=PrenomPer;
+                      datamodule1.fdQuerMaj.Open;
+                      idPer :=datamodule1.fdQuerMaj.FieldByName('idperson').AsInteger;
                 end
                   else
                if (lbPer.text<>'0') and (lbPer.text<>'-1') then
@@ -459,14 +459,12 @@ begin
                if (EdNMer.Text <>'') and ((lbMer.text='-1') or (lbMer.text='0')) then
                  begin
 //                   datamodule1.fdQuerMaj.close;
-//
-//                   datamodule1.fdQuerMaj.SQL.Clear;
-//                   datamodule1.fdQuerMaj.SQL.add('SELECT idperson FROM personnes where nom= :NomMer and prenom= :PrenomMer');
-//                   datamodule1.fdQuerMaj.ParamByName('NomMer').AsString :=UpperCase(NomMer);
-//                   ReqMaj.ParamByName('PrenomMer').AsString :=UpperCase(PrenomMer);
-//
-//                   ReqMaj.Opdatamodule1.fdQuerMajen;
-//                   IdMer :=datamodule1.fdQuerMaj.FieldByName('idperson').AsInteger;
+                   datamodule1.fdQuerMaj.SQL.Clear;
+                   datamodule1.fdQuerMaj.SQL.add('SELECT idperson FROM personnes where nom= :NomMer and prenom= :PrenomMer');
+                   datamodule1.fdQuerMaj.ParamByName('NomMer').AsString :=UpperCase(NomMer);
+                   datamodule1.fdQuerMaj.ParamByName('PrenomMer').AsString :=UpperCase(PrenomMer);
+                   datamodule1.fdQuerMaj.Open;
+                   idMer :=datamodule1.fdQuerMaj.FieldByName('idperson').AsInteger;
 //
                 end
                  else
@@ -479,50 +477,52 @@ begin
                  	IdMer :=0;
                 end;
          begin
-//           datamodule1.fdQuerMaj.SQL.Clear;
-//           datamodule1.fdQuerMaj.SQL.Text := 'UPDATE  personnes SET lieunaiss=:LNaiss, lieudec=:LDec, prenom2=:Prenom2,'
-//           	+' datnaiss=:DNaiss,datdec=:DDec , idper=:idPer,idmer=:idMer,datmaria=:Dmar,idepou=:idEpo,'
-//               + 'datmarbis=:Dmar2,idepoubis=:idEpo2,idnatnaiss=:NatNaiss,idnatdec=:NatDec,iddeptnaiss=:DeptNaiss,iddeptdec=:DeptDec,prenom3=:Prenom3,memo=:Mmaj, datmaj=:Datmaj '+
-//            'WHERE idperson=:idInd ' ;
-//           datamodule1.fdQuerMaj.ParamByName('idInd').AsInteger := StrToInt(lbIdInd.Caption);
-//           datamodule1.fdQuerMaj.ParamByName('Prenom2').AsString := UpperCase(Prenom2);
-//           datamodule1.fdQuerMaj.ParamByName('Prenom3').AsString := UpperCase(Prenom3);
-//           datamodule1.fdQuerMaj.ParamByName('LNaiss').AsString := UpperCase(LNaiss);
+           datamodule1.fdQuerMaj.SQL.Clear;
+           datamodule1.fdQuerMaj.SQL.Text := 'UPDATE  personnes SET lieunaiss=:LNaiss, lieudec=:LDec, prenom2=:Prenom2,'
+           	+' datnaiss=:DNaiss,datdec=:DDec , idper=:idPer,idmer=:idMer,datmaria=:Dmar,idepou=:idEpo,'
+               + 'datmarbis=:Dmar2,idepoubis=:idEpo2,idnatnaiss=:NatNaiss,idnatdec=:NatDec,iddeptnaiss=:DeptNaiss,iddeptdec=:DeptDec,prenom3=:Prenom3,memo=:Mmaj, datmaj=:Datmaj '+
+            'WHERE idperson=:idInd ' ;
+           datamodule1.fdQuerMaj.ParamByName('idInd').AsInteger := StrToInt(lbInd.text);
+           datamodule1.fdQuerMaj.ParamByName('Prenom2').AsString := Prenom2;
+           datamodule1.fdQuerMaj.ParamByName('Prenom3').AsString := Prenom3;
+           datamodule1.fdQuerMaj.ParamByName('LNaiss').AsString := LNaiss;
            if  (MemMaj.Text<>'') then
-//              datamodule1.fdQuerMaj.ParamByName('Mmaj').AsString := MemMaj.Text
+              datamodule1.fdQuerMaj.ParamByName('Mmaj').AsString := MemMaj.Text
               else
-//              datamodule1.fdQuerMaj.ParamByName('Mmaj').AsString := '';
+              datamodule1.fdQuerMaj.ParamByName('Mmaj').AsString := '';
            if (EdNaiss.Text <>'') and (EdNaiss.Text <>'NC') then
-//           	datamodule1.fdQuerMaj.ParamByName('Dnaiss').AsDate := StrToDate(Dnaiss)
+           	datamodule1.fdQuerMaj.ParamByName('Dnaiss').AsDate := StrToDate(Dnaiss)
            	else
-//           	datamodule1.fdQuerMaj.ParamByName('Dnaiss').AsString := '00/00/0000';
-//           datamodule1.fdQuerMaj.ParamByName('LDec').AsString := UpperCase(LDec);
+           	datamodule1.fdQuerMaj.ParamByName('Dnaiss').AsString := '0000-00-00';
+           datamodule1.fdQuerMaj.ParamByName('LDec').AsString := LDec;
            if (EdDec.Text <>'') and (EdDec.Text <>'NC') then
-//           	datamodule1.fdQuerMaj.ParamByName('DDec').AsDate := StrToDate(DDec)
+           	datamodule1.fdQuerMaj.ParamByName('DDec').AsDate := StrToDate(DDec)
            	else
-//           	datamodule1.fdQuerMaj.ParamByName('DDec').AsString := '00/00/0000';
-//           datamodule1.fdQuerMaj.ParamByName('idPer').AsInteger := idPer;
-//           datamodule1.fdQuerMaj.ParamByName('idMer').AsInteger := idMer;
-//           datamodule1.fdQuerMaj.ParamByName('idEpo').AsInteger := idEpo;
-//           datamodule1.fdQuerMaj.ParamByName('idEpo2').AsInteger := idEpo2;
-//           datamodule1.fdQuerMaj.ParamByName('NatNaiss').AsInteger := NatNaiss;
-//           datamodule1.fdQuerMaj.ParamByName('DeptNaiss').AsInteger := DeptNaiss;
-//           datamodule1.fdQuerMaj.ParamByName('NatDec').AsInteger := NatDec;
-//           datamodule1.fdQuerMaj.ParamByName('DeptDec').AsInteger := DeptDec;
+           	datamodule1.fdQuerMaj.ParamByName('DDec').AsString := '0000-00-00';
+           datamodule1.fdQuerMaj.ParamByName('idPer').AsInteger := idPer;
+           datamodule1.fdQuerMaj.ParamByName('idMer').AsInteger := idMer;
+           datamodule1.fdQuerMaj.ParamByName('idEpo').AsInteger := idEpo;
+           datamodule1.fdQuerMaj.ParamByName('idEpo2').AsInteger := idEpo2;
+           datamodule1.fdQuerMaj.ParamByName('NatNaiss').AsInteger := NatNaiss;
+           datamodule1.fdQuerMaj.ParamByName('DeptNaiss').AsInteger := DeptNaiss;
+           datamodule1.fdQuerMaj.ParamByName('NatDec').AsInteger := NatDec;
+           datamodule1.fdQuerMaj.ParamByName('DeptDec').AsInteger := DeptDec;
            if (EdMaria.Text <>'') and (EdMaria.Text <>'NC') then
-//           	datamodule1.fdQuerMaj.ParamByName('Dmar').AsDate := StrToDate(Dmar)
+           	datamodule1.fdQuerMaj.ParamByName('Dmar').AsDate := StrToDate(Dmar)
            	else
-//           	datamodule1.fdQuerMaj.ParamByName('Dmar').AsString := '00/00/0000';
+           	datamodule1.fdQuerMaj.ParamByName('Dmar').AsString := '0000-00-00';
            if (Ed2Maria.Text <>'') and (Ed2Maria.Text <>'NC') then
-//           	datamodule1.fdQuerMaj.ParamByName('Dmar2').AsDate := StrToDate(Dmar2)
+           	datamodule1.fdQuerMaj.ParamByName('Dmar2').AsDate := StrToDate(Dmar2)
            	else
-//           	datamodule1.fdQuerMaj.ParamByName('Dmar2').AsString := '00/00/0000';
-//           datamodule1.fdQuerMaj.ParamByName('Datmaj').AsDate := StrToDate(Datmaj);
-//           datamodule1.fdQuerMaj.ExecSQL;
+           	datamodule1.fdQuerMaj.ParamByName('Dmar2').AsString := '0000-00-00';
+           datamodule1.fdQuerMaj.ParamByName('Datmaj').AsDate := StrToDate(Datmaj);
+           datamodule1.fdQuerMaj.ExecSQL;
+            ShowMessage ('Données mises à jour dans la base');
          end;
 //
      finally
-      ShowMessage ('Données mises à jour dans la base');
+      //ShowMessage ('Données mises à jour dans la base');
+     end;
        for i := 0 to Componentcount-1 do
           	begin
             		if Components[i] is TEdit  then
@@ -541,7 +541,7 @@ begin
 
          lbmaj.Text:='Mise à jour le : ';
          MemMaj.text :='';
-     end;
+     //end;
 end;
 
 procedure TFMaj.btSuppClick(Sender: TObject);
@@ -560,22 +560,22 @@ var
   		i,IndPers: Integer;
       imer,iper,iepo,iepo2,indep,iddep,inpa,idpa:string;
 begin
-  for i := 0 to Componentcount-1 do
-          	begin
-            		if Components[i] is TEdit  then
-                     begin
-                       TEdit(Components[i]).Text:='';
-                     end;
-
-                    if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMer') or (TLabel(Components[i]).Name = 'lbPer') or (TLabel(Components[i]).Name = 'lbInd') )) then
-                     begin
-                       TLabel(Components[i]).Text:='0';
-                     end;
-                     if (Components[i] is TLabel and ((TLabel(Components[i]).Name =  'lbEpo') or (TLabel(Components[i]).Name =  'lbEpo2') )) then
-                     begin
-                       TLabel(Components[i]).Text:='0';
-                     end;
-               end;
+//  for i := 0 to Componentcount-1 do
+//          	begin
+//            		if Components[i] is TEdit  then
+//                     begin
+//                       TEdit(Components[i]).Text:='';
+//                     end;
+//
+//                    if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMer') or (TLabel(Components[i]).Name = 'lbPer') or (TLabel(Components[i]).Name = 'lbInd') )) then
+//                     begin
+//                       TLabel(Components[i]).Text:='0';
+//                     end;
+//                     if (Components[i] is TLabel and ((TLabel(Components[i]).Name =  'lbEpo') or (TLabel(Components[i]).Name =  'lbEpo2') )) then
+//                     begin
+//                       TLabel(Components[i]).Text:='0';
+//                     end;
+//               end;
   Individu := CbNom.Text;
 
   if cbnom.text<>'' then

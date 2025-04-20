@@ -112,13 +112,13 @@ begin
           Fchoix.RdChoix.Visible:=false;
           fchoix.cbDebArbre.Repaint;
           Fchoix.cbdebarbre.Visible:=True;
-          fchoix.Show;
-     	    //fchoix.ShowModal;
+          //fchoix.Show;
+     	    fchoix.ShowModal;
 end;
 
 procedure TFArbre.btQuitClick(Sender: TObject);
 begin
-  farbre.hide;
+  farbre.close;
 end;
 
 procedure TFArbre.edInd0Change(Sender: TObject);

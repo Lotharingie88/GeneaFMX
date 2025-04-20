@@ -71,6 +71,7 @@ object GeneaPrinc: TGeneaPrinc
           Locked = True
           ShortCut = 112
           Text = 'A Propos'
+          OnClick = menAboutClick
         end
         object menGuid: TMenuItem
           Locked = True

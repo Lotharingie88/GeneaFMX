@@ -35,8 +35,7 @@ type
     procedure btNewClick(Sender: TObject);
     procedure btValidClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure sgChoixSelectCell(Sender: TObject; const ACol, ARow: Integer;
-      var CanSelect: Boolean);
+    
   private
     { Déclarations privées }
   public
@@ -145,6 +144,8 @@ procedure TFChoix.btValidClick(Sender: TObject);
     idnom:string;
     t:integer;
 begin
+    //idNom:=sgChoix.selected.ToString();
+       //t:=sgChoix.Cells[0,idnom.ToInteger()].ToInteger();
    if lbChoix.text='Saisie' then
    	begin
        // i:=sgChoix.Selection.Top ;
@@ -190,20 +191,18 @@ begin
 
 
        //close;
-     end
-     else
+     end;
+
      if lbChoix.text='MAJ' then
      begin
        //i:=sgChoix.Selection.Top ;
        idNom:=sgChoix.selected.ToString();
        t:=sgChoix.Cells[0,idnom.ToInteger()].ToInteger();
-       ShowMessage ('IdNom :' + t.ToString );
        if Fchoix.Caption = 'MAJ-Homonymie pour l Epoux(se)' then
            begin
          		Fmaj.lbEpo.text :=  t.ToString;
             ShowMessage ('test :' + t.ToString );
-            //lbSelect.Caption:=idnom;
-            Fchoix.Close;
+            Fchoix.Hide;
           end
         else
        if Fchoix.Caption = 'MAJ-Homonymie pour le Père' then
@@ -230,8 +229,8 @@ begin
 
 
 
-     end
-     else
+     end;
+
      if lbChoix.text='Arbre' then
      begin
              if edNiv.Text <>'' then
@@ -300,12 +299,13 @@ begin
                sgChoix.Columns[1].Width:=120;
                sgChoix.Columns[2].Width:=120;
                sgChoix.Columns[3].Width:=80;
-
+                    datamodule1.fdQuerChoix.close;
+              exit;
 
                  //MessageDlg ('il y a déjà des individus avec cette identité',mtInformation,[mbOK],0);
 
-          end
-       else
+          end;
+
        if Fchoix.Caption = 'Homonymie pour l Epoux(se)' then
            begin
 
@@ -330,19 +330,21 @@ begin
                             inc(j);
                       end;
                   end;
+                  datamodule1.fdQuerChoix.close;
+                  exit;
+          end;
 
-          end
-        else
        if Fchoix.Caption = 'Homonymie pour le Père' then
            begin
                 datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
                 datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.text;
                 datamodule1.fdQuerChoix.Open;
+                //rowcount:=datamodule1.fdQuerChoix.RecordCount;
                 datamodule1.fdQuerChoix.first;
                 with sgChoix do
                   begin
                       j:=0;
-                      rowcount:=datamodule1.fdQuerChoix.RecordCount;
+                      rowcount:=datamodule1.fdQuerChoix.RecordCount +1;
                       while not datamodule1.fdQuerChoix.Eof do
                       begin
                         k:=0;
@@ -355,8 +357,10 @@ begin
                             inc(j);
                       end;
                   end;
-          end
-       else
+                      datamodule1.fdQuerChoix.close;
+                  exit;
+          end;
+
        if Fchoix.Caption = 'Homonymie pour la Mère' then
           begin
 
@@ -367,7 +371,7 @@ begin
             with sgChoix do
                   begin
                       j:=0;
-                      rowcount:=datamodule1.fdQuerChoix.RecordCount;
+                      rowcount:=datamodule1.fdQuerChoix.RecordCount+1;
 
                       while not datamodule1.fdQuerChoix.Eof do
                       begin
@@ -381,11 +385,12 @@ begin
                             inc(j);
                       end;
                   end;
+                      datamodule1.fdQuerChoix.close;
+              exit;
 
 
+          end;
 
-          end
-        else
        if Fchoix.Caption = 'Homonymie pour l Epoux(se)2' then
            begin
 
@@ -409,27 +414,31 @@ begin
                             inc(j);
                       end;
                   end;
-              
+                       datamodule1.fdQuerChoix.close;
+              exit;
            end;
     end;
+
     if Fchoix.lbChoix.Text='MAJ' then
     begin
         sgChoix.Visible:=True;
-        datamodule1.fdQuerChoix.close;
-        datamodule1.fdQuerChoix.SQL.clear;
-        datamodule1.fdQuerChoix.SQL.text:= 'SELECT idperson,nom,prenom,if(datnaiss="0000/00/00", "NC",datnaiss) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom';
-        datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
-        datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
-        datamodule1.fdQuerChoix.Open;
+//        datamodule1.fdQuerChoix.close;
+//        datamodule1.fdQuerChoix.SQL.clear;
+//        datamodule1.fdQuerChoix.SQL.text:= 'SELECT idperson,nom,prenom,if(datnaiss="0000-00-00", "NC",datnaiss) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom';
+//        datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
+//        datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
+//        datamodule1.fdQuerChoix.Open;
 
-        if Fchoix.Caption = 'MAJ-Homonymie de la Personne' then
-       	begin
-         		Fmaj.lbInd.text:=  idNom;
-          end
-       else
+//        if Fchoix.Caption = 'MAJ-Homonymie de la Personne' then
+//       	begin
+//         		Fmaj.lbInd.text:=  idNom;
+//          end
+//       else
        if Fchoix.Caption = 'MAJ-Homonymie pour l Epoux(se)' then
            begin
-
+        datamodule1.fdQuerChoix.close;
+        datamodule1.fdQuerChoix.SQL.clear;
+        datamodule1.fdQuerChoix.SQL.text:= 'SELECT idperson,nom,prenom,if(datnaiss="0000-00-00", "NC",datnaiss) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom';
               datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
               datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
               datamodule1.fdQuerChoix.Open;
@@ -438,25 +447,43 @@ begin
                   begin
                       j:=0;
                       rowcount:=datamodule1.fdQuerChoix.RecordCount;
-                      ShowMessage ('r:' + rowcount.ToString);
-                      while not datamodule1.fdQuerChoix.Eof do
-                      begin
-                        k:=0;
-                            ShowMessage ('r2:' + rowcount.ToString);
-                            cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-                            cells[k+1,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
-                            cells[k+2,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
-                            cells[k+3,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
-                            datamodule1.fdQuerChoix.Next;
-                            inc(j);
-                      end;
-                  end;
+                      if rowcount=1 then
+                        begin
+                           k:=0;
+                                  //ShowMessage ('r2:' + rowcount.ToString);
+                                  cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
+                                  cells[k+1,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
+                                  cells[k+2,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
+                                  cells[k+3,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
+                                  datamodule1.fdQuerChoix.Next;
 
-          end
-        else
+                        end
+                        else
+                        begin
+                            //ShowMessage ('r:' + rowcount.ToString);
+                            while not datamodule1.fdQuerChoix.Eof do
+                            begin
+                              k:=0;
+                                  //ShowMessage ('r2:' + rowcount.ToString);
+                                  cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
+                                  cells[k+1,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
+                                  cells[k+2,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
+                                  cells[k+3,j]:=  datamodule1.fdQuerChoix.FieldByName('Naissance').AsString;
+                                  datamodule1.fdQuerChoix.Next;
+                                  inc(j);
+                            end;
+                        end;
+                      //inc(j)
+                  end;
+                  datamodule1.fdQuerChoix.close;
+              exit;
+          end;
+        //else
        if Fchoix.Caption = 'MAJ-Homonymie pour le Père' then
            begin
-
+            datamodule1.fdQuerChoix.close;
+        datamodule1.fdQuerChoix.SQL.clear;
+        datamodule1.fdQuerChoix.SQL.text:= 'SELECT idperson,nom,prenom,if(datnaiss="0000-00-00", "NC",datnaiss) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom';
             datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
             datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
             datamodule1.fdQuerChoix.Open;
@@ -465,11 +492,11 @@ begin
                   begin
                       j:=0;
                       rowcount:=datamodule1.fdQuerChoix.RecordCount;
-                      ShowMessage ('r3:' + rowcount.ToString);
+                      //ShowMessage ('r3:' + rowcount.ToString);
                       while not datamodule1.fdQuerChoix.Eof do
                       begin
                         k:=0;
-                            ShowMessage ('r4:' + rowcount.ToString);
+                            //ShowMessage ('r4:' + rowcount.ToString);
                             cells[k,j]:=  datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
                             cells[k+1,j]:=   datamodule1.fdQuerChoix.FieldByName('nom').AsString ;
                             cells[k+2,j]:=  datamodule1.fdQuerChoix.FieldByName('prenom').AsString;
@@ -478,13 +505,16 @@ begin
                             inc(j);
                       end;
                   end;
+                  datamodule1.fdQuerChoix.close;
+             exit;
 
-
-          end
-       else
+          end;
+       //else
        if Fchoix.Caption = 'MAJ-Homonymie pour la Mère' then
           begin
-
+            datamodule1.fdQuerChoix.close;
+        datamodule1.fdQuerChoix.SQL.clear;
+        datamodule1.fdQuerChoix.SQL.text:= 'SELECT idperson,nom,prenom,if(datnaiss="0000-00-00", "NC",datnaiss) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom';
             datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
             datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
             datamodule1.fdQuerChoix.Open;
@@ -505,12 +535,15 @@ begin
                             inc(j);
                       end;
                   end;
-
-          end
-        else
+                 datamodule1.fdQuerChoix.close;
+             exit;
+          end;
+        //else
        if Fchoix.Caption = 'MAJ-Homonymie pour l Epoux(se)2' then
            begin
-
+            datamodule1.fdQuerChoix.close;
+        datamodule1.fdQuerChoix.SQL.clear;
+        datamodule1.fdQuerChoix.SQL.text:= 'SELECT idperson,nom,prenom,if(datnaiss="0000-00-00", "NC",datnaiss) as Naissance FROM personnes where nom= :Nom and prenom = :Prenom';
             datamodule1.fdQuerChoix.ParamByName('Nom').AsString := lbNom.Text;
             datamodule1.fdQuerChoix.ParamByName('Prenom').AsString := lbPren.Text;
             datamodule1.fdQuerChoix.Open;
@@ -531,10 +564,12 @@ begin
                             inc(j);
                       end;
                   end;
-
-                               Fchoix.sgChoix.Visible:=True;
+                  datamodule1.fdQuerChoix.close;
+             exit;
+                              // Fchoix.sgChoix.Visible:=True;
           end;
     end;
+
    if Fchoix.lbChoix.Text='Arbre' then
     begin
 
@@ -560,11 +595,6 @@ begin
     end;
 end;
 
-procedure TFChoix.sgChoixSelectCell(Sender: TObject; const ACol, ARow: Integer;
-  var CanSelect: Boolean);
-begin
-    //idNom:=sgChoix.Selected.ToString;
 
-end;
 
 end.

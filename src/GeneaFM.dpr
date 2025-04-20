@@ -10,7 +10,8 @@ uses
   Global in 'Global.pas' {FGlobal},
   Maj in 'Maj.pas' {FMaj},
   Consult in 'Consult.pas' {FCons},
-  Choix2 in 'Choix2.pas' {FChoix};
+  Choix2 in 'Choix2.pas' {FChoix},
+  geneFMaprop in 'geneFMaprop.pas' {FAprop};
 
 {$R *.res}
 
@@ -24,5 +25,6 @@ begin
   Application.CreateForm(TFMaj, FMaj);
   Application.CreateForm(TFCons, FCons);
   Application.CreateForm(TFChoix, FChoix);
+  Application.CreateForm(TFAprop, FAprop);
   Application.Run;
 end.

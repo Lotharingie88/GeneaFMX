@@ -93,7 +93,6 @@ object FChoix: TFChoix
       Size.PlatformDefault = False
       TabOrder = 5
       Options = [Editing, ColumnResize, ColumnMove, ColLines, RowLines, RowSelect, Tabs, Header, HeaderClick, AutoDisplacement]
-      OnSelectCell = sgChoixSelectCell
       Viewport.Width = 637.000000000000000000
       Viewport.Height = 285.000000000000000000
     end
