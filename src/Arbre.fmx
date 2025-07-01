@@ -2,8 +2,8 @@ object FArbre: TFArbre
   Left = 0
   Top = 0
   Caption = 'Arbre'
-  ClientHeight = 728
-  ClientWidth = 1105
+  ClientHeight = 600
+  ClientWidth = 1115
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -12,14 +12,14 @@ object FArbre: TFArbre
   object Layout1: TLayout
     Position.X = 8.000000000000000000
     Position.Y = 8.000000000000000000
-    Size.Width = 1097.000000000000000000
-    Size.Height = 713.000000000000000000
+    Size.Width = 1089.000000000000000000
+    Size.Height = 595.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     object ToolBar1: TToolBar
       Align = Bottom
-      Position.Y = 664.000000000000000000
-      Size.Width = 1097.000000000000000000
+      Position.Y = 546.000000000000000000
+      Size.Width = 1089.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
@@ -58,17 +58,17 @@ object FArbre: TFArbre
       OnChange = edInd0Change
     end
     object sbArbre: TScrollBox
-      Position.X = 16.000000000000000000
-      Position.Y = 40.000000000000000000
-      Size.Width = 1009.000000000000000000
+      Position.X = 8.000000000000000000
+      Position.Y = 49.000000000000000000
+      Size.Width = 993.000000000000000000
       Size.Height = 497.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 2
-      Viewport.Width = 1009.000000000000000000
+      Viewport.Width = 993.000000000000000000
       Viewport.Height = 497.000000000000000000
       object Label1: TLabel
-        Position.X = 16.000000000000000000
-        Position.Y = 8.000000000000000000
+        Position.X = 8.000000000000000000
+        Position.Y = 16.000000000000000000
         Size.Width = 73.000000000000000000
         Size.Height = 17.000000000000000000
         Size.PlatformDefault = False
@@ -82,19 +82,6 @@ object FArbre: TFArbre
           Size.Height = 1.000000000000000000
           Size.PlatformDefault = False
         end
-      end
-      object Memo1: TMemo
-        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
-        DataDetectorTypes = []
-        Position.X = 760.000000000000000000
-        Position.Y = 376.000000000000000000
-        Size.Width = 113.000000000000000000
-        Size.Height = 49.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 1
-        Visible = False
-        Viewport.Width = 109.000000000000000000
-        Viewport.Height = 45.000000000000000000
       end
     end
     object lbNiv: TLabel

@@ -2,8 +2,8 @@ object FMaj: TFMaj
   Left = 0
   Top = 0
   Caption = 'Mise '#224' Jour'
-  ClientHeight = 749
-  ClientWidth = 1079
+  ClientHeight = 600
+  ClientWidth = 1115
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -11,15 +11,16 @@ object FMaj: TFMaj
   OnClose = FormClose
   DesignerMasterStyle = 0
   object Layout1: TLayout
-    Position.Y = 4.000000000000000000
-    Size.Width = 1065.000000000000000000
-    Size.Height = 737.000000000000000000
+    Position.X = 18.000000000000000000
+    Position.Y = -3.000000000000000000
+    Size.Width = 1089.000000000000000000
+    Size.Height = 595.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     object ToolBar1: TToolBar
       Align = Bottom
-      Position.Y = 680.000000000000000000
-      Size.Width = 1065.000000000000000000
+      Position.Y = 538.000000000000000000
+      Size.Width = 1089.000000000000000000
       Size.Height = 57.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
@@ -35,7 +36,7 @@ object FMaj: TFMaj
         OnClick = btRecClick
       end
       object btQuit: TButton
-        Position.X = 904.000000000000000000
+        Position.X = 870.000000000000000000
         Position.Y = 8.000000000000000000
         Size.Width = 137.000000000000000000
         Size.Height = 41.000000000000000000
@@ -203,25 +204,12 @@ object FMaj: TFMaj
     end
     object Label20: TLabel
       Position.X = 8.000000000000000000
-      Position.Y = 440.000000000000000000
+      Position.Y = 432.000000000000000000
       Size.Width = 81.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = 'M'#233'mo :'
       TabOrder = 44
-    end
-    object lbMaj: TLabel
-      StyledSettings = [FontColor]
-      Position.X = 584.000000000000000000
-      Position.Y = 632.000000000000000000
-      Size.Width = 473.000000000000000000
-      Size.Height = 25.000000000000000000
-      Size.PlatformDefault = False
-      TextSettings.Font.Family = 'Segoe Script'
-      TextSettings.Font.Size = 16.000000000000000000
-      TextSettings.Font.StyleExt = {00070000000200000004000000}
-      Text = 'Derni'#232're M'#224'J le : '
-      TabOrder = 45
     end
     object Panel1: TPanel
       Position.X = 720.000000000000000000
@@ -258,14 +246,14 @@ object FMaj: TFMaj
       Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
       CharCase = ecUpperCase
       DataDetectorTypes = []
-      Position.X = 16.000000000000000000
-      Position.Y = 472.000000000000000000
+      Position.X = 8.000000000000000000
+      Position.Y = 449.000000000000000000
       Size.Width = 521.000000000000000000
-      Size.Height = 201.000000000000000000
+      Size.Height = 81.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 23
-      Viewport.Width = 517.000000000000000000
-      Viewport.Height = 197.000000000000000000
+      Viewport.Width = 521.000000000000000000
+      Viewport.Height = 81.000000000000000000
     end
     object cbNom: TComboBox
       Position.X = 104.000000000000000000
@@ -560,6 +548,22 @@ object FMaj: TFMaj
       Size.PlatformDefault = False
       Text = '0'
       TabOrder = 51
+    end
+    object lbMaj: TLabel
+      Anchors = []
+      StyledSettings = [FontColor]
+      Position.X = 568.000000000000000000
+      Position.Y = 480.000000000000000000
+      Size.Width = 473.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Segoe Script'
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000200000004000000}
+      Text = 'Derni'#232're M'#224'J le : '
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 45
     end
   end
 end

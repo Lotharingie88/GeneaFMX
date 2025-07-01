@@ -2,8 +2,8 @@ object FCons: TFCons
   Left = 0
   Top = 0
   Caption = 'Consultation'
-  ClientHeight = 743
-  ClientWidth = 1079
+  ClientHeight = 600
+  ClientWidth = 1115
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -13,19 +13,19 @@ object FCons: TFCons
   object Layout1: TLayout
     Position.X = 8.000000000000000000
     Position.Y = 4.000000000000000000
-    Size.Width = 1065.000000000000000000
-    Size.Height = 737.000000000000000000
+    Size.Width = 1015.000000000000000000
+    Size.Height = 595.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     object ToolBar1: TToolBar
       Align = Bottom
-      Position.Y = 680.000000000000000000
-      Size.Width = 1065.000000000000000000
+      Position.Y = 538.000000000000000000
+      Size.Width = 1015.000000000000000000
       Size.Height = 57.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
       object btQuit: TButton
-        Position.X = 904.000000000000000000
+        Position.X = 856.000000000000000000
         Position.Y = 8.000000000000000000
         Size.Width = 137.000000000000000000
         Size.Height = 41.000000000000000000
@@ -227,14 +227,14 @@ object FCons: TFCons
       Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
       DataDetectorTypes = []
       Enabled = False
-      Position.X = 16.000000000000000000
-      Position.Y = 472.000000000000000000
+      Position.X = 8.000000000000000000
+      Position.Y = 457.000000000000000000
       Size.Width = 521.000000000000000000
-      Size.Height = 201.000000000000000000
+      Size.Height = 98.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 33
       Viewport.Width = 517.000000000000000000
-      Viewport.Height = 197.000000000000000000
+      Viewport.Height = 94.000000000000000000
     end
     object cbNom: TComboBox
       Position.X = 104.000000000000000000

@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,UdbGenea,
   FMX.StdCtrls, FMX.Controls.Presentation, FMX.Layouts, FMX.Memo.Types,
-  FMX.Edit, FMX.ListBox, FMX.ScrollBox, FMX.Memo;
+  FMX.Edit,firedac.stan.Param, FMX.ListBox, FMX.ScrollBox, FMX.Memo;
 
 type
   TFCons = class(TForm)

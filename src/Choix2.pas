@@ -196,8 +196,13 @@ begin
      if lbChoix.text='MAJ' then
      begin
        //i:=sgChoix.Selection.Top ;
-       idNom:=sgChoix.selected.ToString();
-       t:=sgChoix.Cells[0,idnom.ToInteger()].ToInteger();
+       if (sgChoix.selected.ToString()<>'') and (sgChoix.selected.ToString()<>'0') then
+            begin
+              idNom:=sgChoix.selected.ToString();
+              t:=sgChoix.Cells[0,idnom.ToInteger()].ToInteger();
+            end
+            else
+             ShowMessage ('test :'  );
        if Fchoix.Caption = 'MAJ-Homonymie pour l Epoux(se)' then
            begin
          		Fmaj.lbEpo.text :=  t.ToString;
@@ -493,6 +498,7 @@ begin
                       j:=0;
                       rowcount:=datamodule1.fdQuerChoix.RecordCount;
                       //ShowMessage ('r3:' + rowcount.ToString);
+                      datamodule1.fdQuerChoix.first;
                       while not datamodule1.fdQuerChoix.Eof do
                       begin
                         k:=0;

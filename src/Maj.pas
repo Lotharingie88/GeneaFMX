@@ -109,6 +109,10 @@ begin
                      begin
                        TEdit(Components[i]).Text:='';
                      end;
+                if (Components[i] is TMemo ) then
+                     begin
+                       TMemo(Components[i]).Text := '';
+                     end;
                  if (Components[i] is TComboBox and (TComboBox(Components[i]).Name <> 'CbNom')) then
                      begin
                        TComboBox(Components[i]).itemindex:=0;
@@ -545,14 +549,41 @@ begin
 end;
 
 procedure TFMaj.btSuppClick(Sender: TObject);
-  //var
+  var
+    idPers :integer;
+    //idP,idM,idE,idE2 :integer;
     //i:integer;
   begin
-  //   datamodule1.fdQuerMajPlus.SQL.Clear;
-  //   datamodule1.fdQuerMajPlus.SQL.Text := 'DELETE FROM personnes WHERE idperson = :idmer ';
-  //   datamodule1.fdQuerMajPlus.ParamByName('idmer').AsString := NomMer;
-  //   datamodule1.fdQuerMajPlus.ParamByName('Datmaj').AsDate := StrToDate(Datmaj);
-  //   datamodule1.fdQuerMajPlus.ExecSQL;
+       if lbEpo2.text<>'0' then
+         begin
+              datamodule1.fdQuerMajPlus.SQL.Clear;
+              datamodule1.fdQuerMajPlus.SQL.Text := 'UPDATE  personnes SET '
+               + 'datmarbis=:Dmar2,idepoubis=0, datmaj=:Datmaj '
+               + 'WHERE idperson=:idInd and idepoubis=:idPers' ;
+              datamodule1.fdQuerMajPlus.ParamByName('idInd').AsInteger := StrToInt(lbEpo2.text);
+              datamodule1.fdQuerMajPlus.ParamByName('idPers').AsInteger := StrToInt(lbInd.text);
+              datamodule1.fdQuerMajPlus.ParamByName('Dmar2').AsString := '0000-00-00';
+              datamodule1.fdQuerMajPlus.ParamByName('Datmaj').AsDate := StrToDate(Datmaj);
+              datamodule1.fdQuerMajPlus.ExecSQL;
+         end;
+       if lbEpo.text <>'0' then
+          begin
+              datamodule1.fdQuerMajPlus.SQL.Clear;
+              datamodule1.fdQuerMajPlus.SQL.Text := 'UPDATE  personnes SET '
+               	+' datmaria=:Dmar,idepou=0,'
+                 + ' datmaj=:Datmaj '
+                +'WHERE idperson=:idInd  and idepou=:idPers' ;
+              datamodule1.fdQuerMajPlus.ParamByName('idInd').AsInteger := StrToInt(lbEpo.text);
+              datamodule1.fdQuerMajPlus.ParamByName('idPers').AsInteger := StrToInt(lbInd.text);
+              datamodule1.fdQuerMajPlus.ParamByName('Dmar').AsString := '0000-00-00';
+              datamodule1.fdQuerMajPlus.ParamByName('Datmaj').AsDate := StrToDate(Datmaj);
+              datamodule1.fdQuerMajPlus.ExecSQL;
+          end;
+       datamodule1.fdQuerMajPlus.SQL.Clear;
+       datamodule1.fdQuerMajPlus.SQL.Text := 'DELETE FROM personnes WHERE idperson = :idInd ';
+       datamodule1.fdQuerMajPlus.ParamByName('idInd').AsInteger := StrToInt(lbInd.text);
+       //datamodule1.fdQuerMajPlus.ParamByName('Datmaj').AsDate := StrToDate(Datmaj);
+       datamodule1.fdQuerMajPlus.ExecSQL;
   end;
 
 procedure TFMaj.cbNomChange(Sender: TObject);
@@ -560,22 +591,25 @@ var
   		i,IndPers: Integer;
       imer,iper,iepo,iepo2,indep,iddep,inpa,idpa:string;
 begin
-//  for i := 0 to Componentcount-1 do
-//          	begin
-//            		if Components[i] is TEdit  then
-//                     begin
-//                       TEdit(Components[i]).Text:='';
-//                     end;
-//
-//                    if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMer') or (TLabel(Components[i]).Name = 'lbPer') or (TLabel(Components[i]).Name = 'lbInd') )) then
-//                     begin
-//                       TLabel(Components[i]).Text:='0';
-//                     end;
-//                     if (Components[i] is TLabel and ((TLabel(Components[i]).Name =  'lbEpo') or (TLabel(Components[i]).Name =  'lbEpo2') )) then
-//                     begin
-//                       TLabel(Components[i]).Text:='0';
-//                     end;
-//               end;
+  for i := 0 to Componentcount-1 do
+          	begin
+            		if Components[i] is TEdit  then
+                     begin
+                       TEdit(Components[i]).Text:='';
+                     end;
+                if (Components[i] is TMemo ) then
+                     begin
+                       TMemo(Components[i]).Text := '';
+                     end;
+                if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMer') or (TLabel(Components[i]).Name = 'lbPer') or (TLabel(Components[i]).Name = 'lbInd') )) then
+                     begin
+                       TLabel(Components[i]).Text:='0';
+                     end;
+                if (Components[i] is TLabel and ((TLabel(Components[i]).Name =  'lbEpo') or (TLabel(Components[i]).Name =  'lbEpo2') )) then
+                     begin
+                       TLabel(Components[i]).Text:='0';
+                     end;
+            end;
   Individu := CbNom.Text;
 
   if cbnom.text<>'' then
@@ -748,6 +782,10 @@ begin
                      begin
                        TComboBox(Components[i]).itemindex:=0;
                      end;
+                     if (Components[i] is TMemo ) then
+                     begin
+                       TMemo(Components[i]).Text := '';
+                     end;
                     if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMer') or (TLabel(Components[i]).Name = 'lbPer') or (TLabel(Components[i]).Name = 'lbEpo') )) then
                      begin
                        TLabel(Components[i]).Text.Empty;
@@ -824,6 +862,10 @@ begin
             		if Components[i] is TEdit  then
                      begin
                        TEdit(Components[i]).Text:='';
+                     end;
+                if (Components[i] is TMemo ) then
+                     begin
+                       TMemo(Components[i]).Text := '';
                      end;
                  if (Components[i] is TComboBox and (TComboBox(Components[i]).Name <> 'CbNom')) then
                      begin

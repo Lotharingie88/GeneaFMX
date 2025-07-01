@@ -2,7 +2,7 @@ object FGlobal: TFGlobal
   Left = 0
   Top = 0
   Caption = 'Vision Globale'
-  ClientHeight = 776
+  ClientHeight = 600
   ClientWidth = 1115
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -13,12 +13,12 @@ object FGlobal: TFGlobal
     Position.X = 8.000000000000000000
     Position.Y = 8.000000000000000000
     Size.Width = 1105.000000000000000000
-    Size.Height = 761.000000000000000000
+    Size.Height = 590.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     object ToolBar1: TToolBar
       Align = Bottom
-      Position.Y = 728.000000000000000000
+      Position.Y = 557.000000000000000000
       Size.Width = 1105.000000000000000000
       Size.Height = 33.000000000000000000
       Size.PlatformDefault = False
@@ -50,12 +50,12 @@ object FGlobal: TFGlobal
       Position.X = 8.000000000000000000
       Position.Y = 8.000000000000000000
       Size.Width = 1089.000000000000000000
-      Size.Height = 681.000000000000000000
+      Size.Height = 555.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
       Options = [Editing, ColumnMove, ColLines, RowLines, RowSelect, Tabs, Header, HeaderClick, AutoDisplacement]
       Viewport.Width = 1085.000000000000000000
-      Viewport.Height = 656.000000000000000000
+      Viewport.Height = 530.000000000000000000
     end
   end
   object NavigatorBindSourceDB1: TBindNavigator

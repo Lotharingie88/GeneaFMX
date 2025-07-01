@@ -2,24 +2,23 @@ object FSaisie: TFSaisie
   Left = 0
   Top = 0
   Caption = 'Saisie'
-  ClientHeight = 778
-  ClientWidth = 1112
+  ClientHeight = 600
+  ClientWidth = 1115
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
   DesignerMasterStyle = 0
   object Layout1: TLayout
-    Position.X = -64.000000000000000000
-    Position.Y = 8.000000000000000000
-    Size.Width = 1176.000000000000000000
-    Size.Height = 762.000000000000000000
+    Position.Y = -3.000000000000000000
+    Size.Width = 1089.000000000000000000
+    Size.Height = 595.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
     object ToolBar1: TToolBar
       Align = Bottom
-      Position.Y = 713.000000000000000000
-      Size.Width = 1176.000000000000000000
+      Position.Y = 546.000000000000000000
+      Size.Width = 1089.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 23
@@ -101,7 +100,7 @@ object FSaisie: TFSaisie
       TabOrder = 29
     end
     object Label7: TLabel
-      Position.X = 928.000000000000000000
+      Position.X = 894.000000000000000000
       Position.Y = 150.000000000000000000
       Size.Width = 73.000000000000000000
       Size.Height = 25.000000000000000000
@@ -137,7 +136,7 @@ object FSaisie: TFSaisie
       TabOrder = 33
     end
     object Label11: TLabel
-      Position.X = 928.000000000000000000
+      Position.X = 894.000000000000000000
       Position.Y = 183.000000000000000000
       Size.Width = 73.000000000000000000
       Size.Height = 25.000000000000000000
@@ -232,14 +231,14 @@ object FSaisie: TFSaisie
     object Memo: TMemo
       Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
       DataDetectorTypes = []
-      Position.X = 655.000000000000000000
-      Position.Y = 401.000000000000000000
-      Size.Width = 513.000000000000000000
-      Size.Height = 289.000000000000000000
+      Position.X = 633.000000000000000000
+      Position.Y = 393.000000000000000000
+      Size.Width = 424.000000000000000000
+      Size.Height = 145.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 22
-      Viewport.Width = 509.000000000000000000
-      Viewport.Height = 285.000000000000000000
+      Viewport.Width = 420.000000000000000000
+      Viewport.Height = 141.000000000000000000
     end
     object Label21: TLabel
       Position.X = 648.000000000000000000
@@ -309,7 +308,7 @@ object FSaisie: TFSaisie
       TabOrder = 46
     end
     object Panel1: TPanel
-      Position.X = 1023.000000000000000000
+      Position.X = 912.000000000000000000
       Position.Y = 8.000000000000000000
       Size.Width = 145.000000000000000000
       Size.Height = 137.000000000000000000
@@ -370,7 +369,7 @@ object FSaisie: TFSaisie
       CharCase = ecUpperCase
     end
     object cbPDec: TComboBox
-      Position.X = 1016.000000000000000000
+      Position.X = 928.000000000000000000
       Position.Y = 183.000000000000000000
       Size.Width = 137.000000000000000000
       Size.Height = 25.000000000000000000
@@ -484,7 +483,7 @@ object FSaisie: TFSaisie
       TabOrder = 6
     end
     object cbPNaiss: TComboBox
-      Position.X = 1016.000000000000000000
+      Position.X = 928.000000000000000000
       Position.Y = 150.000000000000000000
       Size.Width = 137.000000000000000000
       Size.Height = 25.000000000000000000
@@ -550,13 +549,14 @@ object FSaisie: TFSaisie
     object lbMaj: TLabel
       StyledSettings = [FontColor]
       Position.X = 88.000000000000000000
-      Position.Y = 552.000000000000000000
-      Size.Width = 529.000000000000000000
-      Size.Height = 33.000000000000000000
+      Position.Y = 489.000000000000000000
+      Size.Width = 393.000000000000000000
+      Size.Height = 40.000000000000000000
       Size.PlatformDefault = False
       TextSettings.Font.Family = 'Segoe Script'
       TextSettings.Font.Size = 16.000000000000000000
       TextSettings.Font.StyleExt = {00070000000200000004000000}
+      Text = 'Mis '#224' jour le :'
       TabOrder = 52
     end
   end

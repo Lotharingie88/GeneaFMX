@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types,system.Math, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,UdbGenea,
   FMX.StdCtrls, FMX.Controls.Presentation, FMX.Layouts,system.DateUtils, FMX.Edit,
-  FMX.Memo.Types, FMX.ScrollBox, FMX.Memo, FMX.Objects;
+  FMX.Memo.Types, FMX.ScrollBox, FMX.Memo, FMX.Objects,firedac.stan.Param;
 
 type
   TFArbre = class(TForm)
@@ -19,7 +19,6 @@ type
     Label1: TLabel;
     lbNiv: TLabel;
     edNivo: TEdit;
-    Memo1: TMemo;
     Line1: TLine;
     procedure btQuitClick(Sender: TObject);
     procedure btCreateClick(Sender: TObject);
@@ -42,66 +41,48 @@ implementation
   var
     IndPers,iP,iM : string;
     Indind:integer;
-    datmaj:string;
-    ed: tedit;
-    memi:tmemo;
+    //datmaj:string;
+    //ed: tedit;
+    //memi:tmemo;
 procedure TFArbre.btCreateClick(Sender: TObject);
    var
-	individu :String;
-     p:Integer;
+	//individu :String;
+     k,p:Integer;
 begin
     edInd0.Text:='';
     edNivo.text:='';
-     for p:=(Componentcount-1) downto 0 do
+    k:=componentCount-1 ;
+     for p:=k downto 0  do
           	begin
-                    //MessageDlg ('j : '+ Componentcount.ToString ,mtInformation,[mbOK],0);
-            		if (Components[p] is TEdit)  and
-                    	( TEdit(Components[p]).Name <> 'edInd0') and ( TEdit(Components[p]).Name <> 'edNivo') then
+
+           		if (Components[p] is TEdit)  and
+                    	( TEdit(Components[p]).Name = 'edInd0') or ( TEdit(Components[p]).Name = 'edNivo') then
                      	begin
-                          Components[p].free;
-                      		//Components[p].DisposeOf;
+                            TEdit(Components[p]).Text:='';
+//                          Components[p].free;
+//                      		Components[p].DisposeOf;
                      	end
-                         else
-                     if (Components[p] is TLabel) and (components[p].Name <> 'LbNiv')  then
+//                         else
+//                     if (Components[p] is TLabel) and (components[p].HasParent= true)  then
+//                      begin
+//                         //Components[p].free;
+//                         //Components[p].DisposeOf;
+//                      end;
+
+               end;
+     k:=componentCount-1 ;
+     for p:=k downto 0  do
+          	begin
+                     if (Components[p] is TMemo)    then
                       begin
-                         Components[p].free;
-                         //Components[p].DisposeOf;
-                      end;
-                     if (Components[p] is TMemo)   then
-                      begin
-                         //Components[p];
-                         Components[p].Free;
+                         Components[p].Destroy;
+                         //Components[p].Free;
                          //Components[p].DisposeOf;
                       end;
                end;
-
      Fchoix.Caption:='Arbre';
      Fchoix.lbchoix.Text:='Arbre';
-     //fchoix.Layout1.Height:=249;
-     //fchoix.Layout1.Width:=499;
-     //fchoix.height:=250;
-     //fchoix.Width:=500;
-//      datamodule1.fdQuerChoix.Active:=False;
-//      datamodule1.fdQuerChoix.SQL.clear;
-//      datamodule1.fdQuerChoix.SQL.Text:= 'SELECT idperson,nom,prenom,datnaiss FROM personnes order by nom,prenom';
-//      datamodule1.fdQuerChoix.Open;
-//      datamodule1.fdQuerChoix.Active:=True;
-//      fchoix.cbDebArbre.selected.Text:='';
-//      fchoix.cbDebArbre.Items.Clear();
-//          fchoix.cbDebArbre.ItemIndex := 0;
-//          fchoix.cbDebArbre.Items.Add('');
-//          datamodule1.fdQuerChoix.first;
-//      	while not datamodule1.fdQuerChoix.Eof do
-//          begin
-//               IndPers := datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-//               individu :=  datamodule1.fdQuerChoix.FieldByName('nom').AsString + ' ' + datamodule1.fdQuerChoix.FieldByName('prenom').AsString + ' -'+datamodule1.fdQuerChoix.FieldByName('idperson').AsString;
-//               //fchoix.cbDebArbre.AddItem(individu,TObject(StrtoInt(IndPers)));
-//               datamodule1.fdQuerChoix.Next;
-//       	end;
-
- //       	fchoix.cbDebArbre.selected.Text:='';
-//        	datamodule1.fdQuerChoix.Active:=False;
-     	    //fchoix.cbDebArbre.Visible:=True;
+     
           fchoix.lbNom.Visible:=false;
           fchoix.lbPren.visible:=false;
      	    fchoix.sgChoix.Visible:=False;
@@ -206,14 +187,14 @@ begin
                 	    v:= round(j /2);
                 	  if (v<>0) then
                         begin
-                		      with TLabel.Create(self) do
-                             begin
-                               Parent := sbArbre;
-                               Name:= 'lbAscN'+IntToStr(i)+'_'+IntToStr(j);
-                               Visible:=false;
-                            end;
+//                		      with TLabel.Create(self) do
+//                             begin
+//                               Parent := sbArbre;
+//                               Name:= 'lbAscN'+IntToStr(i)+'_'+IntToStr(j);
+//                               Visible:=false;
+//                            end;
                          end ;
-                          //with tedit.Create(self) do
+
                           with tmemo.Create(self) do
 
                             begin
@@ -240,8 +221,6 @@ begin
                                 else
                                 if i=1 then
                                     begin
-    //                                 // MessageDlg ('j : '+ j.ToString ,mtInformation,[mbOK],0);
-    //
                                        case j of
                                          1:
                                          begin
@@ -301,7 +280,7 @@ begin
                              end;
                               datamodule1.fdQuerArbrPlus.close;
                         end;
-//                         //MessageDlg ('l : '+ l.ToString,mtInformation,[mbOK],0);
+//
                            l:=l+1;
               end;
                       haut:=haut+40;
@@ -319,24 +298,31 @@ end;
 
 procedure TFArbre.FormShow(Sender: TObject);
   var
-    p:integer;
+    k,p:integer;
 begin
     edNivo.text:=fchoix.edNiv.text;
-    for p:=(Componentcount-1) downto 0 do
+    k:=componentcount-1 ;
+    for p:=k downto 0 do
           	begin
-                    //MessageDlg ('j : '+ Componentcount.ToString ,mtInformation,[mbOK],0);
+
             		if (Components[p] is TEdit)  and
                     	( TEdit(Components[p]).Name <> 'edInd0') and ( TEdit(Components[p]).Name <> 'edNivo') then
                      	begin
                           Components[p].free;
-                      		//Components[p].DisposeOf;
+
                      	end
                          else
                      if (Components[p] is TLabel) and (components[p].Name <> 'LbNiv')  then
                       begin
                           Components[p].free;
-                         //Components[p].DisposeOf;
+
                       end;
+
+               end;
+    k:=componentcount-1 ;
+    for p:=k downto 0 do
+          	begin
+
                      if (Components[p] is TMemo)   then
                       begin
                           Components[p].free;
