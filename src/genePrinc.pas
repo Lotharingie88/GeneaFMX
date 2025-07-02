@@ -34,8 +34,8 @@ type
     Label2: TLabel;
     Label3: TLabel;
     btConnec: TButton;
-    Edit1: TEdit;
-    Edit2: TEdit;
+    edLog: TEdit;
+    edMdp: TEdit;
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
@@ -43,11 +43,11 @@ type
     Label8: TLabel;
     Label9: TLabel;
     btInscrip: TButton;
-    Edit3: TEdit;
-    Edit4: TEdit;
-    Edit5: TEdit;
-    Edit6: TEdit;
-    Edit7: TEdit;
+    edNom: TEdit;
+    edPren: TEdit;
+    edPseudo: TEdit;
+    edMel: TEdit;
+    EdPmdp: TEdit;
     procedure btQuitClick(Sender: TObject);
     procedure menQuitClick(Sender: TObject);
     procedure MenSaisClick(Sender: TObject);
@@ -73,13 +73,56 @@ implementation
  uses
   Saisie,Maj,Global,Arbre,Consult,geneFMaprop;
 procedure TGeneaPrinc.btConnecClick(Sender: TObject);
+var
+  nb,id : integer;
+  pseu,prof : string;
 begin
-    pconnect.Visible:=false;
-    menArbr.Enabled:=true;
-    menCons.Enabled:=true;
-    menGlob.Enabled:=true;
-    menMaj.Enabled:=true;
-    menSais.Enabled:=true;
+    if (edLog.Text<>'') and (edMdp.Text<>'') then
+    begin
+      datamodule1.FDQuerGene.SQL.Clear;
+      datamodule1.FDQuerGene.SQL.text:= 'select count(*) as nb from utilisateur where pseudo= :nom and pwd= :mdp';
+      datamodule1.FDQuerGene.ParamByName('nom').asString:=edLog.Text;
+      datamodule1.FDQuerGene.ParamByName('mdp').asString:=edMdp.Text;
+      datamodule1.FDQuerGene.open;
+      nb:= datamodule1.FDQuerGene.FieldByName('nb').asInteger;
+      datamodule1.FDQuerGene.close;
+      datamodule1.FDQuerGene.SQL.Clear;
+      if nb=1 then
+          begin
+            datamodule1.FDQuerGene.SQL.Clear;
+            datamodule1.FDQuerGene.SQL.text:= 'select iduser,pseudo,b.profil from utilisateur as a left join profil as b on a.cprofil=b.cprofil where pseudo= :nom and pwd= :mdp';
+            datamodule1.FDQuerGene.ParamByName('nom').asString:=edLog.Text;
+            datamodule1.FDQuerGene.ParamByName('mdp').asString:=edMdp.Text;
+            datamodule1.FDQuerGene.open;
+            id:= datamodule1.FDQuerGene.FieldByName('iduser').asInteger;
+            pseu:= datamodule1.FDQuerGene.FieldByName('pseudo').asString;
+            prof:= datamodule1.FDQuerGene.FieldByName('profil').asString;
+            datamodule1.FDQuerGene.close;
+            datamodule1.FDQuerGene.SQL.Clear;
+             if prof='ADMIN' then
+                begin
+                    pconnect.Visible:=false;
+                    menArbr.Enabled:=true;
+                    menCons.Enabled:=true;
+                    menGlob.Enabled:=true;
+                    menMaj.Enabled:=true;
+                    menSais.Enabled:=true;
+
+                end;
+              if prof='UTILISATEUR' then
+                begin
+                       pconnect.Visible:=false;
+                       menArbr.Enabled:=true;
+                        menCons.Enabled:=true;
+                        menGlob.Enabled:=true;
+                        menMaj.Enabled:=false;
+                        menSais.Enabled:=false;
+
+                end;
+          end;
+
+
+    end;
 
 end;
 

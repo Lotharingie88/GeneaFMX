@@ -225,7 +225,7 @@ object GeneaPrinc: TGeneaPrinc
         Text = 'Inscription'
         TextSettings.Trimming = None
       end
-      object Edit3: TEdit
+      object edNom: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         TabOrder = 12
         Position.X = 264.000000000000000000
@@ -233,8 +233,9 @@ object GeneaPrinc: TGeneaPrinc
         Size.Width = 105.000000000000000000
         Size.Height = 17.000000000000000000
         Size.PlatformDefault = False
+        CharCase = ecUpperCase
       end
-      object Edit4: TEdit
+      object edPren: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         TabOrder = 13
         Position.X = 265.000000000000000000
@@ -242,8 +243,9 @@ object GeneaPrinc: TGeneaPrinc
         Size.Width = 104.000000000000000000
         Size.Height = 17.000000000000000000
         Size.PlatformDefault = False
+        CharCase = ecUpperCase
       end
-      object Edit5: TEdit
+      object edPseudo: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         TabOrder = 14
         Position.X = 264.000000000000000000
@@ -251,8 +253,9 @@ object GeneaPrinc: TGeneaPrinc
         Size.Width = 105.000000000000000000
         Size.Height = 17.000000000000000000
         Size.PlatformDefault = False
+        CharCase = ecUpperCase
       end
-      object Edit1: TEdit
+      object edLog: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         TabOrder = 15
         Position.X = 96.000000000000000000
@@ -260,8 +263,9 @@ object GeneaPrinc: TGeneaPrinc
         Size.Width = 73.000000000000000000
         Size.Height = 17.000000000000000000
         Size.PlatformDefault = False
+        CharCase = ecUpperCase
       end
-      object Edit2: TEdit
+      object edMdp: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         TabOrder = 16
         Position.X = 96.000000000000000000
@@ -270,7 +274,7 @@ object GeneaPrinc: TGeneaPrinc
         Size.Height = 17.000000000000000000
         Size.PlatformDefault = False
       end
-      object Edit6: TEdit
+      object edMel: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         TabOrder = 17
         Position.X = 264.000000000000000000
@@ -279,7 +283,7 @@ object GeneaPrinc: TGeneaPrinc
         Size.Height = 17.000000000000000000
         Size.PlatformDefault = False
       end
-      object Edit7: TEdit
+      object EdPmdp: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         TabOrder = 18
         Position.X = 264.000000000000000000

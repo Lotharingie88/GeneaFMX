@@ -96,4 +96,9 @@ object DataModule1: TDataModule1
     Left = 520
     Top = 384
   end
+  object FDQuerGene: TFDQuery
+    Connection = FDConnecSqLite
+    Left = 328
+    Top = 72
+  end
 end
