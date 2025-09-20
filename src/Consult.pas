@@ -65,6 +65,7 @@ type
     lbPer: TLabel;
     lbMer: TLabel;
     lbEpo2: TLabel;
+    edNom: TEdit;
     procedure btQuitClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);

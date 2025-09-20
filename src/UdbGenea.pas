@@ -13,7 +13,18 @@ uses
 
 type
   TDataModule1 = class(TDataModule)
-    FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink;
+    {$IFDEF ANDROID}
+
+      {$ELSE}
+      FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink;
+     {$ENDIF ANDROID}
+
+     {$IFDEF WIN32}
+
+      {$ELSE}
+
+     {$ENDIF WIN32}
+
     FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink;
     FDConnecSqLite: TFDConnection;
     FDConnecMysql: TFDConnection;
@@ -30,6 +41,7 @@ type
     FDQuerArbrPlus: TFDQuery;
     FDQuerChoixPlus: TFDQuery;
     FDQuerGene: TFDQuery;
+    FDQuerChoixCb: TFDQuery;
   private
     { Déclarations privées }
   public

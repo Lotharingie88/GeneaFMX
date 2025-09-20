@@ -94,7 +94,7 @@ begin
           fchoix.cbDebArbre.Repaint;
           Fchoix.cbdebarbre.Visible:=True;
           //fchoix.Show;
-     	    fchoix.ShowModal;
+     	    fchoix.Show;
 end;
 
 procedure TFArbre.btQuitClick(Sender: TObject);

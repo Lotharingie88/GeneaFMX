@@ -3,7 +3,9 @@ unit Saisie;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages,System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  //Winapi.Windows, Winapi.Messages,
+  System.SysUtils,
+  System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
   FMX.Controls.Presentation, FMX.Layouts, FMX.Memo.Types, FMX.ListBox, FMX.Edit,
   FMX.ScrollBox, FMX.Memo,UdbGenea, Data.Bind.EngExt, Fmx.Bind.DBEngExt,
@@ -105,7 +107,7 @@ procedure TFSaisie.btRecClick(Sender: TObject);
  		idInd,idPer,idMer,IdNnaiss,IdNdec,IdDnaiss,IdDdec,IdEpo,IdEpo2,Total,nbP,nbM,nbEp,nbEp2,i,j : Integer;
 begin
   Datmaj := DateToStr(Date);
-    // test sur qualité des saisies
+    /// test sur qualité des saisies
     //champs vide
     //MessageDlg ('ok',mtInformation,[mbOK],0);
     if (EdNom.Text='') or (EdPren.Text='' ) then
@@ -183,7 +185,7 @@ begin
                Fchoix.edNiv.Visible:=False;
                fchoix.height:=610;
                fchoix.Width:=695;
-               Fchoix.Showmodal;
+               Fchoix.Show;
                //lbind.Text:=Fchoix.sgChoix.selected.ToString;
         end;
      //except
@@ -234,13 +236,10 @@ begin
                              Fchoix.edNiv.Visible:=False;
                              fchoix.height:=610;
                              fchoix.Width:=695;
-                             Fchoix.ShowModal;
+                             Fchoix.Showmodal;
                end;
+                     idper:= lbper.text.ToInteger;
          end;
-      //except
-      //end;
-
-      //try
        if (EdNMer.Text <>'') then
          begin
            datamodule1.fdQuerSais.close;
@@ -280,13 +279,11 @@ begin
                              Fchoix.edNiv.Visible:=False;
                              fchoix.height:=610;
                              fchoix.Width:=695;
-                             Fchoix.ShowModal;
+                             Fchoix.Showmodal;
                end;
+                     idmer:= lbmer.text.ToInteger;
          end;
-     //except
-     //end;
      //.... et l epoux s il y a lieu !
-     //try
       if (EdNEpou.Text <>'') then
         begin
            datamodule1.fdQuerSais.close;
@@ -330,14 +327,11 @@ begin
                              Fchoix.edNiv.Visible:=False;
                              fchoix.height:=610;
                              fchoix.Width:=695;
-                             Fchoix.ShowModal;
+                             Fchoix.Showmodal;
                end;
+                     idepo:= lbepo.text.ToInteger;
          end;
-      //except
-
-      //end;
       //et l epoux2 s'il y a eu second mariage
-     //try
       if (EdN2Epo.Text <>'') then
          begin
              datamodule1.fdQuerSais.close;
@@ -379,13 +373,10 @@ begin
                              Fchoix.edNiv.Visible:=False;
                              fchoix.height:=610;
                              fchoix.Width:=695;
-                             Fchoix.ShowModal;
+                             Fchoix.Showmodal;
                end;
+                            idepo2:= lbepo2.text.ToInteger;
          end;
-      //except
-     //end;
-
-
     // on démarre l implementation dans la base de donnée
      try
      	try
@@ -535,11 +526,8 @@ begin
            end;
 
 
-     	 //try
          		if (IdEpo <> 0) then
                  begin
-//                   //ShowMessage ('Epoux :'+ IdEpo.ToString);
-//                   //MessageDlg ('1',mtInformation,[mbOK],0);
                    datamodule1.fdQuerSais.close;
 
                    datamodule1.fdQuerSais.SQL.Clear;
@@ -570,8 +558,6 @@ begin
 
                  if (IdEpo2 <> 0) then
                      begin
-    //                   //ShowMessage ('Epoux :'+ IdEpo.ToString);
-    //                   //MessageDlg ('1',mtInformation,[mbOK],0);
                        datamodule1.fdQuerSais.close;
 
                        datamodule1.fdQuerSais.SQL.Clear;
@@ -579,12 +565,10 @@ begin
                        datamodule1.fdQuerSais.ParamByName('IdEpo2').AsInteger := IdEpo2;
                        datamodule1.fdQuerSais.Open;
                        idInd := datamodule1.fdQuerSais.FieldByName('idperson').AsInteger;
-    //
-    //
+
                         try
                              if (idInd <> 0) then
                              begin
-    //                           //ShowMessage ('Début Epoux et pers :'+ IdEpo.ToString + idInd.ToString);
                                datamodule1.fdQuerSaisPlus.SQL.Clear;
                                datamodule1.fdQuerSaisPlus.SQL.Text := 'UPDATE  personnes SET idepoubis=:idEpo2, datmaj=:Datmaj WHERE idperson=:IdInd';
                                datamodule1.fdQuerSaisPlus.ParamByName('IdInd').AsInteger := idInd;
@@ -593,51 +577,34 @@ begin
 
                                datamodule1.fdQuerSaisPlus.ExecSQL;
                             end;
-//
+
                           except
                           end;
                  end;
-//
-//
-               //except
-               //end;
 
-
-
-     //finally
-       //ShowMessage ('Données insèrées dans la base');
-
-
-     //end;
       for i := 0 to Componentcount-1 do
          	begin
             		if Components[i] is TEdit  then
                      begin
                         TEdit(Components[i]).Text := '';
                      end;
-//               end;
-//         for i := 0 to Componentcount-1 do
-//          	begin
+
             		if (Components[i] is TComboBox ) then
                      begin
                        TComboBox(Components[i]).itemindex:=0;
                      end;
-//               end;
-//           for i := 0 to Componentcount-1 do
-//          	begin
+
             		if (Components[i] is TMemo ) then
                      begin
                        TMemo(Components[i]).Text := '';
                      end;
-//               end;
-//           for i := 0 to Componentcount-1 do
-//          	begin
+
             		if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbInd') or (TLabel(Components[i]).Name = 'lbEpo') or (TLabel(Components[i]).Name =  'lbEpo2') or (TLabel(Components[i]).Name =  'lbMer') or (TLabel(Components[i]).Name =  'lbPer') )) then
                      begin
                         TLabel(Components[i]).Text:='';
                          if (TLabel(Components[i]).Name = 'lbInd') then
                             TLabel(Components[i]).Text:='0' ;
-//
+
                      end;
           end;
 end;
@@ -704,8 +671,6 @@ begin
             		if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbInd') or (TLabel(Components[i]).Name = 'lbEpo') or (TLabel(Components[i]).Name =  'lbEpo2') or (TLabel(Components[i]).Name =  'lbMer') or (TLabel(Components[i]).Name =  'lbPer') )) then
                      begin
                         TLabel(Components[i]).Text:='0';
-                         //if (TLabel(Components[i]).Name = 'lbInd') then
-                           // TLabel(Components[i]).Text:='0' ;
                      end;
                 if (Components[i] is TLabel and ((TLabel(Components[i]).Name = 'lbMaj'))) then
                   begin

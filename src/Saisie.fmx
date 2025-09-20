@@ -30,7 +30,6 @@ object FSaisie: TFSaisie
         Size.PlatformDefault = False
         TabOrder = 23
         Text = 'Enregistrer'
-        TextSettings.Trimming = None
         OnClick = btRecClick
       end
       object btQuit: TButton
@@ -41,7 +40,6 @@ object FSaisie: TFSaisie
         Size.PlatformDefault = False
         TabOrder = 24
         Text = 'Quitter'
-        TextSettings.Trimming = None
         OnClick = btQuitClick
       end
     end
@@ -237,8 +235,8 @@ object FSaisie: TFSaisie
       Size.Height = 145.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 22
-      Viewport.Width = 420.000000000000000000
-      Viewport.Height = 141.000000000000000000
+      Viewport.Width = 424.000000000000000000
+      Viewport.Height = 145.000000000000000000
     end
     object Label21: TLabel
       Position.X = 648.000000000000000000
@@ -334,7 +332,6 @@ object FSaisie: TFSaisie
         Size.PlatformDefault = False
         TabOrder = 1
         Text = '+'
-        TextSettings.Trimming = None
         OnClick = btPhotClick
       end
     end

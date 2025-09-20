@@ -1,0 +1,516 @@
+object FinfGen: TFinfGen
+  Left = 0
+  Top = 0
+  Caption = 'Fiche Info'
+  ClientHeight = 625
+  ClientWidth = 733
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Layout1: TLayout
+    Position.X = 8.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 729.000000000000000000
+    Size.Height = 609.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object tbInf: TToolBar
+      Align = Bottom
+      Position.Y = 544.000000000000000000
+      Size.Width = 729.000000000000000000
+      Size.Height = 65.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object btOk: TButton
+        Position.X = 504.000000000000000000
+        Position.Y = 16.000000000000000000
+        Size.Width = 177.000000000000000000
+        Size.Height = 41.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'OK'
+        OnClick = btOkClick
+      end
+      object btPrint: TButton
+        Position.X = 296.000000000000000000
+        Position.Y = 24.000000000000000000
+        Size.Width = 137.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Text = 'Imptimer'
+      end
+    end
+    object Label1: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Nom :'
+      TabOrder = 1
+    end
+    object Label2: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 48.000000000000000000
+      Size.Width = 57.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Pr'#233'nom : '
+      TabOrder = 2
+    end
+    object Label3: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 81.000000000000000000
+      Size.Width = 64.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Pr'#233'nom2 : '
+      TabOrder = 3
+    end
+    object Panel1: TPanel
+      Position.X = 560.000000000000000000
+      Position.Y = 232.000000000000000000
+      Size.Width = 145.000000000000000000
+      Size.Height = 145.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+    end
+    object Label4: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 112.000000000000000000
+      Size.Width = 57.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Pr'#233'nom3 :'
+      TabOrder = 5
+    end
+    object Label5: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 145.000000000000000000
+      Size.Width = 64.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Naissance :'
+      TabOrder = 6
+    end
+    object Label6: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 178.000000000000000000
+      Size.Width = 57.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'D'#233'c'#232's :'
+      TabOrder = 7
+    end
+    object Label7: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 216.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Mariage :'
+      TabOrder = 8
+    end
+    object Label8: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 249.000000000000000000
+      Size.Width = 121.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Epoux(se):'
+      TabOrder = 9
+    end
+    object Label9: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 282.000000000000000000
+      Size.Width = 113.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Mariage2 :'
+      TabOrder = 10
+    end
+    object Label10: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 315.000000000000000000
+      Size.Width = 64.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Epoux2 :'
+      TabOrder = 11
+    end
+    object Label11: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 348.000000000000000000
+      Size.Width = 64.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'P'#232're :'
+      TabOrder = 12
+    end
+    object Label12: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 373.000000000000000000
+      Size.Width = 64.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'M'#232're :'
+      TabOrder = 13
+    end
+    object Label13: TLabel
+      Position.X = 88.000000000000000000
+      Position.Y = 404.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Nom :'
+      TabOrder = 14
+    end
+    object Label14: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 429.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'M'#233'mo :'
+      TabOrder = 15
+    end
+    object Memo1: TMemo
+      Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+      DataDetectorTypes = []
+      Position.X = 80.000000000000000000
+      Position.Y = 429.000000000000000000
+      Size.Width = 273.000000000000000000
+      Size.Height = 105.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 16
+      Viewport.Width = 269.000000000000000000
+      Viewport.Height = 101.000000000000000000
+    end
+    object edNom: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 17
+      Position.X = 88.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 81.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object edPren2: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 18
+      Position.X = 88.000000000000000000
+      Position.Y = 81.000000000000000000
+      Size.Width = 81.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object edNaiss: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 19
+      Position.X = 88.000000000000000000
+      Position.Y = 145.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object edDec: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 20
+      Position.X = 88.000000000000000000
+      Position.Y = 178.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object edEpo: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 21
+      Position.X = 88.000000000000000000
+      Position.Y = 240.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object edMar2: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 22
+      Position.X = 88.000000000000000000
+      Position.Y = 273.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Edit10: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 23
+      Position.X = 88.000000000000000000
+      Position.Y = 306.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Edit11: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 24
+      Position.X = 88.000000000000000000
+      Position.Y = 339.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 24.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Edit12: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 25
+      Position.X = 88.000000000000000000
+      Position.Y = 371.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Edit13: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 26
+      Position.X = 224.000000000000000000
+      Position.Y = 306.000000000000000000
+      Size.Width = 105.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Edit14: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 27
+      Position.X = 224.000000000000000000
+      Position.Y = 373.000000000000000000
+      Size.Width = 113.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object edLNaiss: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 28
+      Position.X = 256.000000000000000000
+      Position.Y = 145.000000000000000000
+      Size.Width = 113.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object edLDec: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 29
+      Position.X = 257.000000000000000000
+      Position.Y = 178.000000000000000000
+      Size.Width = 112.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Edit17: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 30
+      Position.X = 224.000000000000000000
+      Position.Y = 240.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Edit18: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 31
+      Position.X = 224.000000000000000000
+      Position.Y = 340.000000000000000000
+      Size.Width = 113.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Edit19: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 32
+      Position.X = 576.000000000000000000
+      Position.Y = 178.000000000000000000
+      Size.Width = 129.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Edit20: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 33
+      Position.X = 416.000000000000000000
+      Position.Y = 145.000000000000000000
+      Size.Width = 129.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Edit21: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 34
+      Position.X = 416.000000000000000000
+      Position.Y = 178.000000000000000000
+      Size.Width = 129.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Edit22: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 35
+      Position.X = 576.000000000000000000
+      Position.Y = 145.000000000000000000
+      Size.Width = 129.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Label22: TLabel
+      Position.X = 208.000000000000000000
+      Position.Y = 153.000000000000000000
+      Size.Width = 49.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Lieu :'
+      TabOrder = 36
+    end
+    object Label23: TLabel
+      Position.X = 208.000000000000000000
+      Position.Y = 178.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Lieu :'
+      TabOrder = 37
+    end
+    object Label24: TLabel
+      Position.X = 424.000000000000000000
+      Position.Y = 120.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'D'#233'partement :'
+      TabOrder = 38
+    end
+    object Label25: TLabel
+      Position.X = 592.000000000000000000
+      Position.Y = 120.000000000000000000
+      Size.Width = 57.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Pays :'
+      TabOrder = 39
+    end
+    object Label15: TLabel
+      StyledSettings = [Family, FontColor]
+      Position.X = 600.000000000000000000
+      Position.Y = 290.000000000000000000
+      Size.Width = 65.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 20.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      Text = 'Photo'
+      TabOrder = 40
+    end
+    object lbInd: TLabel
+      Position.X = 192.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 105.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = '0'
+      TabOrder = 41
+      object Label16: TLabel
+        StyledSettings = [Family, FontColor]
+        Position.X = 136.000000000000000000
+        Size.Width = 113.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 16.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        Text = 'Fiche individu '
+        TabOrder = 4
+      end
+    end
+    object Label17: TLabel
+      Position.X = 240.000000000000000000
+      Position.Y = 396.000000000000000000
+      Size.Width = 73.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Pr'#233'nom :'
+      TabOrder = 42
+    end
+    object lbEpo2: TLabel
+      Position.X = 352.000000000000000000
+      Position.Y = 304.000000000000000000
+      Size.Width = 105.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = '0'
+      TabOrder = 43
+    end
+    object edPren: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 44
+      Position.X = 88.000000000000000000
+      Position.Y = 48.000000000000000000
+      Size.Width = 81.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object lbMer: TLabel
+      Position.X = 352.000000000000000000
+      Position.Y = 373.000000000000000000
+      Size.Width = 105.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = '0'
+      TabOrder = 45
+    end
+    object lbEpo: TLabel
+      Position.X = 352.000000000000000000
+      Position.Y = 240.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = '0'
+      TabOrder = 46
+    end
+    object edMar: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 47
+      Position.X = 88.000000000000000000
+      Position.Y = 209.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object edPren3: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 48
+      Position.X = 88.000000000000000000
+      Position.Y = 112.000000000000000000
+      Size.Width = 81.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object lbPer: TLabel
+      Position.X = 352.000000000000000000
+      Position.Y = 348.000000000000000000
+      Size.Width = 105.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = '0'
+      TabOrder = 49
+    end
+    object lbMaj: TLabel
+      StyledSettings = [FontColor]
+      Position.X = 408.000000000000000000
+      Position.Y = 480.000000000000000000
+      Size.Width = 273.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Segoe Script'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000200000004000000}
+      Text = 'Mise '#224' jour le : '
+      TabOrder = 50
+    end
+  end
+end

@@ -10,8 +10,6 @@ object FChoix: TFChoix
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
-  OnActivate = FormShow
-  OnCreate = FormShow
   OnShow = FormShow
   DesignerMasterStyle = 0
   object Layout1: TLayout
@@ -23,9 +21,9 @@ object FChoix: TFChoix
     TabOrder = 0
     object ToolBar1: TToolBar
       Align = Bottom
-      Position.Y = 528.000000000000000000
+      Position.Y = 521.000000000000000000
       Size.Width = 681.000000000000000000
-      Size.Height = 41.000000000000000000
+      Size.Height = 48.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
       object btQuit: TButton
@@ -35,7 +33,6 @@ object FChoix: TFChoix
         Size.PlatformDefault = False
         TabOrder = 0
         Text = 'Quit'
-        TextSettings.Trimming = None
         OnClick = btQuitClick
       end
       object btNew: TButton
@@ -45,7 +42,6 @@ object FChoix: TFChoix
         Size.PlatformDefault = False
         TabOrder = 2
         Text = 'Nouveau'
-        TextSettings.Trimming = None
         OnClick = btNewClick
       end
       object btValid: TButton
@@ -55,7 +51,6 @@ object FChoix: TFChoix
         Size.PlatformDefault = False
         TabOrder = 1
         Text = 'OK'
-        TextSettings.Trimming = None
         OnClick = btValidClick
       end
     end
@@ -72,7 +67,7 @@ object FChoix: TFChoix
       Position.X = 160.000000000000000000
       Position.Y = 53.000000000000000000
       Size.Width = 209.000000000000000000
-      Size.Height = 25.000000000000000000
+      Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 2
     end
@@ -82,7 +77,7 @@ object FChoix: TFChoix
       Position.X = 160.000000000000000000
       Position.Y = 94.000000000000000000
       Size.Width = 113.000000000000000000
-      Size.Height = 25.000000000000000000
+      Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
     end
     object sgChoix: TStringGrid
@@ -94,14 +89,16 @@ object FChoix: TFChoix
       Size.Height = 310.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 5
+      Visible = False
+      RowCount = 0
       Options = [Editing, ColumnResize, ColumnMove, ColLines, RowLines, RowSelect, Tabs, Header, HeaderClick, AutoDisplacement]
       Viewport.Width = 637.000000000000000000
       Viewport.Height = 285.000000000000000000
     end
     object lbChoix: TLabel
-      Position.X = 8.000000000000000000
+      Position.X = 520.000000000000000000
       Position.Y = 8.000000000000000000
-      Size.Width = 665.000000000000000000
+      Size.Width = 153.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
       Text = '0'
@@ -117,8 +114,8 @@ object FChoix: TFChoix
       TabOrder = 7
     end
     object lbSelect: TLabel
-      Position.X = 8.000000000000000000
-      Position.Y = 454.000000000000000000
+      Position.X = 520.000000000000000000
+      Position.Y = 97.000000000000000000
       Size.Width = 89.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False
@@ -160,21 +157,35 @@ object FChoix: TFChoix
       TabOrder = 3
     end
   end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = DataModule1.FDQuerChoix
+    ScopeMappings = <>
+    Left = 336
+    Top = 272
+  end
   object BindingsList1: TBindingsList
     Methods = <>
     OutputConverters = <>
     Left = 20
     Top = 5
     object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Liaisons rapides'
       DataSource = BindSourceDB1
       GridControl = sgChoix
-      Columns = <>
+      Columns = <
+        item
+          MemberName = 'idperson'
+        end
+        item
+          MemberName = 'nom'
+        end
+        item
+          MemberName = 'prenom'
+        end
+        item
+          MemberName = 'Naissance'
+          ReadOnly = False
+        end>
     end
-  end
-  object BindSourceDB1: TBindSourceDB
-    DataSet = DataModule1.FDQuerChoix
-    ScopeMappings = <>
-    Left = 336
-    Top = 272
   end
 end

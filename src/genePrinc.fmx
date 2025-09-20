@@ -102,7 +102,6 @@ object GeneaPrinc: TGeneaPrinc
         Size.PlatformDefault = False
         TabOrder = 1
         Text = 'Button1'
-        TextSettings.Trimming = None
         Visible = False
       end
       object btQuit: TButton
@@ -112,7 +111,6 @@ object GeneaPrinc: TGeneaPrinc
         Size.PlatformDefault = False
         TabOrder = 2
         Text = 'Quitter'
-        TextSettings.Trimming = None
         OnClick = btQuitClick
       end
     end
@@ -156,9 +154,8 @@ object GeneaPrinc: TGeneaPrinc
         Size.Width = 73.000000000000000000
         Size.Height = 25.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 4
+        TabOrder = 11
         Text = 'Connexion'
-        TextSettings.Trimming = None
         OnClick = btConnecClick
       end
       object Label4: TLabel
@@ -168,7 +165,7 @@ object GeneaPrinc: TGeneaPrinc
         Size.Height = 17.000000000000000000
         Size.PlatformDefault = False
         Text = 'Inscription :'
-        TabOrder = 5
+        TabOrder = 4
       end
       object Label5: TLabel
         Position.X = 183.000000000000000000
@@ -177,7 +174,7 @@ object GeneaPrinc: TGeneaPrinc
         Size.Height = 25.000000000000000000
         Size.PlatformDefault = False
         Text = 'Nom :'
-        TabOrder = 6
+        TabOrder = 5
       end
       object Label6: TLabel
         Position.X = 183.000000000000000000
@@ -186,7 +183,7 @@ object GeneaPrinc: TGeneaPrinc
         Size.Height = 24.000000000000000000
         Size.PlatformDefault = False
         Text = 'Pr'#233'nom :'
-        TabOrder = 7
+        TabOrder = 6
       end
       object Label7: TLabel
         Position.X = 183.000000000000000000
@@ -195,7 +192,7 @@ object GeneaPrinc: TGeneaPrinc
         Size.Height = 25.000000000000000000
         Size.PlatformDefault = False
         Text = 'Mail :'
-        TabOrder = 8
+        TabOrder = 7
       end
       object Label8: TLabel
         Position.X = 179.000000000000000000
@@ -204,7 +201,7 @@ object GeneaPrinc: TGeneaPrinc
         Size.Height = 17.000000000000000000
         Size.PlatformDefault = False
         Text = 'Pseudo :'
-        TabOrder = 9
+        TabOrder = 10
       end
       object Label9: TLabel
         Position.X = 179.000000000000000000
@@ -213,17 +210,18 @@ object GeneaPrinc: TGeneaPrinc
         Size.Height = 25.000000000000000000
         Size.PlatformDefault = False
         Text = 'Mot de passe :'
-        TabOrder = 10
+        TabOrder = 18
       end
       object btInscrip: TButton
+        Tag = 17
         Position.X = 248.000000000000000000
         Position.Y = 264.000000000000000000
         Size.Width = 73.000000000000000000
         Size.Height = 25.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 11
+        TabOrder = 17
         Text = 'Inscription'
-        TextSettings.Trimming = None
+        OnClick = btInscripClick
       end
       object edNom: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -247,7 +245,7 @@ object GeneaPrinc: TGeneaPrinc
       end
       object edPseudo: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
-        TabOrder = 14
+        TabOrder = 15
         Position.X = 264.000000000000000000
         Position.Y = 169.000000000000000000
         Size.Width = 105.000000000000000000
@@ -257,7 +255,7 @@ object GeneaPrinc: TGeneaPrinc
       end
       object edLog: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
-        TabOrder = 15
+        TabOrder = 8
         Position.X = 96.000000000000000000
         Position.Y = 64.000000000000000000
         Size.Width = 73.000000000000000000
@@ -267,7 +265,7 @@ object GeneaPrinc: TGeneaPrinc
       end
       object edMdp: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
-        TabOrder = 16
+        TabOrder = 9
         Position.X = 96.000000000000000000
         Position.Y = 104.000000000000000000
         Size.Width = 73.000000000000000000
@@ -276,7 +274,7 @@ object GeneaPrinc: TGeneaPrinc
       end
       object edMel: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
-        TabOrder = 17
+        TabOrder = 14
         Position.X = 264.000000000000000000
         Position.Y = 144.000000000000000000
         Size.Width = 105.000000000000000000
@@ -285,7 +283,7 @@ object GeneaPrinc: TGeneaPrinc
       end
       object EdPmdp: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
-        TabOrder = 18
+        TabOrder = 16
         Position.X = 264.000000000000000000
         Position.Y = 208.000000000000000000
         Size.Width = 105.000000000000000000

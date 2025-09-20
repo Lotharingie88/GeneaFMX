@@ -9,7 +9,7 @@ object FMaj: TFMaj
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
   OnClose = FormClose
-  DesignerMasterStyle = 0
+  DesignerMasterStyle = 4
   object Layout1: TLayout
     Position.X = 18.000000000000000000
     Position.Y = -3.000000000000000000
@@ -32,7 +32,6 @@ object FMaj: TFMaj
         Size.PlatformDefault = False
         TabOrder = 24
         Text = 'Enregistrer'
-        TextSettings.Trimming = None
         OnClick = btRecClick
       end
       object btQuit: TButton
@@ -43,7 +42,6 @@ object FMaj: TFMaj
         Size.PlatformDefault = False
         TabOrder = 28
         Text = 'Quitter'
-        TextSettings.Trimming = None
         OnClick = btQuitClick
       end
       object btSupp: TButton
@@ -54,7 +52,6 @@ object FMaj: TFMaj
         Size.PlatformDefault = False
         TabOrder = 26
         Text = 'Supprimer la fiche'
-        TextSettings.Trimming = None
         OnClick = btSuppClick
       end
     end
@@ -238,7 +235,6 @@ object FMaj: TFMaj
         Size.PlatformDefault = False
         TabOrder = 25
         Text = '+'
-        TextSettings.Trimming = None
         OnClick = btPhotClick
       end
     end
@@ -533,7 +529,7 @@ object FMaj: TFMaj
     end
     object lbPer: TLabel
       Position.X = 424.000000000000000000
-      Position.Y = 336.000000000000000000
+      Position.Y = 337.000000000000000000
       Size.Width = 49.000000000000000000
       Size.Height = 25.000000000000000000
       Size.PlatformDefault = False

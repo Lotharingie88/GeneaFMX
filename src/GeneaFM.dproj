@@ -342,6 +342,10 @@
             <Form>FAprop</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="infGene.pas">
+            <Form>FinfGen</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -383,9 +387,26 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="Linux64\Debug\GeneaFM" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Linux64">
+                        <RemoteName>GeneaFM</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Win32\Debug\GeneaFM.exe" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName="Win64\Debug\GeneaFM.exe" Configuration="Debug" Class="ProjectOutput"/>
-                <DeployFile LocalName="Win64\Debug\GeneaFM.rsm" Configuration="Debug" Class="DebugSymbols"/>
+                <DeployFile LocalName="Win64\Debug\GeneaFM.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win64">
+                        <RemoteName>GeneaFM.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win64\Debug\GeneaFM.rsm" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win64">
+                        <RemoteName>GeneaFM.rsm</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>

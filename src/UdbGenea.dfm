@@ -17,6 +17,9 @@ object DataModule1: TDataModule1
       'LockingMode=Normal'
       'DateTimeFormat=DateTime'
       'DriverID=SQLite')
+    FormatOptions.AssignedValues = [fvFmtDisplayDate]
+    FormatOptions.FmtDisplayDate = 'dd/mm/yyyy'
+    Connected = True
     LoginPrompt = False
     Left = 528
     Top = 8
@@ -100,5 +103,10 @@ object DataModule1: TDataModule1
     Connection = FDConnecSqLite
     Left = 328
     Top = 72
+  end
+  object FDQuerChoixCb: TFDQuery
+    Connection = FDConnecSqLite
+    Left = 328
+    Top = 320
   end
 end

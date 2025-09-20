@@ -11,7 +11,8 @@ uses
   Maj in 'Maj.pas' {FMaj},
   Consult in 'Consult.pas' {FCons},
   Choix2 in 'Choix2.pas' {FChoix},
-  geneFMaprop in 'geneFMaprop.pas' {FAprop};
+  geneFMaprop in 'geneFMaprop.pas' {FAprop},
+  infGene in 'infGene.pas' {FinfGen};
 
 {$R *.res}
 
@@ -26,5 +27,6 @@ begin
   Application.CreateForm(TFCons, FCons);
   Application.CreateForm(TFChoix, FChoix);
   Application.CreateForm(TFAprop, FAprop);
+  Application.CreateForm(TFinfGen, FinfGen);
   Application.Run;
 end.

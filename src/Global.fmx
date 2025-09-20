@@ -23,39 +23,29 @@ object FGlobal: TFGlobal
       Size.Height = 33.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
-      object btDet: TButton
-        Position.X = 376.000000000000000000
-        Size.Width = 89.000000000000000000
-        Size.Height = 33.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 0
-        Text = 'D'#233'tail S'#233'lection'
-        TextSettings.Trimming = None
-      end
       object btQuit: TButton
         Position.X = 880.000000000000000000
         Position.Y = 8.000000000000000000
         Size.Width = 81.000000000000000000
         Size.Height = 25.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 1
+        TabOrder = 0
         Text = 'Quitter'
-        TextSettings.Trimming = None
         OnClick = btQuitClick
       end
     end
-    object dbgGenea2: TGrid
+    object sgGenea1: TStringGrid
       CanFocus = True
       ClipChildren = True
       Position.X = 8.000000000000000000
       Position.Y = 8.000000000000000000
       Size.Width = 1089.000000000000000000
-      Size.Height = 555.000000000000000000
+      Size.Height = 497.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
-      Options = [Editing, ColumnMove, ColLines, RowLines, RowSelect, Tabs, Header, HeaderClick, AutoDisplacement]
-      Viewport.Width = 1085.000000000000000000
-      Viewport.Height = 530.000000000000000000
+      OnCellClick = sgGenea1CellClick
+      Viewport.Width = 1089.000000000000000000
+      Viewport.Height = 497.000000000000000000
     end
   end
   object NavigatorBindSourceDB1: TBindNavigator
@@ -75,9 +65,10 @@ object FGlobal: TFGlobal
     OutputConverters = <>
     Left = 20
     Top = 5
-    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+    object LinkGridToDataSourceBindSourceDB12: TLinkGridToDataSource
+      Category = 'Liaisons rapides'
       DataSource = BindSourceDB1
-      GridControl = dbgGenea2
+      GridControl = sgGenea1
       Columns = <>
     end
   end

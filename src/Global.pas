@@ -15,15 +15,15 @@ type
   TFGlobal = class(TForm)
     Layout1: TLayout;
     ToolBar1: TToolBar;
-    btDet: TButton;
     btQuit: TButton;
-    dbgGenea2: TGrid;
     BindingsList1: TBindingsList;
     BindSourceDB1: TBindSourceDB;
-    LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
     NavigatorBindSourceDB1: TBindNavigator;
+    sgGenea1: TStringGrid;
+    LinkGridToDataSourceBindSourceDB12: TLinkGridToDataSource;
     procedure btQuitClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure sgGenea1CellClick(const Column: TColumn; const Row: Integer);
   private
     { Déclarations privées }
   public
@@ -36,6 +36,8 @@ var
 implementation
 
 {$R *.fmx}
+  uses
+      infGene;
    var
     datmaj:string;
 procedure TFGlobal.btQuitClick(Sender: TObject);
@@ -56,21 +58,38 @@ begin
 
 
           datamodule1.fdQuerGlob.FieldByName('nom').AsString;
-            dbgGenea2.Columns[0].Width:=40;
-          dbgGenea2.Columns[1].Width:=150;
-          dbgGenea2.Columns[2].Width:=150;
-          dbgGenea2.Columns[3].Width:=75;
-          dbgGenea2.Columns[4].Width:=75;
-          dbgGenea2.Columns[5].Width:=135;
-          dbgGenea2.Columns[6].Width:=130;
-          dbgGenea2.Columns[7].Width:=40;
-          dbgGenea2.Columns[8].Width:=40;
-          dbgGenea2.Columns[9].Width:=55;
-          dbgGenea2.Columns[10].Width:=60;
+          sgGenea1.Columns[0].Width:=40;
+          sgGenea1.Columns[1].Width:=150;
+          sgGenea1.Columns[2].Width:=150;
+          sgGenea1.Columns[3].Width:=75;
+          sgGenea1.Columns[4].Width:=75;
+          sgGenea1.Columns[5].Width:=135;
+          sgGenea1.Columns[6].Width:=130;
+          sgGenea1.Columns[7].Width:=40;
+          sgGenea1.Columns[8].Width:=40;
+          sgGenea1.Columns[9].Width:=55;
+          sgGenea1.Columns[10].Width:=60;
 
-          dbgGenea2.Repaint;
+          sgGenea1.Repaint;
 
 
 end;
 
+procedure TFGlobal.sgGenea1CellClick(const Column: TColumn; const Row: Integer);
+var
+    idnom,t:string;
+begin
+     idNom:=sgGenea1.selected.ToString();
+    if idnom.ToInteger()<>0 then
+        begin
+          t:=sgGenea1.Cells[0,idnom.ToInteger()];
+          Finfgen.edNom.Visible:=true;
+
+
+          Finfgen.Show;
+        end
+       else
+        t:='0';
+   ShowMessage ('IdNom :' + t );
+end;
 end.

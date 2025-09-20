@@ -1,12 +1,12 @@
 ﻿[DataModule1.FDQuerChoix]
-Coordinates=773,348,173,36
+Coordinates=130,70,173,36
 Visible=False
 
 [ToolBar1]
 Coordinates=169,338,67,36
 
 [cbDebArbre]
-Coordinates=250,150,101,146
+Coordinates=400,150,101,146
 
 [DataModule1.FDQuerMajPlus]
 Coordinates=0,0,186,58
@@ -18,40 +18,41 @@ Coordinates=356,338,61,58
 Coordinates=205,1,58,58
 
 [DataModule1.FDQuerSais]
-Coordinates=364,174,165,58
+Coordinates=170,300,165,58
 
 [sgChoix]
-Coordinates=117,77,61,58
+Coordinates=10,70,66,146
+Visible=True
 
 [rdChoix]
 Coordinates=100,338,59,36
 
 [lbNom]
-Coordinates=186,77,52,58
+Coordinates=460,80,52,58
 
 [lbNiv]
 Coordinates=533,309,43,58
 
 [DataModule1.FDQuerDept]
-Coordinates=769,232,167,102
+Coordinates=769,232,167,58
 
 [btNew]
-Coordinates=301,78,51,58
+Coordinates=390,80,51,58
 
 [DataModule1.FDQuerPays]
-Coordinates=769,78,168,102
+Coordinates=769,78,168,58
 
 [lbArbr]
 Coordinates=297,338,49,58
 
 [DataModule1.FDQuerNomPren]
-Coordinates=301,1,194,124
+Coordinates=301,1,194,58
 
 [edNiv]
 Coordinates=484,338,47,58
 
 [btQuit]
-Coordinates=58,77,49,58
+Coordinates=340,150,49,58
 
 [btValid]
 Coordinates=533,232,54,58
@@ -64,6 +65,7 @@ Coordinates=533,1,198,58
 
 [Layout1]
 Coordinates=801,386,60,36
+Visible=True
 
 [DataModule1.FDQuerArbrPlus]
 Coordinates=769,309,189,58
@@ -84,13 +86,18 @@ Coordinates=533,78,190,58
 Coordinates=769,1,164,58
 
 []
-Coordinates=0,302,91,36
+Coordinates=151,173,91,36
 Visible=True
+
+[DataModule1.FDQuerGene]
+Coordinates=590,334,171,58
+
+[DataModule1.FDQuerChoixCb]
+Coordinates=996,1,189,58
 
 [BindSourceDB1]
-Coordinates=60,170,159,80
-Visible=True
+Coordinates=130,70,159,190
 
 [BindingsList1]
-Coordinates=151,173,91,36
+Coordinates=71,298,91,36
 

@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts,
-  FMX.StdCtrls, FMX.Controls.Presentation, FMX.Menus,UdbGenea, FMX.Edit;
+  FMX.StdCtrls, FMX.Controls.Presentation, FMX.Menus,UdbGenea, FMX.Edit,firedac.stan.Param;
 
 type
   TGeneaPrinc = class(TForm)
@@ -58,6 +58,7 @@ type
     procedure menAboutClick(Sender: TObject);
     procedure btConnecClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btInscripClick(Sender: TObject);
   private
     { Déclarations privées }
   public
@@ -72,6 +73,8 @@ implementation
 {$R *.fmx}
  uses
   Saisie,Maj,Global,Arbre,Consult,geneFMaprop;
+  var
+    datmaj:string;
 procedure TGeneaPrinc.btConnecClick(Sender: TObject);
 var
   nb,id : integer;
@@ -126,6 +129,51 @@ begin
 
 end;
 
+procedure TGeneaPrinc.btInscripClick(Sender: TObject);
+var
+  nb : integer;
+  //pseu,prof : string;
+begin
+   if (ednom.Text<>'') and (edpren.Text <>'') then
+   begin
+       datamodule1.FDQuerGene.SQL.Clear;
+      datamodule1.FDQuerGene.SQL.text:= 'select count(*) as nb from utilisateur where nom= :nom and prenom= :pren';
+      datamodule1.FDQuerGene.ParamByName('nom').asString:=edNom.Text;
+      datamodule1.FDQuerGene.ParamByName('pren').asString:=edPren.Text;
+      datamodule1.FDQuerGene.open;
+      nb:= datamodule1.FDQuerGene.FieldByName('nb').asInteger;
+      datamodule1.FDQuerGene.close;
+      datamodule1.FDQuerGene.SQL.Clear;
+      if nb=0 then
+        begin
+            if edpmdp.Text='' then
+               begin
+                  showmessage('Il faut saisir un mot de passe (8 caract. minimum).');
+                  exit;
+               end;
+            if edmel.Text='' then
+              begin
+                  showmessage('Une adresse mail est indispensable ! ');
+                  exit;
+              end;
+            datamodule1.FDQuerGene.SQL.text:= 'insert into utilisateur(nom,prenom,email,pseudo,pwd,cprofil,datdeb,datmaj) values (:nom,:pren,:mel,:pseu,:mdp,2,:deb,:maj)';
+            datamodule1.FDQuerGene.ParamByName('nom').asString:=edNom.Text;
+            datamodule1.FDQuerGene.ParamByName('pren').asString:=edPren.Text;
+            datamodule1.FDQuerGene.ParamByName('mel').asString:=edMel.Text;
+            datamodule1.FDQuerGene.ParamByName('pseu').asString:=edPseudo.Text;
+            datamodule1.FDQuerGene.ParamByName('mdp').asString:=edpMdp.Text;
+            datamodule1.FDQuerGene.ParamByName('deb').asDate:=strtodate(Datmaj);
+            datamodule1.FDQuerGene.ParamByName('maj').asDate:=strtodate(Datmaj);
+            datamodule1.FDQuerGene.execsql;
+            datamodule1.FDQuerGene.close;
+            datamodule1.FDQuerGene.SQL.Clear;
+            showmessage('Un message de confirmation va vous être envoyé par mail');
+            pconnect.Visible:=false;
+        end;
+
+   end;
+end;
+
 procedure TGeneaPrinc.btQuitClick(Sender: TObject);
 begin
   close();
@@ -133,6 +181,7 @@ end;
 
 procedure TGeneaPrinc.FormCreate(Sender: TObject);
 begin
+  Datmaj := DateToStr(Date);
     menArbr.Enabled:=false;
     menCons.Enabled:=False;
     menGlob.Enabled:=False;
@@ -153,6 +202,8 @@ end;
 
 procedure TGeneaPrinc.menConsClick(Sender: TObject);
 begin
+  fcons.edNom.Visible:=false;
+  fcons.cbNom.Visible:=true;
   fcons.Show;
 end;
 

@@ -12,7 +12,7 @@ object FCons: TFCons
   DesignerMasterStyle = 0
   object Layout1: TLayout
     Position.X = 8.000000000000000000
-    Position.Y = 4.000000000000000000
+    Position.Y = -3.000000000000000000
     Size.Width = 1015.000000000000000000
     Size.Height = 595.000000000000000000
     Size.PlatformDefault = False
@@ -32,7 +32,6 @@ object FCons: TFCons
         Size.PlatformDefault = False
         TabOrder = 0
         Text = 'Quitter'
-        TextSettings.Trimming = None
         OnClick = btQuitClick
       end
     end
@@ -233,8 +232,8 @@ object FCons: TFCons
       Size.Height = 98.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 33
-      Viewport.Width = 517.000000000000000000
-      Viewport.Height = 94.000000000000000000
+      Viewport.Width = 521.000000000000000000
+      Viewport.Height = 98.000000000000000000
     end
     object cbNom: TComboBox
       Position.X = 104.000000000000000000
@@ -547,6 +546,14 @@ object FCons: TFCons
       Size.PlatformDefault = False
       Text = '0'
       TabOrder = 51
+    end
+    object edNom: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 52
+      Size.Width = 281.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
     end
   end
 end
